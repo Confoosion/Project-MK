@@ -129,6 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 117719054}
   - component: {fileID: 117719055}
+  - component: {fileID: 117719058}
   - component: {fileID: 117719057}
   - component: {fileID: 117719056}
   m_Layer: 0
@@ -170,7 +171,6 @@ MonoBehaviour:
   speed: 8
   extraJumps: 0
   jumpPower: 20
-  baseAttack: 1
   perk: {fileID: 11400000, guid: 148029b8ff651ee4c858db440ebde376, type: 2}
   rb: {fileID: 117719057}
   groundCheck: {fileID: 935573400}
@@ -250,6 +250,24 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &117719058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 117719053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ffef8f3a86d21f418c9ea0ceb3c07f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  character: {fileID: 11400000, guid: 3346f4ca78f9d0d499f7a78c231d56a3, type: 2}
+  baseAttackPower: 1
+  meleeAttack: {fileID: 0}
+  attackHitbox: {fileID: 0}
+  rangeAttack: {fileID: 409809586}
+  projectilePrefab: {fileID: 0}
 --- !u!1 &191373468
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,6 +435,7 @@ GameObject:
   m_Component:
   - component: {fileID: 380219107}
   - component: {fileID: 380219108}
+  - component: {fileID: 380219109}
   m_Layer: 0
   m_Name: MANAGERS
   m_TagString: Untagged
@@ -451,7 +470,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f184aabf6a67d549b491609d3ddcfe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PerksManager
-  player: {fileID: 117719055}
+  playerControl: {fileID: 117719055}
+--- !u!114 &380219109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380219106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d96ea351a80a69f4da05395604cebb5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterManager
+  characterTransform: {fileID: 409809584}
+  characterModel: {fileID: 409809585}
+  playerAttack: {fileID: 117719058}
 --- !u!1 &409809583
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,6 +496,7 @@ GameObject:
   m_Component:
   - component: {fileID: 409809584}
   - component: {fileID: 409809585}
+  - component: {fileID: 409809586}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -542,6 +577,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &409809586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409809583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e0b45990b000344496e71c311fadbc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RangeAttack
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

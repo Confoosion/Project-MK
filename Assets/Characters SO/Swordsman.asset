@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a298fbb0c1f0bc84a84dc7ac6a7239ea, type: 3}
+  m_Name: Swordsman
+  m_EditorClassIdentifier: Assembly-CSharp::SwordCharacter
+  characterName: Swordsman
+  characterModel: {fileID: 0}
+  attackPower: 10
+  attackDuration: 0
+  attackCD: 0.5
+  hitbox: {fileID: 6760747043205599084, guid: 9f2dd8cbfe7806747916caf31b92ee89, type: 3}

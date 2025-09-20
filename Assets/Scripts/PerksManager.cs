@@ -4,7 +4,7 @@ public class PerksManager : MonoBehaviour
 {
     public static PerksManager Singleton { get; private set; }
 
-    [SerializeField] private PlayerControl player;
+    [SerializeField] private PlayerControl playerControl;
 
     void Awake()
     {
@@ -16,11 +16,11 @@ public class PerksManager : MonoBehaviour
 
     public void AddJumps(int num)
     {
-        player.extraJumps = num;
+        playerControl.extraJumps = num;
     }
 
     public void IncreaseSpeed(float num)
     {
-        player.speed += num;
+        playerControl.speed += num;
     }
 }

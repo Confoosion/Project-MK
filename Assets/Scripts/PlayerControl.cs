@@ -6,9 +6,7 @@ public class PlayerControl : MonoBehaviour
     public float speed;
     public int extraJumps;
     [SerializeField] private float jumpPower;
-    [SerializeField] private float baseAttack;
 
-    // [SerializeField] private CharacterSO character;  // This is for when we make characters. It will hold the weapon cooldown and weapon attack power. We will code the attacking stuff when we actually have a weapon
     [SerializeField] private PerkSO perk;
 
     [Header("Components")]
