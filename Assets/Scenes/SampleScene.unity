@@ -427,8 +427,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ffef8f3a86d21f418c9ea0ceb3c07f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  character: {fileID: 11400000, guid: 3346f4ca78f9d0d499f7a78c231d56a3, type: 2}
+  character: {fileID: 11400000, guid: 81f2d901ee694f748991b721b07f7202, type: 2}
   baseAttackPower: 1
+  attackCD: 0
 --- !u!1 &191373468
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,7 +444,7 @@ GameObject:
   - component: {fileID: 191373472}
   m_Layer: 6
   m_Name: Ground (1)
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1003,7 +1004,7 @@ GameObject:
   - component: {fileID: 1308312288}
   m_Layer: 6
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1160,7 +1161,7 @@ GameObject:
   - component: {fileID: 1525164078}
   m_Layer: 6
   m_Name: Ground (2)
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
