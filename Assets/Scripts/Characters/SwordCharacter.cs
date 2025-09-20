@@ -7,6 +7,8 @@ public class SwordCharacter : CharacterSO
 
     public override void UseWeapon(Transform origin)
     {
-        Instantiate(hitbox, origin.position + new Vector3(-1f, 0f, 0f), Quaternion.identity, origin);
+        float direction = (origin.localScale.x == 1) ? -1f : 1f;
+        GameObject atk = Instantiate(hitbox, origin.position + new Vector3(direction, 0f, 0f), Quaternion.identity, origin);
+        atk.GetComponent<MeleeAttack>().GetData(attackDuration, attackPower);
     }
 }

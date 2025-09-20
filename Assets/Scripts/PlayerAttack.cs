@@ -1,9 +1,13 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] private CharacterSO character;
     [SerializeField] private float baseAttackPower;
+    public float attackCD;
+
+    private bool canAttack = true;
 
     void Start()
     {
@@ -21,6 +25,17 @@ public class PlayerAttack : MonoBehaviour
 
     private void Attack()
     {
-        character.UseWeapon(this.transform);
+        if (canAttack)
+        {
+            character.UseWeapon(this.transform);
+            canAttack = false;
+            StartCoroutine(AttackCooldown(attackCD));
+        }
+    }
+
+    IEnumerator AttackCooldown(float cd)
+    {
+        yield return new WaitForSeconds(cd);
+        canAttack = true;
     }
 }

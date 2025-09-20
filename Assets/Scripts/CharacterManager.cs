@@ -16,8 +16,9 @@ public class CharacterManager : MonoBehaviour
         }
     }
 
-    public void ChangeModel(Sprite newModel)
+    public void ChangeCharacter(Sprite newModel, float atkCD)
     {
         characterModel.sprite = newModel;
+        playerAttack.attackCD = atkCD;
     }
 }

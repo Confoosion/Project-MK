@@ -17,7 +17,7 @@ public abstract class CharacterSO : ScriptableObject
             return;
         }
 
-        CharacterManager.Singleton.ChangeModel(characterModel);
+        CharacterManager.Singleton.ChangeCharacter(characterModel, attackCD);
     }
 
     // Use this class for coding attacks
