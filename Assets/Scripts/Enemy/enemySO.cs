@@ -1,15 +1,24 @@
-using System.Xml.Serialization;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class enemySO : ScriptableObject
+[CreateAssetMenu(fileName = "New Enemy", menuName = "Enemy")]
+public class EnemySO : ScriptableObject
 {
-    public string enemyName = "defaultName";
-    public int health = 100;
-    public float speed = 5.0f;
-    public EnemyBehavior behavior;
+    public int heatlh;
+    public float speed;
+    public EnemyAttackType attack;
+    public bool flying;
+    public List<EnemySO> multiple;
 
-    public void Attack()
-    {
-        behavior.OnAttack();
-    }
+    public Sprite enemyModel;
+
+    
+}
+
+public enum EnemyAttackType
+{
+    normal,
+    projectile,
+    bomb,
+    shield
 }
