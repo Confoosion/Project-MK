@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45a0e333b119e4b4aaebd7e07d7f5c94, type: 3}
   m_Name: BasicEnemy
   m_EditorClassIdentifier: Assembly-CSharp::EnemySO
-  heatlh: 0
-  speed: 0
+  heatlh: 50
+  speed: 5
   attack: 0
   flying: 0
   multiple: []
