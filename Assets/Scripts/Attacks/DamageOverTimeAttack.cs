@@ -1,8 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
-// DETECTS HITS!!! Use for melee/player-connected attacks
-public class MeleeAttack : MonoBehaviour
+// DETECTS HITS!!! Use for DOT Attacks (like laser or flamethrower)
+public class DamageOverTimeAttack : MonoBehaviour
 {
     private float attackTime;
     private float damage;
@@ -22,7 +22,7 @@ public class MeleeAttack : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    void OnTriggerEnter2D(Collider2D collider)
+    void OnTriggerStay2D(Collider2D collider)
     {
         if (collider.CompareTag("Enemy"))
         {

@@ -17,4 +17,4 @@ MonoBehaviour:
   attackPower: 10
   attackDuration: 2
   attackCD: 2.5
-  laserObject: {fileID: 0}
+  laserObject: {fileID: 3727812004379762652, guid: d94eaabde6da77c4db1a1b2b2e7c7dea, type: 3}

@@ -8,11 +8,9 @@ public class LaserCharacter : CharacterSO
 
     public override void UseWeapon(Transform origin)
     {
+        GameObject atk = Instantiate(laserObject, origin.position, Quaternion.identity, origin);
 
-    }
-
-    IEnumerator FireLaser()
-    {
-        yield return new WaitForSeconds(0);
+        atk.GetComponent<DelayedAttack>().GetData(attackPower, attackDuration * 0.5f, attackDuration * 0.5f);
+        laserObject.transform.GetChild(0).GetComponent<DamageOverTimeAttack>().GetData(0f, attackPower);
     }
 }
