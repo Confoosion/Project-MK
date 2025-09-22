@@ -2,21 +2,21 @@ using UnityEngine;
 
 public class RangeAttack : MonoBehaviour
 {
-    [SerializeField] float projectileForce;
+    // [SerializeField] float projectileForce;
     private float damage;
-    private float direction;
-    private Rigidbody2D rb;
+    // private float direction;
+    // private Rigidbody2D rb;
 
     public void GetData(float dmg)
     {
         damage = dmg;
     }
 
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        rb.AddForce(transform.right * projectileForce, ForceMode2D.Impulse);
-    }
+    // void Start()
+    // {
+    //     rb = GetComponent<Rigidbody2D>();
+    //     rb.AddForce(transform.right * projectileForce, ForceMode2D.Impulse);
+    // }
 
     void OnTriggerEnter2D(Collider2D collider)
     {
