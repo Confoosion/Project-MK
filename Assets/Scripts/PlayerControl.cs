@@ -16,7 +16,8 @@ public class PlayerControl : MonoBehaviour
 
     private float horizontal;
     private bool isFacingRight;
-    private int extraJumpCount;
+    [SerializeField] private int extraJumpCount;
+    private bool onGround = true;
 
     void Start()
     {
@@ -33,13 +34,16 @@ public class PlayerControl : MonoBehaviour
         // Movement
         horizontal = Input.GetAxisRaw("Horizontal");
 
+        // Check if player is on ground
+        onGround = IsGrounded();
+
         // Jumping from the ground
-        if (Input.GetButtonDown("Jump") && IsGrounded())
+        if (Input.GetButtonDown("Jump") && onGround)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpPower);
         }
         // Double jump
-        else if (Input.GetButtonDown("Jump") && !IsGrounded() && extraJumpCount > 0)
+        else if (Input.GetButtonDown("Jump") && !onGround && extraJumpCount > 0)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpPower);
             extraJumpCount--;
@@ -52,6 +56,8 @@ public class PlayerControl : MonoBehaviour
         }
 
         FlipPlayer();
+
+
     }
 
     void FixedUpdate()
@@ -62,12 +68,12 @@ public class PlayerControl : MonoBehaviour
 
     private bool IsGrounded()
     {
-        bool onGround = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+        bool grounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
 
-        if (onGround)
+        if (grounded)
             ResetJumps();
 
-        return onGround;
+        return grounded;
     }
 
     // Flips player into looking left or right

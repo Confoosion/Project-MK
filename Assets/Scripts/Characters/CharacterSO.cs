@@ -4,6 +4,7 @@ public abstract class CharacterSO : ScriptableObject
 {
     public string characterName;
     public Sprite characterModel;
+    public GameObject attackObject;
 
     [Header("Basic Stats")]
     public float attackPower;

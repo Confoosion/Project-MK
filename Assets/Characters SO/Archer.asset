@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArcherCharacter
   characterName: Archer
   characterModel: {fileID: 7482667652216324306, guid: 884ed7d49e4eb8941a062e4c40debba4, type: 3}
+  attackObject: {fileID: 1259166576830395927, guid: 609b1329c4c267f4d906b2986508dc5b, type: 3}
   attackPower: 10
   attackDuration: 0
   attackCD: 0.75
-  arrow: {fileID: 1259166576830395927, guid: 609b1329c4c267f4d906b2986508dc5b, type: 3}
   projectileForce: 250
