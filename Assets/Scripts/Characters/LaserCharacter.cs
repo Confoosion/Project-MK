@@ -8,9 +8,10 @@ public class LaserCharacter : CharacterSO
 
     public override void UseWeapon(Transform origin)
     {
-        GameObject atk = Instantiate(laserObject, origin.position, Quaternion.identity, origin);
+        float direction = (origin.localScale.x == 1) ? -2.95f : 2.95f;
+        GameObject atk = Instantiate(laserObject, origin.position + new Vector3(direction, 0f, 0f), Quaternion.identity, origin);
 
         atk.GetComponent<DelayedAttack>().GetData(attackPower, attackDuration * 0.5f, attackDuration * 0.5f);
-        laserObject.transform.GetChild(0).GetComponent<DamageOverTimeAttack>().GetData(0f, attackPower);
+        atk.GetComponent<DamageOverTimeAttack>().GetData(0f, attackPower);
     }
 }

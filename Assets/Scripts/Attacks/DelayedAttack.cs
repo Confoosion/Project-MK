@@ -8,14 +8,14 @@ public class DelayedAttack : MonoBehaviour
     private float damage;
     private float atkTime;
     private float atkDelay;
-    private GameObject atkObject;
+    private SpriteRenderer spriteRenderer;
 
     public void GetData(float dmg, float duration, float delay)
     {
         damage = dmg;
         atkTime = duration;
         atkDelay = delay;
-        atkObject = gameObject.transform.GetChild(0).gameObject;
+        spriteRenderer = this.GetComponent<SpriteRenderer>();
         StartCoroutine(PerformAttack());
     }
 
@@ -23,7 +23,7 @@ public class DelayedAttack : MonoBehaviour
     {
         yield return new WaitForSeconds(atkDelay);
 
-        atkObject.SetActive(true);
+        spriteRenderer.enabled = true;
 
         yield return new WaitForSeconds(atkTime);
 

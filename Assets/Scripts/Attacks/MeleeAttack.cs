@@ -6,13 +6,15 @@ public class MeleeAttack : MonoBehaviour
 {
     private float attackTime;
     private float damage;
+    private SpriteRenderer spriteRenderer;
 
     public void GetData(float atkTime, float dmg)
     {
         attackTime = atkTime;
         damage = dmg;
 
-        if(attackTime > 0f)
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        if (attackTime > 0f)
             StartCoroutine(AttackCountdown());
     }
 
@@ -24,9 +26,14 @@ public class MeleeAttack : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.CompareTag("Enemy"))
+        if (spriteRenderer != null && spriteRenderer.enabled == false)
         {
-            Debug.Log("Hit enemy!");
+            return;
         }
+
+        if (collider.CompareTag("Enemy"))
+            {
+                Debug.Log("Hit enemy!");
+            }
     }
 }
