@@ -428,7 +428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ffef8f3a86d21f418c9ea0ceb3c07f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  character: {fileID: 11400000, guid: 1ff278db77721e14995af4221dc744d7, type: 2}
+  character: {fileID: 11400000, guid: d4759cc477141f143a89b468ad00f8f8, type: 2}
   baseAttackPower: 1
   attackCD: 0
 --- !u!1 &191373468
