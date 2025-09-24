@@ -4,10 +4,12 @@ using UnityEngine;
 public class RangeAttack : MonoBehaviour
 {
     private float damage;
+    private bool destroyOnTerrain;
 
-    public void GetData(float dmg)
+    public void GetData(float dmg, bool removeFromGround)
     {
         damage = dmg;
+        destroyOnTerrain = removeFromGround;
     }
 
     void OnTriggerEnter2D(Collider2D collider)
@@ -17,7 +19,7 @@ public class RangeAttack : MonoBehaviour
             Debug.Log("Hit enemy!");
             Destroy(this.gameObject);
         }
-        else if (collider.CompareTag("Terrain"))
+        else if (destroyOnTerrain && collider.CompareTag("Terrain"))
         {
             Destroy(this.gameObject);
         }

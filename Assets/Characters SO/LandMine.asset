@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29a3383155a4ae24f915e1fc12aeb26d, type: 3}
+  m_Name: LandMine
+  m_EditorClassIdentifier: Assembly-CSharp::LandMineCharacter
+  characterName: Land Mine guy
+  characterModel: {fileID: 7482667652216324306, guid: 884ed7d49e4eb8941a062e4c40debba4, type: 3}
+  attackObject: {fileID: 2791287070309783046, guid: c8bfc82e9b65b4141acf48eb63170cbb, type: 3}
+  attackPower: 100
+  attackDuration: 0
+  attackCD: 1
