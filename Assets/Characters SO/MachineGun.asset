@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ba66ab467906e4458c09de9e726dc21, type: 3}
+  m_Name: MachineGun
+  m_EditorClassIdentifier: Assembly-CSharp::MachineGunCharacter
+  characterName: Gunner Guy
+  characterModel: {fileID: 7482667652216324306, guid: 884ed7d49e4eb8941a062e4c40debba4, type: 3}
+  attackObject: {fileID: 1406789531465883097, guid: e384a924c1da0f74b91eab5bba0b0965, type: 3}
+  attackPower: 20
+  attackDuration: 0
+  attackCD: 0.25
+  bulletVelocity: 15
+  weaponKnockback: 0.25
