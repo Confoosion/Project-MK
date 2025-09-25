@@ -6,6 +6,7 @@ public class EnemyController : MonoBehaviour
 {
     public EnemySO enemyType;
     public GameObject direction;
+    
 
     private float facingDirection;
 
