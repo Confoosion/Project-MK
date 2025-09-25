@@ -55,4 +55,9 @@ public class PlayerAttack : MonoBehaviour
             yield return new WaitForSeconds(interval);
         }
     }
+
+    public PlayerControl GetPlayerControl()
+    {
+        return (GetComponent<PlayerControl>());
+    }
 }

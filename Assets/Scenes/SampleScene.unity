@@ -334,6 +334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerControl
   speed: 8
+  chargeSpeed: 12
   extraJumps: 0
   jumpPower: 20
   perk: {fileID: 11400000, guid: 148029b8ff651ee4c858db440ebde376, type: 2}
@@ -342,7 +343,6 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  extraJumpCount: 0
 --- !u!61 &117719056
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -428,7 +428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ffef8f3a86d21f418c9ea0ceb3c07f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  character: {fileID: 11400000, guid: 8bb644dac521795409b4f82545eabc0b, type: 2}
+  character: {fileID: 11400000, guid: ecd2a9e3bb18a934c9113246e83f1085, type: 2}
   baseAttackPower: 1
   attackCD: 0
 --- !u!1 &191373468

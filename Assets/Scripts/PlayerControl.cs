@@ -1,9 +1,11 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerControl : MonoBehaviour
 {
     [Header("Player Stats")]
     public float speed;
+    public float chargeSpeed;
     public int extraJumps;
     [SerializeField] private float jumpPower;
 
@@ -14,9 +16,12 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
+    private bool movementLocked = false;
+    private bool isCharging = false;
+
     private float horizontal;
     private bool isFacingRight;
-    [SerializeField] private int extraJumpCount;
+    private int extraJumpCount;
     private bool onGround = true;
 
     void Start()
@@ -32,38 +37,44 @@ public class PlayerControl : MonoBehaviour
     void Update()
     {
         // Movement
-        horizontal = Input.GetAxisRaw("Horizontal");
-
-        // Check if player is on ground
-        onGround = IsGrounded();
-
-        // Jumping from the ground
-        if (Input.GetButtonDown("Jump") && onGround)
+        if (!movementLocked)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpPower);
+            horizontal = Input.GetAxisRaw("Horizontal");
+
+            // Check if player is on ground
+            onGround = IsGrounded();
+
+            // Jumping from the ground
+            if (Input.GetButtonDown("Jump") && onGround)
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpPower);
+            }
+            // Double jump
+            else if (Input.GetButtonDown("Jump") && !onGround && extraJumpCount > 0)
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpPower);
+                extraJumpCount--;
+            }
+
+            // Dynamic jump height
+            if (Input.GetButtonUp("Jump") && rb.linearVelocity.y > 0f)
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
+            }
+
+            FlipPlayer();
         }
-        // Double jump
-        else if (Input.GetButtonDown("Jump") && !onGround && extraJumpCount > 0)
-        {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpPower);
-            extraJumpCount--;
-        }
-
-        // Dynamic jump height
-        if (Input.GetButtonUp("Jump") && rb.linearVelocity.y > 0f)
-        {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
-        }
-
-        FlipPlayer();
-
-
     }
 
     void FixedUpdate()
     {
-        rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
-
+        if (!movementLocked && !isCharging)
+            rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
+        else
+        {
+            horizontal = (isFacingRight) ? 1f : -1f;
+            rb.linearVelocity = new Vector2(horizontal * chargeSpeed, rb.linearVelocity.y);
+        }
     }
 
     private bool IsGrounded()
@@ -95,5 +106,21 @@ public class PlayerControl : MonoBehaviour
         {
             extraJumpCount = extraJumps;
         }
+    }
+
+    public void ChargeMovement(float time)
+    {
+        StartCoroutine(DoChargeMovement(time));
+    }
+
+    IEnumerator DoChargeMovement(float time)
+    {
+        movementLocked = true;
+        isCharging = true;
+
+        yield return new WaitForSeconds(time);
+
+        movementLocked = false;
+        isCharging = false;
     }
 }
