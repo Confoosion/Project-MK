@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class ParticleControl : MonoBehaviour
+public class ParticleAttack : MonoBehaviour
 {
     private ParticleSystem particle;
     private float duration;
@@ -11,7 +11,7 @@ public class ParticleControl : MonoBehaviour
 
     void Awake()
     {
-        particle = transform.GetChild(0).GetComponent<ParticleSystem>();
+        particle = GetComponent<ParticleSystem>();
     }
 
     public void GetData(float atkDuration, Transform facing)
@@ -33,7 +33,7 @@ public class ParticleControl : MonoBehaviour
             timer -= Time.deltaTime;
         else
         {
-            particle.Stop();
+            particle.Stop(true);
             StartCoroutine(RemoveParticleObject(0.1f));
         }
 
@@ -46,6 +46,14 @@ public class ParticleControl : MonoBehaviour
     IEnumerator RemoveParticleObject(float delay)
     {
         yield return new WaitForSeconds(delay);
-        Destroy(this.gameObject);
+        Destroy(transform.parent.gameObject);
+    }
+
+    void OnParticleCollision(GameObject collider)
+    {
+        if (collider.CompareTag("Enemy"))
+        {
+            Debug.Log("Hit enemy!");
+        }
     }
 }

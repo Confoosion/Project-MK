@@ -18,3 +18,4 @@ MonoBehaviour:
   attackPower: 5
   attackDuration: 0.2
   attackCD: 0.05
+  emitterOffset: 0.75
