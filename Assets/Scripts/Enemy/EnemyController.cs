@@ -25,6 +25,12 @@ public class EnemyController : MonoBehaviour
         {
             flipDirection();
         }
+
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("player should be dead");
+            //Player should be dead
+        }
     }
 
     private void flipDirection()
