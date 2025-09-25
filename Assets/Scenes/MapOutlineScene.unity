@@ -342,6 +342,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  extraJumpCount: 0
 --- !u!61 &117719056
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -752,7 +753,7 @@ GameObject:
   - component: {fileID: 503230095}
   m_Layer: 6
   m_Name: Wall (1)
-  m_TagString: Terrain
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1789,7 +1790,7 @@ GameObject:
   - component: {fileID: 1447416393}
   m_Layer: 6
   m_Name: Wall
-  m_TagString: Terrain
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

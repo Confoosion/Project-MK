@@ -6,19 +6,10 @@ public class EnemySO : ScriptableObject
 {
     public int heatlh;
     public float speed;
-    public EnemyAttackType attack;
-    public bool flying;
-    public List<EnemySO> multiple;
+    //public float attackSpeed;
+    public bool isFlying;
 
     public Sprite enemyModel;
 
     
-}
-
-public enum EnemyAttackType
-{
-    normal,
-    projectile,
-    bomb,
-    shield
 }
