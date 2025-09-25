@@ -6,7 +6,7 @@ public class LandMineCharacter : CharacterSO
 {
     private bool destroyMineTouchingGround = false;
     private List<GameObject> landMines = new List<GameObject>();
-    public override void UseWeapon(Transform origin)
+    public override void UseWeapon(Transform origin, PlayerAttack playerAttack)
     {
         if (landMines.Count > 9)
         {   // Check if any of the 10 land mines were destroyed
