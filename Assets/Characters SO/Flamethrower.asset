@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlamethrowerCharacter
   characterName: Flame Fan
   characterModel: {fileID: 7482667652216324306, guid: 884ed7d49e4eb8941a062e4c40debba4, type: 3}
-  attackObject: {fileID: 4134666774128152435, guid: a0a0be1ab7e116741a5168ce6accbd83, type: 3}
+  attackObject: {fileID: 4453210798502899708, guid: f109c50f63ac7054b86e49ca441dbf88, type: 3}
   attackPower: 5
   attackDuration: 0.2
   attackCD: 0.05

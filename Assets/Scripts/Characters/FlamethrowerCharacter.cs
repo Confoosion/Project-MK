@@ -11,8 +11,7 @@ public class FlamethrowerCharacter : CharacterSO
         if (atk == null)
         {
             atk = Instantiate(attackObject, origin.position + new Vector3(direction * emitterOffset, 0f, 0f), Quaternion.identity, origin);
-            atk.GetComponent<DamageOverTimeAttack>().GetData(0f, attackPower);
         }
-        atk.transform.GetChild(0).GetComponent<ParticleAttack>().GetData(attackDuration, origin);
+        atk.GetComponent<ParticleAttack>().GetData(attackPower, attackDuration, origin);
     }
 }

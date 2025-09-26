@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlamethrowerCharacter
   characterName: Freeze Fray
   characterModel: {fileID: 7482667652216324306, guid: 884ed7d49e4eb8941a062e4c40debba4, type: 3}
-  attackObject: {fileID: 4134666774128152435, guid: 87c26b5d9df57aa4e974efc078edad25, type: 3}
+  attackObject: {fileID: 8572366620780808313, guid: d895c97046aee1346b33eb241d72898e, type: 3}
   attackPower: 3
   attackDuration: 0.2
   attackCD: 0.05

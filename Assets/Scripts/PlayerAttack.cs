@@ -27,7 +27,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (canAttack)
         {
-            character.UseWeapon(this.transform, this);
+            character.UseWeapon(transform, this);
             canAttack = false;
             StartCoroutine(AttackCooldown(attackCD));
         }
