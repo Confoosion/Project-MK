@@ -57,4 +57,16 @@ public class EnemyController : MonoBehaviour
             transform.Translate(Vector2.right * enemyType.speed * Time.deltaTime);
         }
     }
+
+    public void setMoveDirection(bool moveRight)
+    {
+        if (moveRight)
+        {
+            direction.transform.rotation = Quaternion.Euler(0, 0, 270);
+        }
+        else
+        {
+            direction.transform.rotation = Quaternion.Euler(0, 0, 90);
+        }
+    }
 }

@@ -11,24 +11,38 @@ public class SpawnerController : MonoBehaviour
     [SerializeField] private bool spawnerSide; //true = spawner on the right, false = spawner on the left
     //When true, enemies should move to the left, when false enemies should move to the right
 
+    private int spawnIndex;
+
 
 
 
     IEnumerator spawnEnemy()
     {
-        while(spawnList.Count > 0)
+        spawnIndex = spawnList.Count - 1;
+        while (spawnList.Count > 0)
         {
             if (spawnerSide)
             {
-
+                Instantiate(spawnList[spawnIndex], transform.position, Quaternion.Euler(0, 0, 0));
+                spawnList[spawnIndex].GetComponent<EnemyController>().setMoveDirection(true);
+                spawnList.RemoveAt(spawnIndex);
+                spawnIndex--;
+            } else
+            {
+                Instantiate(spawnList[spawnIndex], transform.position, Quaternion.Euler(0, 0, 0));
+                spawnList[spawnIndex].GetComponent<EnemyController>().setMoveDirection(false);
+                spawnList.RemoveAt(spawnIndex);
+                spawnIndex--;
             }
+
+            yield return new WaitForSeconds(0.7f);
         }
-        yield return null;
+        
     }
     
     void Start()
     {
-        
+        StartCoroutine(spawnEnemy());
     }
 
     // Update is called once per frame
