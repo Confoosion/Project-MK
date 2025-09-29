@@ -9,6 +9,7 @@ public class ProjectileAttack : MonoBehaviour
 
     private Rigidbody2D rb;
 
+    [SerializeField] private bool canBounceOffWalls;
     public GameObject impactObject;
     private float impactDamage;
     private float impactDuration;
@@ -33,19 +34,36 @@ public class ProjectileAttack : MonoBehaviour
         if (collider.CompareTag("Enemy"))
         {
             Debug.Log("Hit enemy!");
-            SpawnImpact();
-            Destroy(this.gameObject);
+            ProjectileDespawn();
+            return;
+        }
+
+        if (collider.CompareTag("Wall"))
+        {
+            if (canBounceOffWalls)
+            {
+                facing *= -1f;
+            }
+            else
+            {
+                ProjectileDespawn();
+            }
         }
         else if (collider.CompareTag("Terrain"))
         {
-            SpawnImpact();
-            Destroy(this.gameObject);
+            ProjectileDespawn();
         }
     }
 
     void FixedUpdate()
     {
         rb.linearVelocity = new Vector2(speed * facing, 0f);
+    }
+
+    private void ProjectileDespawn()
+    {
+        SpawnImpact();
+        Destroy(this.gameObject);
     }
 
     private void SpawnImpact()

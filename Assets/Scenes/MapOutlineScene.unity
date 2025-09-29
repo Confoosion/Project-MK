@@ -334,6 +334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerControl
   speed: 8
+  chargeSpeed: 0
   extraJumps: 0
   jumpPower: 20
   perk: {fileID: 11400000, guid: 148029b8ff651ee4c858db440ebde376, type: 2}
@@ -342,7 +343,6 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  extraJumpCount: 0
 --- !u!61 &117719056
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -587,7 +587,7 @@ PlatformEffector2D:
   m_SurfaceArc: 180
   m_UseSideFriction: 0
   m_UseSideBounce: 0
-  m_SideArc: 1
+  m_SideArc: 0
 --- !u!1 &380219106
 GameObject:
   m_ObjectHideFlags: 0
