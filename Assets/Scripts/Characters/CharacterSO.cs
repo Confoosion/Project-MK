@@ -22,5 +22,5 @@ public abstract class CharacterSO : ScriptableObject
     }
 
     // Use this class for coding attacks
-    public abstract void UseWeapon(Transform origin);
+    public abstract void UseWeapon(Transform origin, PlayerAttack playerAttack);
 }

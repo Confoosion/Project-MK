@@ -17,7 +17,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButton("Fire1"))
         {
             Attack();
         }
@@ -27,7 +27,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (canAttack)
         {
-            character.UseWeapon(this.transform);
+            character.UseWeapon(transform, this);
             canAttack = false;
             StartCoroutine(AttackCooldown(attackCD));
         }
@@ -37,5 +37,27 @@ public class PlayerAttack : MonoBehaviour
     {
         yield return new WaitForSeconds(cd);
         canAttack = true;
+    }
+
+    public void BurstAttack(GameObject atkObject, int count, float interval, float burstVelocity, float atkPower)
+    {
+        StartCoroutine(DoBurstAttack(atkObject, count, interval, burstVelocity, atkPower));
+    }
+
+    IEnumerator DoBurstAttack(GameObject atkObject, int count, float interval, float burstVelocity, float atkPower)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            float direction = (transform.localScale.x == 1) ? -1f : 1f;
+            GameObject atk = Instantiate(atkObject, transform.position + new Vector3(direction * 0.5f, 0f, 0f), Quaternion.Euler(new Vector3(0f, 0f, (direction == -1) ? 0f : 180f)));
+            atk.GetComponent<ProjectileAttack>().GetData(atkPower, burstVelocity, direction);
+
+            yield return new WaitForSeconds(interval);
+        }
+    }
+
+    public PlayerControl GetPlayerControl()
+    {
+        return (GetComponent<PlayerControl>());
     }
 }
