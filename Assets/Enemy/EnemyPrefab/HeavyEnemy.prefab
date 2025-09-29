@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 4150172360230120414}
   - component: {fileID: 2085036295977837638}
   - component: {fileID: 3356078120976619154}
-  m_Layer: 0
+  - component: {fileID: 6340768067599680886}
+  m_Layer: 7
   m_Name: HeavyEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -152,7 +153,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -170,7 +171,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
   enemyType: {fileID: 11400000, guid: ad1398c061202c04fb44090df0b0b230, type: 2}
+--- !u!114 &6340768067599680886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3276176162762982235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1995cb042adbe964e954bfc23db93cf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
+  enemyType: {fileID: 11400000, guid: ad1398c061202c04fb44090df0b0b230, type: 2}
   direction: {fileID: 8034714436370022295}
+  cannotMove: 0
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &8034714436370022295
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,7 +199,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8959709856638804154}
   - component: {fileID: 4049520967037332555}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: facing
   m_TagString: Untagged
   m_Icon: {fileID: 0}

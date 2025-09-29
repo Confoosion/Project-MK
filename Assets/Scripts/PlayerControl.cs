@@ -123,4 +123,13 @@ public class PlayerControl : MonoBehaviour
         movementLocked = false;
         isCharging = false;
     }
+
+    public void playerDeath()
+    {
+        Debug.Log("Player died");
+        movementLocked = true;
+        //death animation
+        Destroy(this.gameObject);
+
+    }
 }

@@ -24,13 +24,13 @@ public class SpawnerController : MonoBehaviour
             if (spawnerSide)
             {
                 Instantiate(spawnList[spawnIndex], transform.position, Quaternion.Euler(0, 0, 0));
-                spawnList[spawnIndex].GetComponent<EnemyController>().setMoveDirection(true);
+                spawnList[spawnIndex].GetComponent<EnemyMovement>().setMoveDirection(true);
                 spawnList.RemoveAt(spawnIndex);
                 spawnIndex--;
             } else
             {
                 Instantiate(spawnList[spawnIndex], transform.position, Quaternion.Euler(0, 0, 0));
-                spawnList[spawnIndex].GetComponent<EnemyController>().setMoveDirection(false);
+                spawnList[spawnIndex].GetComponent<EnemyMovement>().setMoveDirection(false);
                 spawnList.RemoveAt(spawnIndex);
                 spawnIndex--;
             }
@@ -50,4 +50,6 @@ public class SpawnerController : MonoBehaviour
     {
         
     }
+
+    
 }
