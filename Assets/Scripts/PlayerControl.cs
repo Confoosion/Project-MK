@@ -128,7 +128,9 @@ public class PlayerControl : MonoBehaviour
     {
         Debug.Log("Player died");
         movementLocked = true;
+
         //death animation
+        //OPen some UI screen 
         Destroy(this.gameObject);
 
     }
