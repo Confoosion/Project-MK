@@ -38,7 +38,7 @@ public class ProjectileAttack : MonoBehaviour
             return;
         }
 
-        if (collider.CompareTag("Wall"))
+        if (collider.CompareTag("Terrain"))
         {
             if (canBounceOffWalls)
             {
@@ -48,10 +48,6 @@ public class ProjectileAttack : MonoBehaviour
             {
                 ProjectileDespawn();
             }
-        }
-        else if (collider.CompareTag("Terrain"))
-        {
-            ProjectileDespawn();
         }
     }
 

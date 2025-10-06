@@ -263,9 +263,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ffef8f3a86d21f418c9ea0ceb3c07f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  character: {fileID: 11400000, guid: 4f59c4a6954aace4691e8a1b37b164c6, type: 2}
+  character: {fileID: 11400000, guid: 4c739e46b180ffa439537b60a8f2efdc, type: 2}
   baseAttackPower: 1
   attackCD: 0
+--- !u!1 &153771797 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5752507205441079574, guid: 4f9589cb426aa2d4fbe32505540aaa70, type: 3}
+  m_PrefabInstance: {fileID: 374356723}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &153771802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153771797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64ea84865470c45448b1df77cc97ba11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyController
+  enemyType: {fileID: 11400000, guid: 9262e9d0f4d52b14197233138a217651, type: 2}
 --- !u!1 &191373468
 GameObject:
   m_ObjectHideFlags: 0
@@ -441,7 +459,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &341217759
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -643,7 +661,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5752507205441079574, guid: 4f9589cb426aa2d4fbe32505540aaa70, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 153771802}
   m_SourcePrefab: {fileID: 100100000, guid: 4f9589cb426aa2d4fbe32505540aaa70, type: 3}
 --- !u!1 &380219106
 GameObject:
@@ -1130,7 +1151,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &1269628712
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1753,6 +1774,7 @@ GameObject:
   - component: {fileID: 2088081068}
   - component: {fileID: 2088081067}
   - component: {fileID: 2088081066}
+  - component: {fileID: 2088081071}
   - component: {fileID: 2088081070}
   m_Layer: 7
   m_Name: RealEnemy
@@ -1911,7 +1933,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
   enemyType: {fileID: 11400000, guid: 9262e9d0f4d52b14197233138a217651, type: 2}
-  direction: {fileID: 1721448379}
+--- !u!114 &2088081071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088081065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1995cb042adbe964e954bfc23db93cf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
+  enemyType: {fileID: 11400000, guid: 9262e9d0f4d52b14197233138a217651, type: 2}
+  direction: {fileID: 2088081065}
+  cannotMove: 0
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

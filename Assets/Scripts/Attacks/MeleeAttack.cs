@@ -8,7 +8,7 @@ public class MeleeAttack : MonoBehaviour
     private float damage;
     private SpriteRenderer spriteRenderer;
 
-    public void GetData(float atkTime, float dmg)
+    public void GetData(float dmg, float atkTime)
     {
         attackTime = atkTime;
         damage = dmg;
@@ -33,6 +33,7 @@ public class MeleeAttack : MonoBehaviour
 
         if (collider.CompareTag("Enemy"))
             {
+                collider.gameObject.GetComponent<EnemyController>().enemyTakeDamage(damage);
                 Debug.Log("Hit enemy!");
             }
     }

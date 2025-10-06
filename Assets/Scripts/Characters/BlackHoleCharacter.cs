@@ -10,6 +10,6 @@ public class BlackHoleCharacter : CharacterSO
         GameObject atk = Instantiate(attackObject, origin.position + new Vector3(direction * 0.5f, 0f, 0f), Quaternion.Euler(new Vector3(0f, 0f, (direction == -1) ? 0f : 180f)));
 
         atk.GetComponent<ProjectileAttack>().GetData(0f, bulletVelocity, direction);
-        atk.GetComponent<ProjectileAttack>().GetImpactData(attackDuration, attackPower);
+        atk.GetComponent<ProjectileAttack>().GetImpactData(attackPower, attackDuration);
     }
 }
