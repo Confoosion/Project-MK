@@ -4,27 +4,21 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class EnemyController : MonoBehaviour
 {
-    public EnemySO enemyType;
-    public GameObject direction;
+    [SerializeField] public EnemySO enemyType;
 
-    private float facingDirection;
+    private float health;
 
     private void Start()
     {
-        
-        facingDirection = direction.transform.eulerAngles.z;
+        health = enemyType.health;
     }
     void Update()
     {
-        checkMovement();
+           
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Wall"))
-        {
-            flipDirection();
-        }
 
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -33,27 +27,25 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private void flipDirection()
+    //ENEMY Taking Damage and dying
+
+    public void enemyTakeDamage(float damage)
     {
-        if (direction.transform.rotation.eulerAngles.z == 90)
+        health -= damage;
+        Debug.Log("Enemy took damage, health is now: " + health);
+        if (health <= 0)
         {
-            direction.transform.rotation = Quaternion.Euler(0, 0, 270);
-        }
-        else if (direction.transform.rotation.eulerAngles.z == 270)
-        {
-            direction.transform.rotation = Quaternion.Euler(0, 0, 90);
+            enemyDeath();
         }
     }
 
-    private void checkMovement()
+
+    private void enemyDeath()
     {
-        if (direction.transform.rotation.eulerAngles.z == 90)
-        {
-            transform.Translate(Vector2.left * enemyType.speed * Time.deltaTime);
-        }
-        else if (direction.transform.rotation.eulerAngles.z == 270)
-        {
-            transform.Translate(Vector2.right * enemyType.speed * Time.deltaTime);
-        }
+        
+        Destroy(this.gameObject);
     }
+
+
+  
 }
