@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b5ffc50a35d8044287498394cfcfd0e, type: 3}
-  m_Name: Archer
-  m_EditorClassIdentifier: Assembly-CSharp::ArcherCharacter
-  characterName: Archer
+  m_Script: {fileID: 11500000, guid: 5639dd4fdc7e1c84d971a8c0e2353b8a, type: 3}
+  m_Name: Boomerang
+  m_EditorClassIdentifier: Assembly-CSharp::BoomerangCharacter
+  characterName: Boomerang Boomer
   characterModel: {fileID: 7482667652216324306, guid: 884ed7d49e4eb8941a062e4c40debba4, type: 3}
-  attackObject: {fileID: 1259166576830395927, guid: 609b1329c4c267f4d906b2986508dc5b, type: 3}
-  attackPower: 35
+  attackObject: {fileID: 4745350584404367125, guid: 01db54bde062ffe4a8d1974303b1b546, type: 3}
+  attackPower: 50
   attackDuration: 0
-  attackCD: 0.75
-  projectileForce: 100
+  attackCD: 3
+  boomerangSpeed: 12

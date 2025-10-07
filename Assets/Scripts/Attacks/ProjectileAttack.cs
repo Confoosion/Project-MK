@@ -10,9 +10,11 @@ public class ProjectileAttack : MonoBehaviour
     private Rigidbody2D rb;
 
     [SerializeField] private bool canBounceOffWalls;
+    [SerializeField] private bool canBounceOffEnemies;
     [SerializeField] private bool canRollOnGround;
     [SerializeField] private bool physicsObject;
-    [SerializeField] private int pierceAmount;
+    [SerializeField] private int bounceAmount;
+    private int pierceAmount;
     public GameObject impactObject;
     private float impactDamage;
     private float impactDuration;
@@ -49,6 +51,11 @@ public class ProjectileAttack : MonoBehaviour
             {
                 pierceAmount--;
             }
+            else if (canBounceOffEnemies && bounceAmount > 0)
+            {
+                bounceAmount--;
+                facing *= -1f;
+            }
             else
             {
                 ProjectileDespawn();
@@ -57,8 +64,9 @@ public class ProjectileAttack : MonoBehaviour
 
         if (collider.CompareTag("Terrain"))
         {
-            if (canBounceOffWalls && collider.gameObject.layer == layerMask)
+            if (canBounceOffWalls && bounceAmount > 0 && collider.gameObject.layer == layerMask)
             {
+                bounceAmount--;
                 facing *= -1f;
             }
             else if(!canRollOnGround)

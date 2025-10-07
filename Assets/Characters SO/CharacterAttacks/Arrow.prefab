@@ -107,6 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6594d9331674e4abf59943e039fdd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RangeAttack
+  impactObject: {fileID: 0}
 --- !u!61 &6697232692195563979
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -166,8 +167,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDamping: 1.5
-  m_AngularDamping: 0
+  m_LinearDamping: 0
+  m_AngularDamping: 0.5
   m_GravityScale: 2
   m_Material: {fileID: 0}
   m_IncludeLayers:
