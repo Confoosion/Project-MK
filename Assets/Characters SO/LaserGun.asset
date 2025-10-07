@@ -15,6 +15,6 @@ MonoBehaviour:
   characterName: Laser Gun
   characterModel: {fileID: 7482667652216324306, guid: 884ed7d49e4eb8941a062e4c40debba4, type: 3}
   attackObject: {fileID: 3727812004379762652, guid: d94eaabde6da77c4db1a1b2b2e7c7dea, type: 3}
-  attackPower: 10
+  attackPower: 5
   attackDuration: 2
   attackCD: 2.5

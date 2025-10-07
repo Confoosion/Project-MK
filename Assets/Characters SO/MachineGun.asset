@@ -15,8 +15,8 @@ MonoBehaviour:
   characterName: Gunner Guy
   characterModel: {fileID: 7482667652216324306, guid: 884ed7d49e4eb8941a062e4c40debba4, type: 3}
   attackObject: {fileID: 1406789531465883097, guid: e384a924c1da0f74b91eab5bba0b0965, type: 3}
-  attackPower: 20
+  attackPower: 16
   attackDuration: 0
-  attackCD: 0.25
+  attackCD: 0.15
   bulletVelocity: 15
   weaponKnockback: 0.25

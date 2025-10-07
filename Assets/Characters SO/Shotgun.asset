@@ -15,6 +15,6 @@ MonoBehaviour:
   characterName: Shotgun man
   characterModel: {fileID: 7482667652216324306, guid: 884ed7d49e4eb8941a062e4c40debba4, type: 3}
   attackObject: {fileID: 7099667437046667929, guid: 83f234fedc701d24696019e8d1b483a3, type: 3}
-  attackPower: 100
+  attackPower: 13
   attackDuration: 0.65
   attackCD: 1

@@ -34,6 +34,7 @@ public class DamageOverTimeAttack : MonoBehaviour
 
         if (collider.CompareTag("Enemy"))
         {
+            collider.gameObject.GetComponent<EnemyController>().enemyTakeDamage(damage);
             Debug.Log("Hit enemy!");
         }
     }

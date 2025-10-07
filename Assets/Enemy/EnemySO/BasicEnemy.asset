@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45a0e333b119e4b4aaebd7e07d7f5c94, type: 3}
   m_Name: BasicEnemy
   m_EditorClassIdentifier: Assembly-CSharp::EnemySO
-  health: 100
-  maxHealth: 100
+  health: 50
   speed: 5
   isFlying: 0
   enemyModel: {fileID: 0}

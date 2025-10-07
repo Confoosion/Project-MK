@@ -34,6 +34,7 @@ public class ProjectileAttack : MonoBehaviour
         if (collider.CompareTag("Enemy"))
         {
             Debug.Log("Hit enemy!");
+            collider.gameObject.GetComponent<EnemyController>().enemyTakeDamage(damage);
             ProjectileDespawn();
             return;
         }

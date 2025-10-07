@@ -15,9 +15,9 @@ MonoBehaviour:
   characterName: Grenade Gary
   characterModel: {fileID: 7482667652216324306, guid: 884ed7d49e4eb8941a062e4c40debba4, type: 3}
   attackObject: {fileID: 6843444029887957941, guid: c5abd31384c56134a860df440affc955, type: 3}
-  attackPower: 30
+  attackPower: 15
   attackDuration: 0
   attackCD: 1
   projectileForce: 10
-  impactDamage: 50
+  impactDamage: 35
   impactDuration: 1

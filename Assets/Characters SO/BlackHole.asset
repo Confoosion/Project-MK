@@ -15,7 +15,7 @@ MonoBehaviour:
   characterName: BlackHole Dude
   characterModel: {fileID: 7482667652216324306, guid: 884ed7d49e4eb8941a062e4c40debba4, type: 3}
   attackObject: {fileID: 5430822249925470564, guid: b38633635cd213e46918d37a885737e0, type: 3}
-  attackPower: 100
+  attackPower: 1000
   attackDuration: 1
   attackCD: 1.25
   bulletVelocity: 5
