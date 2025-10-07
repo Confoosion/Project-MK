@@ -10,15 +10,25 @@ public class ProjectileAttack : MonoBehaviour
     private Rigidbody2D rb;
 
     [SerializeField] private bool canBounceOffWalls;
+    [SerializeField] private bool canRollOnGround;
+    [SerializeField] private bool physicsObject;
+    [SerializeField] private int pierceAmount;
     public GameObject impactObject;
     private float impactDamage;
     private float impactDuration;
+    private LayerMask layerMask;
 
-    public void GetData(float dmg, float vel, float direction)
+    void Awake()
+    {
+        layerMask = LayerMask.NameToLayer("Wall");
+    }
+
+    public void GetData(float dmg, float vel, float direction, int piercing = 0)
     {
         damage = dmg;
         speed = vel;
         facing = direction;
+        pierceAmount = piercing;
 
         rb = GetComponent<Rigidbody2D>();
     }
@@ -35,17 +45,23 @@ public class ProjectileAttack : MonoBehaviour
         {
             Debug.Log("Hit enemy!");
             collider.gameObject.GetComponent<EnemyController>().enemyTakeDamage(damage);
-            ProjectileDespawn();
-            return;
+            if (pierceAmount > 0)
+            {
+                pierceAmount--;
+            }
+            else
+            {
+                ProjectileDespawn();
+            }
         }
 
         if (collider.CompareTag("Terrain"))
         {
-            if (canBounceOffWalls)
+            if (canBounceOffWalls && collider.gameObject.layer == layerMask)
             {
                 facing *= -1f;
             }
-            else
+            else if(!canRollOnGround)
             {
                 ProjectileDespawn();
             }
@@ -54,7 +70,7 @@ public class ProjectileAttack : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.linearVelocity = new Vector2(speed * facing, 0f);
+        rb.linearVelocity = new Vector2(speed * facing, (physicsObject) ? rb.linearVelocity.y : 0f);
     }
 
     private void ProjectileDespawn()
