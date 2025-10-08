@@ -18,6 +18,7 @@ public class PlayerControl : MonoBehaviour
 
     private bool movementLocked = false;
     private bool isCharging = false;
+    private bool jumpLocked = false;
 
     private float horizontal;
     private bool isFacingRight;
@@ -45,19 +46,19 @@ public class PlayerControl : MonoBehaviour
             onGround = IsGrounded();
 
             // Jumping from the ground
-            if (Input.GetButtonDown("Jump") && onGround)
+            if (Input.GetButtonDown("Jump") && onGround && !jumpLocked)
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpPower);
             }
             // Double jump
-            else if (Input.GetButtonDown("Jump") && !onGround && extraJumpCount > 0)
+            else if (Input.GetButtonDown("Jump") && !onGround && extraJumpCount > 0 && !jumpLocked)
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpPower);
                 extraJumpCount--;
             }
 
             // Dynamic jump height
-            if (Input.GetButtonUp("Jump") && rb.linearVelocity.y > 0f)
+            if (Input.GetButtonUp("Jump") && rb.linearVelocity.y > 0f && !jumpLocked)
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
             }
@@ -79,7 +80,7 @@ public class PlayerControl : MonoBehaviour
 
     private bool IsGrounded()
     {
-        bool grounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+        bool grounded = Physics2D.OverlapCircle(groundCheck.position, 0.3f, groundLayer);
 
         if (grounded)
             ResetJumps();
@@ -106,6 +107,11 @@ public class PlayerControl : MonoBehaviour
         {
             extraJumpCount = extraJumps;
         }
+
+        if (jumpLocked)
+        {
+            jumpLocked = false;
+        }
     }
 
     public void ChargeMovement(float time)
@@ -124,6 +130,23 @@ public class PlayerControl : MonoBehaviour
         isCharging = false;
     }
 
+    public void GroundPoundMovement(float groundPoundForce)
+    {
+        if (!IsGrounded())
+        {
+            jumpLocked = true;
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
+            rb.AddForce(Vector2.down * groundPoundForce, ForceMode2D.Impulse);
+        }
+    }
+
+    public void BounceFromGroundPound(float bounceForce)
+    {
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
+        rb.AddForce(Vector2.up * bounceForce, ForceMode2D.Impulse);
+        jumpLocked = false;
+    }
+
     public void playerDeath()
     {
         Debug.Log("Player died");
@@ -132,6 +155,5 @@ public class PlayerControl : MonoBehaviour
         //death animation
         //OPen some UI screen 
         Destroy(this.gameObject);
-
     }
 }
