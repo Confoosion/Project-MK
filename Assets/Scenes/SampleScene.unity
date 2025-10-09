@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ffef8f3a86d21f418c9ea0ceb3c07f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  character: {fileID: 11400000, guid: e32d8f725b97e3c47bd8920682fda8ec, type: 2}
+  character: {fileID: 0}
   baseAttackPower: 1
   attackCD: 0
 --- !u!1 &153771797 stripped
@@ -559,9 +559,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96ea351a80a69f4da05395604cebb5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterManager
+  characterList:
+  - {fileID: 11400000, guid: 81f2d901ee694f748991b721b07f7202, type: 2}
+  - {fileID: 11400000, guid: 4f59c4a6954aace4691e8a1b37b164c6, type: 2}
+  - {fileID: 11400000, guid: 7977f2754c7769146a5e2d35815a5524, type: 2}
+  - {fileID: 11400000, guid: cf6b7ffe1b7f1594291ac5142ddf5a31, type: 2}
+  - {fileID: 11400000, guid: 8bb644dac521795409b4f82545eabc0b, type: 2}
+  - {fileID: 11400000, guid: ecd2a9e3bb18a934c9113246e83f1085, type: 2}
+  - {fileID: 11400000, guid: 3792e164b777028489d051d4f11934b2, type: 2}
+  - {fileID: 11400000, guid: b344e98dfbdeb3949ac5e38fa7fe1c40, type: 2}
+  - {fileID: 11400000, guid: 4c739e46b180ffa439537b60a8f2efdc, type: 2}
+  - {fileID: 11400000, guid: e32d8f725b97e3c47bd8920682fda8ec, type: 2}
+  - {fileID: 11400000, guid: 1ff278db77721e14995af4221dc744d7, type: 2}
+  - {fileID: 11400000, guid: 4e2ff30baf654c44d9c2094165f7c2e8, type: 2}
+  - {fileID: 11400000, guid: b208be4a04eec8746bc939eb7c58e924, type: 2}
+  - {fileID: 11400000, guid: d4759cc477141f143a89b468ad00f8f8, type: 2}
+  - {fileID: 11400000, guid: 3346f4ca78f9d0d499f7a78c231d56a3, type: 2}
+  startingCharacter: {fileID: 11400000, guid: 3346f4ca78f9d0d499f7a78c231d56a3, type: 2}
   characterTransform: {fileID: 409809584}
   characterModel: {fileID: 409809585}
   playerAttack: {fileID: 117719058}
+  currentCharacter: {fileID: 0}
 --- !u!1 &409809583
 GameObject:
   m_ObjectHideFlags: 0
@@ -1706,8 +1724,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 619394802}
-  - {fileID: 1436860566}
   - {fileID: 380219107}
+  - {fileID: 1436860566}
   - {fileID: 117719054}
   - {fileID: 374356723}
   - {fileID: 2088081069}

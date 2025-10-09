@@ -11,7 +11,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Start()
     {
-        character.EquipCharacter();
+        // character.EquipCharacter();
     }
 
 
@@ -21,6 +21,12 @@ public class PlayerAttack : MonoBehaviour
         {
             Attack();
         }
+    }
+
+    public void SetCharacter(CharacterSO characterSO)
+    {
+        character = characterSO;
+        character.EquipCharacter();
     }
 
     private void Attack()
