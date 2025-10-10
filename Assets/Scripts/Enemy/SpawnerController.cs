@@ -24,14 +24,14 @@ public class SpawnerController : MonoBehaviour
             if (spawnerSide)
             {
                 Instantiate(spawnList[spawnIndex], transform.position, Quaternion.Euler(0, 0, 0));
-                spawnList[spawnIndex].GetComponent<EnemyMovement>().setMoveDirection(true);
+                spawnList[spawnIndex].GetComponent<BasicEnemyMovement>().setMoveDirection(true);
                 spawnList.RemoveAt(spawnIndex);
 
             }
             else
             {
                 Instantiate(spawnList[spawnIndex], transform.position, Quaternion.Euler(0, 0, 0));
-                spawnList[spawnIndex].GetComponent<EnemyMovement>().setMoveDirection(false);
+                spawnList[spawnIndex].GetComponent<BasicEnemyMovement>().setMoveDirection(false);
                 spawnList.RemoveAt(spawnIndex);
 
             }

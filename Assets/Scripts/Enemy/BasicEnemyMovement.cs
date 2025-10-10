@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyMovement : EnemyController
+public class BasicEnemyMovement : EnemyController
 {
 
     public GameObject direction;
