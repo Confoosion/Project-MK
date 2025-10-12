@@ -238,7 +238,7 @@ Transform:
   m_GameObject: {fileID: 117719053}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.81, y: 11.92, z: 0}
+  m_LocalPosition: {x: 11.88, y: 3.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -493,6 +493,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &159885726
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 159885727}
+  m_Layer: 7
+  m_Name: facing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &159885727
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 159885726}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 832383417}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!1 &191373468
 GameObject:
   m_ObjectHideFlags: 0
@@ -709,9 +740,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96ea351a80a69f4da05395604cebb5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterManager
+  characterList: []
+  startingCharacter: {fileID: 0}
   characterTransform: {fileID: 409809584}
   characterModel: {fileID: 409809585}
   playerAttack: {fileID: 117719058}
+  currentCharacter: {fileID: 0}
 --- !u!114 &380219110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1493,6 +1527,7 @@ GameObject:
   - component: {fileID: 832383420}
   - component: {fileID: 832383419}
   - component: {fileID: 832383418}
+  - component: {fileID: 832383421}
   m_Layer: 7
   m_Name: FlyingEnemy
   m_TagString: Enemy
@@ -1573,6 +1608,7 @@ Transform:
   m_Children:
   - {fileID: 1387245127}
   - {fileID: 430876899}
+  - {fileID: 159885727}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &832383418
@@ -1590,8 +1626,10 @@ MonoBehaviour:
   enemyType: {fileID: 11400000, guid: 27ef4656f60f07b4c9aa3eb3cbb295be, type: 2}
   playerPosition: {fileID: 117719054}
   maxRange: 5
-  minRange: 3
-  movementBuffer: 1
+  collisionLayerMask:
+    serializedVersion: 2
+    m_Bits: 320
+  facing: {fileID: 159885726}
 --- !u!114 &832383419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1618,7 +1656,7 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1631,16 +1669,39 @@ CircleCollider2D:
     m_Bits: 4294967295
   m_ContactCaptureLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 256
   m_CallbackLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 256
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 5
+  m_Radius: 1
+--- !u!114 &832383421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832383415}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1995cb042adbe964e954bfc23db93cf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BasicEnemyMovement
+  enemyType: {fileID: 11400000, guid: 27ef4656f60f07b4c9aa3eb3cbb295be, type: 2}
+  direction: {fileID: 159885726}
+  cannotMove: 0
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  playerPosition: {fileID: 117719054}
+  collisionLayerMask:
+    serializedVersion: 2
+    m_Bits: 320
+  maxFlyingRange: 5
 --- !u!1 &935573399
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -8,16 +9,25 @@ public class FlyingEnemyMovement : EnemyController
 {
 
     [SerializeField] private Transform playerPosition;
-    private Vector2 sidePlayerIsOn;
-
     [SerializeField] private float maxRange;
-    [SerializeField] private float minRange;
-    [SerializeField] private float movementBuffer;
+    [SerializeField] private LayerMask collisionLayerMask;
+    [SerializeField] private GameObject facing;
     private bool canMove;
+    private float speed;
+    private Vector2 initialPos;
+
+    private Vector2 angleBetween;
+    private float angleInRad;
+    private Vector2 newDirection;
+    private bool initialDistanceFound = false;
 
     void Start()
     {
-        canMove = true;
+        canMove = false;
+        speed = enemyType.speed;
+        initialPos = transform.position;
+        
+        
     }
 
     // Update is called once per frame
@@ -28,74 +38,92 @@ public class FlyingEnemyMovement : EnemyController
 
     void FixedUpdate()
     {
-        Vector2 newPos = new Vector2();
-        if (canMove)
+
+        angleBetween = playerPosition.position - transform.position;
+        angleInRad = Mathf.Atan2(angleBetween.y, angleBetween.x);
+        newDirection = new Vector2(Mathf.Cos(angleInRad), Mathf.Sin(angleInRad));
+        RaycastHit2D groundAndWallDetection = Physics2D.Raycast(transform.position, newDirection, 2, collisionLayerMask);
+        if (groundAndWallDetection)
         {
-            
-            float initialX = transform.position.x;
-            float initialY = transform.position.y;
-
-            sidePlayerIsOn = determinePlayerPos();
-            if (sidePlayerIsOn.x == 1) //right side, move right
+            if (groundAndWallDetection.collider.gameObject.layer == 6)
             {
-                newPos.x = getRandomDistanceAway() + initialX;
+                Debug.Log("hit ground"); // need to move around the ground;
+                checkMovement();
+
+
             }
-            else //left side, move left
+            else if (groundAndWallDetection.collider.gameObject.layer == 8)
             {
-                newPos.x = -getRandomDistanceAway() + initialX;
+                //Debug.Log("hit wall");
+                
             }
-
-            if (sidePlayerIsOn.y == 1)
-            {
-                newPos.y = getRandomDistanceAway() + initialY;
-            } 
-            else
-            {
-                newPos.y = -getRandomDistanceAway() + initialY;
-            }
-
-            canMove = false;
-            Debug.Log(newPos);
-        }
-
-        float step = enemyType.speed * Time.deltaTime;
-        transform.position = Vector2.MoveTowards(transform.position, newPos, step);
-    }
-    
-    IEnumerator waitToMove()
-    {
-        yield return new WaitForSeconds(movementBuffer);
-        canMove = true;
-    }
-
-    private Vector2 determinePlayerPos()
-    {
-        Vector2 playerPos = new Vector2();
-        if (playerPosition.position.x > transform.position.x)
-        {
-            playerPos.x = 1; //right of FE
         }
         else
         {
-            playerPos.x = 0; //left of FE
+            if (!initialDistanceFound)
+            {
+                initialPos = transform.position;
+                initialDistanceFound = true;
+            }
+            float step = speed * Time.deltaTime;
+            transform.position = Vector2.MoveTowards(transform.position, playerPosition.position, step);
+            if (Vector2.Distance(initialPos, transform.position) >= maxRange)
+            {
+
+                Debug.Log("moved 5 units");
+                initialDistanceFound = false;
+            }
         }
 
-        if (playerPosition.position.y > transform.position.y)
+
+
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Hit:THE WALL???" + collision.gameObject);
+        if(collision.gameObject.layer == 8)
         {
-            playerPos.y = 1; //above FE
+            Debug.Log("hit wal with collider");
+        }
+    }
+
+
+    private void flipDirection()
+    {
+        if (facing.transform.rotation.eulerAngles.z == 90)
+        {
+            setMoveDirection(true);
+        }
+        else if (facing.transform.rotation.eulerAngles.z == 270)
+        {
+            setMoveDirection(false);
+        }
+    }
+
+    private void checkMovement()
+    {
+        if (facing.transform.rotation.eulerAngles.z == 90)
+        {
+            transform.Translate(Vector2.left * speed * Time.deltaTime);
+        }
+        else if (facing.transform.rotation.eulerAngles.z == 270)
+        {
+            transform.Translate(Vector2.right * speed * Time.deltaTime);
+        }
+    }
+    
+    private void setMoveDirection(bool moveRight)
+    {
+        if (moveRight)
+        {
+            facing.transform.rotation = Quaternion.Euler(0, 0, 270);
         }
         else
         {
-            playerPos.y = 0; //below FE
+            facing.transform.rotation = Quaternion.Euler(0, 0, 90);
         }
-
-        return playerPos;
     }
-
-    private float getRandomDistanceAway()
-    {
-        return Random.Range(minRange, maxRange);
-    }
-    
 
 }

@@ -8,19 +8,66 @@ public class BasicEnemyMovement : EnemyController
     [SerializeField] private bool cannotMove;
     [SerializeField] private LayerMask wallLayer;
 
+    [SerializeField] private Transform playerPosition;
+    private Vector2 initialPos;
+
+    [SerializeField] private LayerMask collisionLayerMask;
+    private bool isFlying;
+    private Vector2 angleBetween;
+    private float angleInRad;
+    private Vector2 newDirection;
+    private bool initialDistanceFound = false;
+    [SerializeField] private float maxFlyingRange;
+
 
 
     void Start()
     {
         speed = enemyType.speed;
+        isFlying = enemyType.isFlying;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!cannotMove)
+        if (!cannotMove && !isFlying)
         {
             checkMovement();
+        } else if (!cannotMove && isFlying)
+        {
+            angleBetween = playerPosition.position - transform.position;
+            angleInRad = Mathf.Atan2(angleBetween.y, angleBetween.x);
+            newDirection = new Vector2(Mathf.Cos(angleInRad), Mathf.Sin(angleInRad));
+            RaycastHit2D groundAndWallDetection = Physics2D.Raycast(transform.position, newDirection, 2, collisionLayerMask);
+            if (groundAndWallDetection)
+            {
+                if (groundAndWallDetection.collider.gameObject.layer == 6)
+                {
+                    Debug.Log("hit ground"); // need to move around the ground;
+                    checkMovement();
+
+                }
+                else if(groundAndWallDetection.collider.gameObject.layer == 8)
+                {
+                    Debug.Log("hit wall");
+                }
+            }
+            else
+            {
+                if (!initialDistanceFound)
+                {
+                    initialPos = transform.position;
+                    initialDistanceFound = true;
+                }
+                float step = speed * Time.deltaTime;
+                transform.position = Vector2.MoveTowards(transform.position, playerPosition.position, step);
+                if(Vector2.Distance(initialPos, transform.position) >= maxFlyingRange)
+                {
+                    
+                    Debug.Log("moved 5 units");
+                    initialDistanceFound = false;
+                }
+            }
         }
     }
 

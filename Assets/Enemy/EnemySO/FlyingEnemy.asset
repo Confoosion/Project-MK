@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: FlyingEnemy
   m_EditorClassIdentifier: Assembly-CSharp::EnemySO
   health: 30
-  speed: 4
+  speed: 3
   isFlying: 1
   enemyModel: {fileID: 0}
