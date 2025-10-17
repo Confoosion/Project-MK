@@ -38,7 +38,7 @@ public class BasicEnemyMovement : EnemyController
             angleBetween = playerPosition.position - transform.position;
             angleInRad = Mathf.Atan2(angleBetween.y, angleBetween.x);
             newDirection = new Vector2(Mathf.Cos(angleInRad), Mathf.Sin(angleInRad));
-            RaycastHit2D groundAndWallDetection = Physics2D.Raycast(transform.position, newDirection, 2, collisionLayerMask);
+            RaycastHit2D groundAndWallDetection = Physics2D.Raycast(transform.position, newDirection, 3, collisionLayerMask);
             if (groundAndWallDetection)
             {
                 if (groundAndWallDetection.collider.gameObject.layer == 6)
