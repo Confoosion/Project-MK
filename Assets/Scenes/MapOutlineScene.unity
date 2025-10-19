@@ -238,7 +238,7 @@ Transform:
   m_GameObject: {fileID: 117719053}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.81, y: 12.55, z: 0}
+  m_LocalPosition: {x: -11.34, y: 12.33, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1603,7 +1603,7 @@ Transform:
   m_GameObject: {fileID: 832383415}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.02, y: 3.21, z: 0}
+  m_LocalPosition: {x: 13.67, y: 2.96, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1619,7 +1619,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 832383415}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cdb0a51af90f1474b9e45e1a14599cc6, type: 3}
   m_Name: 
@@ -1631,6 +1631,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 320
   facing: {fileID: 159885726}
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &832383419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1679,7 +1682,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.8
+  m_Radius: 0.5
 --- !u!114 &832383421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1687,7 +1690,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 832383415}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1995cb042adbe964e954bfc23db93cf3, type: 3}
   m_Name: 
