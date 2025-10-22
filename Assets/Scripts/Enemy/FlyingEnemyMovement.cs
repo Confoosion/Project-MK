@@ -4,40 +4,28 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 using Random = UnityEngine.Random;
 
 public class FlyingEnemyMovement : EnemyController
 {
 
     [SerializeField] private Transform playerPosition;
-    [SerializeField] private float maxRange;
-    [SerializeField] private LayerMask collisionLayerMask;
-    [SerializeField] private GameObject facing;
-    private bool canMove;
     private float speed;
-    private Vector2 initialPos;
+    [SerializeField] private List<GameObject> middleObjects;
 
-    private Vector2 angleBetween;
-    private float angleInRad;
-    private Vector2 newDirection;
-    private bool initialDistanceFound = false;
+    private bool playerInRange;
+    private bool roaming;
+    private int middleObjectIndex = 0;
 
-    private RaycastHit2D groundAndWallDetection;
 
-    private bool moveLeft;
-
-    [SerializeField] private LayerMask wallLayer;
-
-    private bool needDirection = true;
 
 
     void Start()
     {
-        canMove = false;
         speed = enemyType.speed;
-        initialPos = transform.position;
 
-
+        playerPosition = GameObject.Find("Player").transform;
     }
 
     // Update is called once per frame
@@ -49,104 +37,109 @@ public class FlyingEnemyMovement : EnemyController
     void FixedUpdate()
     {
 
-        angleBetween = playerPosition.position - transform.position;
-        angleInRad = Mathf.Atan2(angleBetween.y, angleBetween.x);
-        newDirection = new Vector2(Mathf.Cos(angleInRad), Mathf.Sin(angleInRad));
-        groundAndWallDetection = Physics2D.Raycast(transform.position, newDirection, 2, collisionLayerMask);
-        if (!groundAndWallDetection)
+        if (!playerInRange) //could not find player
         {
-            Debug.Log("Moving towards player now:))");
-            findPlayer();
-            needDirection = true;
-        }
-        else if (groundAndWallDetection)
-        {
-            if (groundAndWallDetection.collider.gameObject.layer == 6)
+            if (!roaming) //going towards nearest point before roaming around
             {
-                if (needDirection)
+                Transform nearestMiddleObj = findNearestMiddleObject(middleObjects);
+                goTowardsPosition(nearestMiddleObj);
+                if (checkIfClose(nearestMiddleObj))
                 {
-                    if (transform.position.x > playerPosition.position.x)
-                    {
-                        //move left
-                        moveLeft = true;
-                        Debug.Log("moveLeft = true");
-                    }
-                    else if (transform.position.x < playerPosition.position.x)
-                    {
-                        moveLeft = false;
-                        Debug.Log("moveLeft = false:)");
-                    }
-                    needDirection = false;
-                }
-                else
-                {
-
-
-
-                    if (moveLeft)
-                    {
-                        //move left
-                        Debug.Log("Should be moving left");
-                        transform.Translate(Vector2.left * speed * Time.deltaTime);
-                        Vector2 lookRight = new Vector2(transform.position.x + 0.5f, transform.position.y);
-
-                        if (transform.position.y > playerPosition.position.y)
-                        {
-                            Debug.Log("player is below flying");
-                            groundAndWallDetection = Physics2D.Raycast(lookRight, Vector2.down, 1, collisionLayerMask);
-                            //looking downwards for the ground detection on the right side of the flying object
-                        }
-                        else if (transform.position.y < playerPosition.position.y)
-                        {
-                            Debug.Log("player is above: left");
-                            groundAndWallDetection = Physics2D.Raycast(lookRight, Vector2.up, 1, collisionLayerMask);
-                            //looking upwards for the ground on the right side of the flying object
-                        }
-                    }
-                    else
-                    {
-                        //move right
-                        Debug.Log("moveing righttt");
-                        transform.Translate(Vector2.right * speed * Time.deltaTime);
-                        Vector2 lookLeft = new Vector2(transform.position.x - 0.5f, transform.position.y);
-                        if (transform.position.y > playerPosition.position.y)
-                        {
-                            Debug.Log("player is below flying");
-
-                            groundAndWallDetection = Physics2D.Raycast(lookLeft, Vector2.down, 1, collisionLayerMask);
-                            //looking downwards for ground on the left side of the lfying object
-                        }
-                        else if (transform.position.y < playerPosition.position.y)
-                        {
-                            Debug.Log("player is above: right");
-
-                            groundAndWallDetection = Physics2D.Raycast(lookLeft, Vector2.up, 1, collisionLayerMask);
-                            //looking upwards for the ground on the left side of the flying object
-                        }
-                    }
+                    roaming = true;
+                    increaseMiddleObjectIndex();
                 }
             }
-
+            else // need to be roaming around
+            {
+                goTowardsPosition(middleObjects[middleObjectIndex].transform);
+                if (checkIfClose(middleObjects[middleObjectIndex].transform))
+                {
+                    increaseMiddleObjectIndex();
+                }
+                //to go to next point
+                //once close enough, go towards the next point 
+                //make sure that the index doens't go out of bounds
+            }
         }
-
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-
-        if ((wallLayer.value & 1 << collision.transform.gameObject.layer) != 0)
+        else
         {
-            //moveLeft = !moveLeft;
-            Debug.Log("move left : " + moveLeft);
+            goTowardsPosition(playerPosition);
+            roaming = false;
         }
 
+        //choose point damn state machines
+        //While player in range, go towards player
+        //when player is out of range, 
+        //  I need you to go to the first ... no because depending on the spawn point, it changes. SOOO 
+        //Find nearest point, go towards it, roaming = true
+        //Loop through list to go to each point. 
+        //
 
     }
 
-    private void findPlayer()
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Player")
+        {
+            playerInRange = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Player")
+        {
+            playerInRange = false;
+        }
+
+    }
+
+
+
+    private void goTowardsPosition(Transform pos)
     {
         float step = speed * Time.deltaTime;
-        transform.position = Vector2.MoveTowards(transform.position, playerPosition.position, step);
+        transform.position = Vector2.MoveTowards(transform.position, pos.position, step);
+    }
+
+    private Transform findNearestMiddleObject(List<GameObject> MO)
+    {
+        float minDistance = 1000;
+        Transform tempObj = null;
+        int index = 0;
+
+
+        foreach (GameObject middleObject in MO)
+        {
+
+            if (Vector2.Distance(transform.position, middleObject.transform.position) <= minDistance)
+            {
+                minDistance = Vector2.Distance(transform.position, middleObject.transform.position);
+                tempObj = middleObject.transform;
+                middleObjectIndex = index;
+            }
+            index++;
+        }
+        return tempObj;
+
+    }
+
+    private bool checkIfClose(Transform obj)
+    {
+        if (Vector2.Distance(transform.position, obj.position) <= 0.2f)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    private void increaseMiddleObjectIndex()
+    {
+        middleObjectIndex++;
+        if (middleObjectIndex >= middleObjects.Count)
+        {
+            middleObjectIndex = 0;
+        }
     }
 
 }
