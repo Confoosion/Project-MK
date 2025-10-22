@@ -36,8 +36,8 @@ public class FlyingEnemyMovement : EnemyController
         canMove = false;
         speed = enemyType.speed;
         initialPos = transform.position;
-        
-        
+
+
     }
 
     // Update is called once per frame
@@ -78,46 +78,51 @@ public class FlyingEnemyMovement : EnemyController
                     }
                     needDirection = false;
                 }
-                
-                if (moveLeft)
-                {
-                    //move left
-                    Debug.Log("Should be moving left");
-                    transform.Translate(Vector2.left * speed * Time.deltaTime);
-                    Vector2 lookRight = new Vector2(transform.position.x + 0.5f, transform.position.y);
-
-                    if (transform.position.y > playerPosition.position.y)
-                    {
-                        Debug.Log("player is below flying");
-                        groundAndWallDetection = Physics2D.Raycast(lookRight, Vector2.down, 1, collisionLayerMask);
-                        //looking downwards for the ground detection on the right side of the flying object
-                    }
-                    else if (transform.position.y < playerPosition.position.y)
-                    {
-                        Debug.Log("player is above: left");
-                        groundAndWallDetection = Physics2D.Raycast(lookRight, Vector2.up, 1, collisionLayerMask);
-                        //looking upwards for the ground on the right side of the flying object
-                    }
-                }
                 else
                 {
-                    //move right
-                    Debug.Log("moveing righttt");
-                    transform.Translate(Vector2.right * speed * Time.deltaTime);
-                    Vector2 lookLeft = new Vector2(transform.position.x - 0.5f, transform.position.y);
-                    if (transform.position.y > playerPosition.position.y)
-                    {
-                        Debug.Log("player is below flying");
 
-                        groundAndWallDetection = Physics2D.Raycast(lookLeft, Vector2.down, 1, collisionLayerMask);
-                        //looking downwards for ground on the left side of the lfying object
+
+
+                    if (moveLeft)
+                    {
+                        //move left
+                        Debug.Log("Should be moving left");
+                        transform.Translate(Vector2.left * speed * Time.deltaTime);
+                        Vector2 lookRight = new Vector2(transform.position.x + 0.5f, transform.position.y);
+
+                        if (transform.position.y > playerPosition.position.y)
+                        {
+                            Debug.Log("player is below flying");
+                            groundAndWallDetection = Physics2D.Raycast(lookRight, Vector2.down, 1, collisionLayerMask);
+                            //looking downwards for the ground detection on the right side of the flying object
+                        }
+                        else if (transform.position.y < playerPosition.position.y)
+                        {
+                            Debug.Log("player is above: left");
+                            groundAndWallDetection = Physics2D.Raycast(lookRight, Vector2.up, 1, collisionLayerMask);
+                            //looking upwards for the ground on the right side of the flying object
+                        }
                     }
-                    else if (transform.position.y < playerPosition.position.y)
+                    else
                     {
-                        Debug.Log("player is above: right");
+                        //move right
+                        Debug.Log("moveing righttt");
+                        transform.Translate(Vector2.right * speed * Time.deltaTime);
+                        Vector2 lookLeft = new Vector2(transform.position.x - 0.5f, transform.position.y);
+                        if (transform.position.y > playerPosition.position.y)
+                        {
+                            Debug.Log("player is below flying");
 
-                        groundAndWallDetection = Physics2D.Raycast(lookLeft, Vector2.up, 1, collisionLayerMask);
-                        //looking upwards for the ground on the left side of the flying object
+                            groundAndWallDetection = Physics2D.Raycast(lookLeft, Vector2.down, 1, collisionLayerMask);
+                            //looking downwards for ground on the left side of the lfying object
+                        }
+                        else if (transform.position.y < playerPosition.position.y)
+                        {
+                            Debug.Log("player is above: right");
+
+                            groundAndWallDetection = Physics2D.Raycast(lookLeft, Vector2.up, 1, collisionLayerMask);
+                            //looking upwards for the ground on the left side of the flying object
+                        }
                     }
                 }
             }
@@ -125,7 +130,7 @@ public class FlyingEnemyMovement : EnemyController
         }
 
     }
-    
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
@@ -135,10 +140,11 @@ public class FlyingEnemyMovement : EnemyController
             Debug.Log("move left : " + moveLeft);
         }
 
-        
+
     }
-    
-    private void findPlayer(){
+
+    private void findPlayer()
+    {
         float step = speed * Time.deltaTime;
         transform.position = Vector2.MoveTowards(transform.position, playerPosition.position, step);
     }
