@@ -11,6 +11,8 @@ public class EnemyController : MonoBehaviour
     private void Start()
     {
         health = enemyType.health;
+        SpawnerManager.Singleton.allEnemiesInWorld.Add(this.gameObject);
+        
     }
     void Update()
     {

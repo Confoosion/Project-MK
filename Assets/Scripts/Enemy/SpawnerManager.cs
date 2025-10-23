@@ -11,12 +11,15 @@ public class SpawnerManager : MonoBehaviour
     [SerializeField] private GameObject normalEnemy;
     [SerializeField] private GameObject heavyEnemy;
     [SerializeField] private GameObject flyingEnemy;
+    [SerializeField] private GameObject angryNormalEnemy;
+    [SerializeField] private GameObject angryHeavyEnemy;
 
 
-[Header("OtherVariables")]
-    
+    [Header("OtherVariables")]
+
 
     [SerializeField] public List<GameObject> spawnersInWorld;
+    public List<GameObject> allEnemiesInWorld;
     [SerializeField] private int waveNumber = 0;
     private int spawnerIndex = 0;
 
@@ -106,6 +109,10 @@ public class SpawnerManager : MonoBehaviour
 
         //update information
         spawnersInWorld[spawnerIndex].GetComponent<SpawnerController>().startSpawning();
+
+        
+
+
         updateSpawnerIndex();
         waveNumber++;
 
@@ -125,6 +132,16 @@ public class SpawnerManager : MonoBehaviour
         return Random.Range(min, max + 1);
     }
 
-    
+
+
+    public void CreateAngryVariant(int num) {
+        if (num == 0) {
+            specificSpawnList.Add(angryNormalEnemy);
+        }
+        else if (num == 1) {
+            specificSpawnList.Add(angryHeavyEnemy);
+        }
+
+    }
     
 }

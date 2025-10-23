@@ -23,21 +23,21 @@ public class SpawnerController : MonoBehaviour
         {
             if (spawnerSide)
             {
-                Instantiate(spawnList[spawnIndex], transform.position, Quaternion.Euler(0, 0, 0));
-                spawnList[spawnIndex].GetComponent<BasicEnemyMovement>().setMoveDirection(true);
-                spawnList.RemoveAt(spawnIndex);
+                spawnEnemiesIntoWorld(true);
 
             }
             else
             {
-                Instantiate(spawnList[spawnIndex], transform.position, Quaternion.Euler(0, 0, 0));
-                spawnList[spawnIndex].GetComponent<BasicEnemyMovement>().setMoveDirection(false);
-                spawnList.RemoveAt(spawnIndex);
+                spawnEnemiesIntoWorld(false);
 
             }
 
+        
+
             yield return new WaitForSeconds(0.7f);
         }
+
+
 
     }
 
@@ -55,6 +55,20 @@ public class SpawnerController : MonoBehaviour
     public void startSpawning()
     {
         StartCoroutine(spawnEnemy());
+    }
+
+    private void spawnEnemiesIntoWorld(bool dir)
+    {
+        Instantiate(spawnList[spawnIndex], transform.position, Quaternion.Euler(0, 0, 0));
+        if (spawnList[spawnIndex].GetComponent<BasicEnemyMovement>())//make sure we get this information,....
+        {
+            spawnList[spawnIndex].GetComponent<BasicEnemyMovement>().setMoveDirection(dir); //set direction of enemy
+        }
+        
+               
+        //SpawnerManager.Singleton.allEnemiesInWorld.Add(spawnList[spawnIndex]); //add to big enemy list
+
+        spawnList.RemoveAt(spawnIndex);
     }
 
     

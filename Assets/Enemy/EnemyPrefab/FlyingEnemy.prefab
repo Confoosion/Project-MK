@@ -659,20 +659,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlyingEnemyMovement
   enemyType: {fileID: 11400000, guid: 27ef4656f60f07b4c9aa3eb3cbb295be, type: 2}
   playerPosition: {fileID: 0}
-  middleObjects:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  middleObjects: []
