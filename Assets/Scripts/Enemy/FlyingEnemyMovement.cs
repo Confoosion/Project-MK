@@ -12,6 +12,7 @@ public class FlyingEnemyMovement : EnemyController
 
     [SerializeField] private Transform playerPosition;
     private float speed;
+    
     [SerializeField] private List<GameObject> middleObjects;
 
     private bool playerInRange;
@@ -26,6 +27,13 @@ public class FlyingEnemyMovement : EnemyController
         speed = enemyType.speed;
 
         playerPosition = GameObject.Find("Player").transform;
+        GameObject tmp = GameObject.Find("FlyingEnemyMarkers");
+
+        for(int i = 0; i < tmp.transform.childCount; i++)
+        {
+            middleObjects.Add(tmp.transform.GetChild(i).gameObject);
+        }
+
     }
 
     // Update is called once per frame
