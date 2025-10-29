@@ -134,14 +134,26 @@ public class SpawnerManager : MonoBehaviour
 
 
 
-    public void CreateAngryVariant(int num) {
-        if (num == 0) {
+    public void CreateAngryVariant(int num)
+    {
+        if (num == 0)
+        {
             specificSpawnList.Add(angryNormalEnemy);
         }
-        else if (num == 1) {
+        else if (num == 1)
+        {
             specificSpawnList.Add(angryHeavyEnemy);
         }
 
     }
     
+    public void RemoveAllEnemies()
+    {
+        foreach(GameObject enemy in allEnemiesInWorld)
+        {
+            if(enemy != null)
+                Destroy(enemy);
+        }
+        allEnemiesInWorld.Clear();
+    }
 }

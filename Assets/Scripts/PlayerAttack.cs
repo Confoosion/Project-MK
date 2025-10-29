@@ -8,10 +8,11 @@ public class PlayerAttack : MonoBehaviour
     public float attackCD;
 
     private bool canAttack = true;
+    private int nukeUses;
 
     void Start()
     {
-        // character.EquipCharacter();
+        character.EquipCharacter();
     }
 
 
@@ -27,6 +28,7 @@ public class PlayerAttack : MonoBehaviour
     {
         character = characterSO;
         character.EquipCharacter();
+        nukeUses = 0;
     }
 
     private void Attack()
@@ -65,5 +67,16 @@ public class PlayerAttack : MonoBehaviour
     public PlayerControl GetPlayerControl()
     {
         return (GetComponent<PlayerControl>());
+    }
+
+    public bool ActivateNuke(int maxUses)
+    {
+        if (nukeUses < maxUses)
+        {
+            nukeUses++;
+            SpawnerManager.Singleton.RemoveAllEnemies();
+            return (true);
+        }
+        return (false);
     }
 }
