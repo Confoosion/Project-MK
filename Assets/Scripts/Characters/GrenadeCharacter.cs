@@ -14,8 +14,8 @@ public class GrenadeCharacter : CharacterSO
         float direction = (origin.localScale.x == 1) ? -1f : 1f;
         GameObject atk = Instantiate(attackObject, origin.position + new Vector3(0f, 0.25f, 0f), Quaternion.Euler(new Vector3(0f, 0f, (direction == -1) ? 180f : 0f)));
 
-        atk.GetComponent<RangeAttack>().GetData(attackPower, destroyOnTerrain);
-        atk.GetComponent<RangeAttack>().GetImpactData(impactDamage, impactDuration);
+        atk.GetComponent<RangeAttack>().SetData(attackPower, destroyOnTerrain);
+        atk.GetComponent<RangeAttack>().SetImpactData(impactDamage, impactDuration);
         atk.GetComponent<Rigidbody2D>().AddForce(new Vector3(direction, 0.5f, 0f) * projectileForce, ForceMode2D.Impulse);
     } 
 }

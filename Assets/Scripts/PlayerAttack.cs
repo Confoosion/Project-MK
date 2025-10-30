@@ -4,14 +4,15 @@ using System.Collections;
 public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] private CharacterSO character;
-    [SerializeField] private float baseAttackPower;
+    //[SerializeField] private float baseAttackPower;
     public float attackCD;
 
     private bool canAttack = true;
+    private int nukeUses;
 
     void Start()
     {
-        // character.EquipCharacter();
+        character.EquipCharacter();
     }
 
 
@@ -23,10 +24,16 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+    public CharacterSO GetCharacter()
+    {
+        return character;
+    }
+
     public void SetCharacter(CharacterSO characterSO)
     {
         character = characterSO;
         character.EquipCharacter();
+        nukeUses = 0;
     }
 
     private void Attack()
@@ -56,7 +63,7 @@ public class PlayerAttack : MonoBehaviour
         {
             float direction = (transform.localScale.x == 1) ? -1f : 1f;
             GameObject atk = Instantiate(atkObject, transform.position + new Vector3(direction * 0.5f, 0f, 0f), Quaternion.Euler(new Vector3(0f, 0f, (direction == -1) ? 0f : 180f)));
-            atk.GetComponent<ProjectileAttack>().GetData(atkPower, burstVelocity, direction);
+            atk.GetComponent<ProjectileAttack>().SetData(atkPower, burstVelocity, direction);
 
             yield return new WaitForSeconds(interval);
         }
@@ -65,5 +72,16 @@ public class PlayerAttack : MonoBehaviour
     public PlayerControl GetPlayerControl()
     {
         return (GetComponent<PlayerControl>());
+    }
+
+    public bool ActivateNuke(int maxUses)
+    {
+        if (nukeUses < maxUses)
+        {
+            nukeUses++;
+            SpawnerManager.Singleton.RemoveAllEnemies();
+            return (true);
+        }
+        return (false);
     }
 }

@@ -11,7 +11,7 @@ public class GroundPoundCharacter : CharacterSO
         if (groundPoundAttack == null)
         {
             groundPoundAttack = Instantiate(attackObject, origin.position + new Vector3(0f, -0.5f, 0f), Quaternion.identity, origin);
-            groundPoundAttack.GetComponent<MeleeAttack>().GetData(attackPower, attackDuration);
+            groundPoundAttack.GetComponent<MeleeAttack>().SetData(attackPower, attackDuration);
 
             playerAttack.GetPlayerControl().GroundPoundMovement(groundPoundForce);
         }
