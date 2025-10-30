@@ -8,7 +8,7 @@ public class DamageOverTimeAttack : MonoBehaviour
     private float damage;
     private SpriteRenderer spriteRenderer;
 
-    public void GetData(float atkTime, float dmg)
+    public void SetData(float atkTime, float dmg)
     {
         attackTime = atkTime;
         damage = dmg;

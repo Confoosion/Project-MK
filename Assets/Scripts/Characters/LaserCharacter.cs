@@ -9,7 +9,7 @@ public class LaserCharacter : CharacterSO
         float direction = (origin.localScale.x == 1) ? -2.95f : 2.95f;
         GameObject atk = Instantiate(attackObject, origin.position + new Vector3(direction, 0f, 0f), Quaternion.identity, origin);
 
-        atk.GetComponent<DelayedAttack>().GetData(attackPower, attackDuration * 0.5f, attackDuration * 0.5f);
-        atk.GetComponent<DamageOverTimeAttack>().GetData(0f, attackPower);
+        atk.GetComponent<DelayedAttack>().SetData(attackPower, attackDuration * 0.5f, attackDuration * 0.5f);
+        atk.GetComponent<DamageOverTimeAttack>().SetData(0f, attackPower);
     }
 }

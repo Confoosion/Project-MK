@@ -387,6 +387,7 @@ GameObject:
   - component: {fileID: 380219107}
   - component: {fileID: 380219108}
   - component: {fileID: 380219109}
+  - component: {fileID: 380219110}
   m_Layer: 0
   m_Name: MANAGERS
   m_TagString: Untagged
@@ -422,6 +423,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PerksManager
   playerControl: {fileID: 117719055}
+  playerAttack: {fileID: 117719058}
 --- !u!114 &380219109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -455,6 +457,27 @@ MonoBehaviour:
   characterModel: {fileID: 409809585}
   playerAttack: {fileID: 117719058}
   currentCharacter: {fileID: 0}
+--- !u!114 &380219110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380219106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1659be445b14f4e4cbe9658781ea4544, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpawnerManager
+  normalEnemy: {fileID: 0}
+  heavyEnemy: {fileID: 0}
+  flyingEnemy: {fileID: 0}
+  angryNormalEnemy: {fileID: 0}
+  angryHeavyEnemy: {fileID: 0}
+  spawnersInWorld: []
+  allEnemiesInWorld: []
+  waveNumber: 0
+  stopGame: 0
 --- !u!4 &409809584 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2296049105557470631, guid: 5eebe7014e9e7dc42818829ec7e1b56a, type: 3}

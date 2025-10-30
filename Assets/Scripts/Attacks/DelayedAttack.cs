@@ -10,7 +10,7 @@ public class DelayedAttack : MonoBehaviour
     private float atkDelay;
     private SpriteRenderer spriteRenderer;
 
-    public void GetData(float dmg, float duration, float delay)
+    public void SetData(float dmg, float duration, float delay)
     {
         damage = dmg;
         atkTime = duration;

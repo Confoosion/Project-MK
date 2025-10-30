@@ -9,13 +9,13 @@ public class RangeAttack : MonoBehaviour
     private float impactDamage;
     private float impactDuration;
 
-    public void GetData(float dmg, bool removeFromGround)
+    public void SetData(float dmg, bool removeFromGround)
     {
         damage = dmg;
         destroyOnTerrain = removeFromGround;
     }
 
-    public void GetImpactData(float dmg, float dur)
+    public void SetImpactData(float dmg, float dur)
     {
         impactDamage = dmg;
         impactDuration = dur;
@@ -52,7 +52,7 @@ public class RangeAttack : MonoBehaviour
             GameObject impact = Instantiate(impactObject, transform.position, Quaternion.identity);
             if (impact.GetComponent<MeleeAttack>())
             {
-                impact.GetComponent<MeleeAttack>().GetData(impactDamage, impactDuration);
+                impact.GetComponent<MeleeAttack>().SetData(impactDamage, impactDuration);
             }
         }
     }
