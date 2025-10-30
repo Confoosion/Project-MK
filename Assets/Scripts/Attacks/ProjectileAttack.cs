@@ -25,7 +25,7 @@ public class ProjectileAttack : MonoBehaviour
         layerMask = LayerMask.NameToLayer("Wall");
     }
 
-    public void GetData(float dmg, float vel, float direction, int piercing = 0)
+    public void SetData(float dmg, float vel, float direction, int piercing = 0)
     {
         damage = dmg;
         speed = vel;
@@ -35,7 +35,7 @@ public class ProjectileAttack : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    public void GetImpactData(float dmg, float dur)
+    public void SetImpactData(float dmg, float dur)
     {
         impactDamage = dmg;
         impactDuration = dur;
@@ -94,7 +94,7 @@ public class ProjectileAttack : MonoBehaviour
             GameObject impact = Instantiate(impactObject, transform.position, Quaternion.identity);
             if (impact.GetComponent<MeleeAttack>())
             {
-                impact.GetComponent<MeleeAttack>().GetData(impactDamage, impactDuration);
+                impact.GetComponent<MeleeAttack>().SetData(impactDamage, impactDuration);
             }
         }
     }

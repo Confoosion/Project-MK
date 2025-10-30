@@ -7,6 +7,6 @@ public class SwordCharacter : CharacterSO
     {
         float direction = (origin.localScale.x == 1) ? -1f : 1f;
         GameObject atk = Instantiate(attackObject, origin.position + new Vector3(direction, 0f, 0f), Quaternion.identity, origin);
-        atk.GetComponent<MeleeAttack>().GetData(attackPower, attackDuration);
+        atk.GetComponent<MeleeAttack>().SetData(attackPower, attackDuration);
     }
 }

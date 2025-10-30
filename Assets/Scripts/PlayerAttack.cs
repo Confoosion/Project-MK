@@ -4,7 +4,7 @@ using System.Collections;
 public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] private CharacterSO character;
-    [SerializeField] private float baseAttackPower;
+    //[SerializeField] private float baseAttackPower;
     public float attackCD;
 
     private bool canAttack = true;
@@ -21,6 +21,11 @@ public class PlayerAttack : MonoBehaviour
         {
             Attack();
         }
+    }
+
+    public CharacterSO GetCharacter()
+    {
+        return character;
     }
 
     public void SetCharacter(CharacterSO characterSO)
@@ -56,7 +61,7 @@ public class PlayerAttack : MonoBehaviour
         {
             float direction = (transform.localScale.x == 1) ? -1f : 1f;
             GameObject atk = Instantiate(atkObject, transform.position + new Vector3(direction * 0.5f, 0f, 0f), Quaternion.Euler(new Vector3(0f, 0f, (direction == -1) ? 0f : 180f)));
-            atk.GetComponent<ProjectileAttack>().GetData(atkPower, burstVelocity, direction);
+            atk.GetComponent<ProjectileAttack>().SetData(atkPower, burstVelocity, direction);
 
             yield return new WaitForSeconds(interval);
         }

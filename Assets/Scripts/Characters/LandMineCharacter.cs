@@ -31,6 +31,6 @@ public class LandMineCharacter : CharacterSO
         GameObject atk = Instantiate(attackObject, origin.position, Quaternion.identity);
         landMines.Insert(0, atk);
 
-        atk.GetComponent<RangeAttack>().GetData(attackPower, destroyMineTouchingGround);
+        atk.GetComponent<RangeAttack>().SetData(attackPower, destroyMineTouchingGround);
     }
 }

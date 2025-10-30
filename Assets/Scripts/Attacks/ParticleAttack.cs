@@ -15,7 +15,7 @@ public class ParticleAttack : MonoBehaviour
         particle = GetComponent<ParticleSystem>();
     }
 
-    public void GetData(float dmg, float atkDuration, Transform facing = null)
+    public void SetData(float dmg, float atkDuration, Transform facing = null)
     {
         Debug.Log("Particle Data received");
         if (duration != atkDuration)

@@ -10,7 +10,7 @@ public class MeleeAttack : MonoBehaviour
     [SerializeField] private bool BOUNCE_ON_IT;
     [SerializeField] private float bounceForce;
 
-    public void GetData(float dmg, float atkTime)
+    public void SetData(float dmg, float atkTime)
     {
         attackTime = atkTime;
         damage = dmg;
