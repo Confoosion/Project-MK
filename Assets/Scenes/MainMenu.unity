@@ -479,6 +479,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 126698381}
+  - component: {fileID: 126698382}
   m_Layer: 0
   m_Name: MANAGER
   m_TagString: Untagged
@@ -501,6 +502,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &126698382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126698380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a0c1526534b3432fbde3f6829f248ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MainMenuManager
+  perkDropdown: {fileID: 0}
+  mapDropdown: {fileID: 0}
+  moreDamagePerk: {fileID: 11400000, guid: 31f2edb197c5cd44bacbe3c4dcfe7400, type: 2}
+  extraLifePerk: {fileID: 0}
+  futureTellingPerk: {fileID: 0}
+  slowEnemiesPerk: {fileID: 0}
+  doubleJumpPerk: {fileID: 11400000, guid: 148029b8ff651ee4c858db440ebde376, type: 2}
+  speedPerk: {fileID: 11400000, guid: e457440b5fef27343ad8a8735d9c9402, type: 2}
 --- !u!1 &158320471
 GameObject:
   m_ObjectHideFlags: 0
