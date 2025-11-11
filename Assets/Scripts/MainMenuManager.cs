@@ -2,11 +2,19 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MainMenuManager : MonoBehaviour
 {
-    [SerializeField] private Dropdown perkDropdown;
-    [SerializeField] private Dropdown mapDropdown;
+
+    [Header("Main Menu")]
+    [SerializeField] private GameObject mainMenuCanvas;
+    [SerializeField] private GameObject perkMapCanvas;
+
+    [Header("Perk/Map")]
+    [SerializeField] private TMP_Dropdown perkDropdown;
+    [SerializeField] private TMP_Dropdown mapDropdown;
 
 
     [SerializeField] private PerkSO moreDamagePerk;
@@ -19,15 +27,28 @@ public class MainMenuManager : MonoBehaviour
 
     void Start()
     {
-
-
+        mainMenuCanvas.SetActive(true);
+        perkMapCanvas.SetActive(false);
 
 
     }
 
-    void menuStartButton()
+    public void menuPlayButton()
+    {
+        mainMenuCanvas.SetActive(false);
+        perkMapCanvas.SetActive(true);
+    }
+
+    public void menuBackButton()
+    {
+        mainMenuCanvas.SetActive(true);
+        perkMapCanvas.SetActive(false);
+    }
+
+    public void menuStartButton()
     {
         //Map stuff
+        //MAP 2 on index 1
         int mapNumber = mapDropdown.value + 1;
         GameManager.mapNumber = mapNumber;
 
@@ -38,6 +59,7 @@ public class MainMenuManager : MonoBehaviour
         else if (mapNumber == 2)
         {
             //go to map 2
+            SceneManager.LoadScene("Map2");
         }
 
 
