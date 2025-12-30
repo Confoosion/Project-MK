@@ -38,6 +38,9 @@ public class BiomeChainBuilder : MonoBehaviour
     [Header("Starting Position")]
     public Vector3 startPosition = Vector3.zero;
     
+    [Header("Generation Direction")]
+    public bool generateBothDirections = true;
+    
     private void Start()
     {
         if (biomeContainer == null)
@@ -140,6 +143,89 @@ public class BiomeChainBuilder : MonoBehaviour
             Debug.LogWarning($"Spawn percentages total {total}% instead of 100%. Normalizing...");
         }
         
+        if (generateBothDirections)
+        {
+            BuildBidirectionalChain();
+        }
+        else
+        {
+            BuildUnidirectionalChain();
+        }
+    }
+    
+    /// <summary>
+    /// Builds chain in both left and right directions
+    /// </summary>
+    private void BuildBidirectionalChain()
+    {
+        // Spawn center biome first
+        GameObject centerBiomePrefab = SelectWeightedBiome();
+        GameObject centerBiomeObj = Instantiate(centerBiomePrefab, biomeContainer);
+        BiomeManager centerBiome = centerBiomeObj.GetComponent<BiomeManager>();
+        
+        if (centerBiome == null)
+        {
+            Debug.LogError($"Center biome prefab is missing BiomeManager component!");
+            Destroy(centerBiomeObj);
+            return;
+        }
+        
+        centerBiome.transform.position = startPosition;
+        instantiatedBiomes.Add(centerBiome);
+        
+        // Calculate how many biomes to spawn on each side
+        int biomesToSpawn = chainLength - 1; // Minus the center biome
+        int biomesRight = biomesToSpawn / 2;
+        int biomesLeft = biomesToSpawn - biomesRight;
+        
+        // Build right side
+        BiomeManager currentBiome = centerBiome;
+        for (int i = 0; i < biomesRight; i++)
+        {
+            GameObject selectedBiome = SelectWeightedBiome();
+            GameObject biomeObj = Instantiate(selectedBiome, biomeContainer);
+            BiomeManager biome = biomeObj.GetComponent<BiomeManager>();
+            
+            if (biome != null)
+            {
+                currentBiome.ConnectBiomeToRight(biome);
+                instantiatedBiomes.Add(biome);
+                currentBiome = biome;
+            }
+            else
+            {
+                Destroy(biomeObj);
+            }
+        }
+        
+        // Build left side
+        currentBiome = centerBiome;
+        for (int i = 0; i < biomesLeft; i++)
+        {
+            GameObject selectedBiome = SelectWeightedBiome();
+            GameObject biomeObj = Instantiate(selectedBiome, biomeContainer);
+            BiomeManager biome = biomeObj.GetComponent<BiomeManager>();
+            
+            if (biome != null)
+            {
+                currentBiome.ConnectBiomeToLeft(biome);
+                instantiatedBiomes.Insert(0, biome); // Insert at beginning to maintain order
+                currentBiome = biome;
+            }
+            else
+            {
+                Destroy(biomeObj);
+            }
+        }
+        
+        Debug.Log($"Built bidirectional chain: {biomesLeft} left + 1 center + {biomesRight} right = {instantiatedBiomes.Count} total biomes");
+    }
+    
+    /// <summary>
+    /// Builds chain only to the right
+    /// </summary>
+    private void BuildUnidirectionalChain()
+    {
         BiomeManager previousBiome = null;
         
         for (int i = 0; i < chainLength; i++)
@@ -178,7 +264,7 @@ public class BiomeChainBuilder : MonoBehaviour
             previousBiome = biome;
         }
         
-        Debug.Log($"Built weighted chain of {instantiatedBiomes.Count} biomes");
+        Debug.Log($"Built unidirectional chain of {instantiatedBiomes.Count} biomes");
     }
     
     /// <summary>
