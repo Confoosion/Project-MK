@@ -10,7 +10,7 @@ public class BiomeConnector : MonoBehaviour
     // Visual helper in editor
     private void OnDrawGizmos()
     {
-        Gizmos.color = connectorType == ConnectorType.Left ? Color.green : Color.red;
+        Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, 0.3f);
         
         // Draw arrow showing direction

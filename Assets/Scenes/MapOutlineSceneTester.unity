@@ -148,7 +148,7 @@ Transform:
   m_GameObject: {fileID: 117719053}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.31, y: 8.59, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -368,6 +368,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a5a37cbb5bc0140a81f04bf2c5b4b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  currentScore: 0
+  scorePerBiome: 10
+  OnScoreChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBiomeUnlocked:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &409809583
 GameObject:
   m_ObjectHideFlags: 0
@@ -739,9 +747,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de6953c0697e74d4980ca9adf9482389, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BiomeChainBuilder
+  chainMode: 1
   biomePrefabs:
   - {fileID: 6468470885826840478, guid: 273df42b911943940bc927a7b3f6d554, type: 3}
   - {fileID: 8939713063824429058, guid: 44ba3f03c7db34c4e9fa14d4db52e57d, type: 3}
+  weightedBiomes:
+  - biomePrefab: {fileID: 6468470885826840478, guid: 273df42b911943940bc927a7b3f6d554, type: 3}
+    spawnPercentage: 50
+  - biomePrefab: {fileID: 8939713063824429058, guid: 44ba3f03c7db34c4e9fa14d4db52e57d, type: 3}
+    spawnPercentage: 50
+  chainLength: 6
+  totalPercentage: 100
   biomeContainer: {fileID: 1112566327}
   startPosition: {x: 0, y: 0, z: 0}
 --- !u!4 &1112566327
