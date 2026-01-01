@@ -6,9 +6,9 @@ public class MuffinSpawner : MonoBehaviour
 {
     public static MuffinSpawner Singleton { get; private set; }
     [SerializeField] private GameObject muffin;
-    [SerializeField] private float spawnOffset;
-    [SerializeField] private float spawnHeight;
-    private List<Transform> platforms = new List<Transform>();
+    [SerializeField] private float spawnOffset = 1.5f;
+    [SerializeField] private float spawnHeight = 5f;
+    [SerializeField] private List<Transform> platforms = new List<Transform>();
     private Transform muffinPlatform;
 
     void Awake()
@@ -16,20 +16,17 @@ public class MuffinSpawner : MonoBehaviour
         if (Singleton == null)
         {
             Singleton = this;
-            for (int i = 0; i < transform.childCount; i++)
-            {
-                platforms.Add(transform.GetChild(i).transform);
-            }
         }
-    }
-
-    void Start()
-    {
-        SpawnMuffin();
     }
 
     public void SpawnMuffin()
     {
+        if (platforms.Count == 0)
+        {
+            Debug.LogWarning("No platforms available to spawn muffin!");
+            return;
+        }
+        
         Transform newMuffinPlatform = platforms[Random.Range(0, platforms.Count)];
 
         if (muffinPlatform != null)
@@ -43,6 +40,42 @@ public class MuffinSpawner : MonoBehaviour
         float y = bounds.max.y + spawnHeight;
 
         Instantiate(muffin, new Vector2(randomX, y), Quaternion.identity);
+    }
 
+    /// <summary>
+    /// Adds all child platforms from a parent transform (e.g., biome's PLATFORMS object)
+    /// </summary>
+    public void AddPlatforms(Transform platformParent)
+    {
+        if (platformParent == null)
+        {
+            Debug.LogWarning("Cannot add platforms from null parent!");
+            return;
+        }
+        
+        int addedCount = 0;
+        for(int i = 0; i < platformParent.childCount; i++)
+        {
+            Transform platform = platformParent.GetChild(i);
+            
+            // Only add if it has a SpriteRenderer (to ensure it's a valid platform)
+            if (platform.GetComponent<SpriteRenderer>() != null)
+            {
+                platforms.Add(platform);
+                addedCount++;
+            }
+        }
+        
+        Debug.Log($"Added {addedCount} platforms from {platformParent.name}. Total platforms: {platforms.Count}");
+    }
+    
+    /// <summary>
+    /// Clears all platforms (useful for resetting)
+    /// </summary>
+    public void ClearPlatforms()
+    {
+        platforms.Clear();
+        muffinPlatform = null;
+        Debug.Log("Cleared all platforms from MuffinSpawner");
     }
 }

@@ -6,6 +6,9 @@ public class BiomeManager : MonoBehaviour
     public BiomeConnector leftConnector;
     public BiomeConnector rightConnector;
     
+    [Header("Platforms")]
+    public Transform platformsParent;
+    
     private void Awake()
     {
         // Auto-find connectors if not assigned
@@ -19,6 +22,28 @@ public class BiomeManager : MonoBehaviour
                 else if (connector.connectorType == BiomeConnector.ConnectorType.Right)
                     rightConnector = connector;
             }
+        }
+        
+        // Auto-find platforms parent if not assigned
+        if (platformsParent == null)
+        {
+            platformsParent = transform.Find("PLATFORMS");
+            if (platformsParent == null)
+            {
+                Debug.LogWarning($"BiomeManager on {gameObject.name} could not find PLATFORMS parent object!");
+            }
+        }
+    }
+    
+    /// <summary>
+    /// Registers this biome's platforms with the MuffinSpawner
+    /// </summary>
+    public void RegisterPlatforms()
+    {
+        if (platformsParent != null && MuffinSpawner.Singleton != null)
+        {
+            MuffinSpawner.Singleton.AddPlatforms(platformsParent);
+            Debug.Log($"Registered {platformsParent.childCount} platforms from {gameObject.name}");
         }
     }
     

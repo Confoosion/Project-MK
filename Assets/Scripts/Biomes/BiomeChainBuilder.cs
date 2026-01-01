@@ -41,6 +41,10 @@ public class BiomeChainBuilder : MonoBehaviour
     [Header("Generation Direction")]
     public bool generateBothDirections = true;
     
+    [Header("Platform Registration")]
+    public bool autoRegisterPlatforms = true;
+    public bool onlyRegisterFirstBiome = true;
+    
     private void Start()
     {
         if (biomeContainer == null)
@@ -61,6 +65,7 @@ public class BiomeChainBuilder : MonoBehaviour
         {
             BuildWeightedChain();
         }
+        MuffinSpawner.Singleton.SpawnMuffin();
     }
     
     private void OnValidate()
@@ -102,6 +107,13 @@ public class BiomeChainBuilder : MonoBehaviour
         {
             biome.transform.position = startPosition;
             instantiatedBiomes.Add(biome);
+            
+            // Always register the first biome's platforms
+            if (autoRegisterPlatforms)
+            {
+                biome.RegisterPlatforms();
+            }
+            
             Debug.Log($"Spawned initial biome: {randomBiome.name}");
         }
     }
@@ -173,6 +185,12 @@ public class BiomeChainBuilder : MonoBehaviour
         centerBiome.transform.position = startPosition;
         instantiatedBiomes.Add(centerBiome);
         
+        // Register platforms for center biome (it's the first biome)
+        if (autoRegisterPlatforms)
+        {
+            centerBiome.RegisterPlatforms();
+        }
+        
         // Calculate how many biomes to spawn on each side
         int biomesToSpawn = chainLength - 1; // Minus the center biome
         int biomesRight = biomesToSpawn / 2;
@@ -191,6 +209,12 @@ public class BiomeChainBuilder : MonoBehaviour
                 currentBiome.ConnectBiomeToRight(biome);
                 instantiatedBiomes.Add(biome);
                 currentBiome = biome;
+                
+                // Only register if not limiting to first biome only
+                if (autoRegisterPlatforms && !onlyRegisterFirstBiome)
+                {
+                    biome.RegisterPlatforms();
+                }
             }
             else
             {
@@ -211,6 +235,12 @@ public class BiomeChainBuilder : MonoBehaviour
                 currentBiome.ConnectBiomeToLeft(biome);
                 instantiatedBiomes.Insert(0, biome); // Insert at beginning to maintain order
                 currentBiome = biome;
+                
+                // Only register if not limiting to first biome only
+                if (autoRegisterPlatforms && !onlyRegisterFirstBiome)
+                {
+                    biome.RegisterPlatforms();
+                }
             }
             else
             {
@@ -254,11 +284,23 @@ public class BiomeChainBuilder : MonoBehaviour
             if (i == 0)
             {
                 biome.transform.position = startPosition;
+                
+                // Always register first biome's platforms
+                if (autoRegisterPlatforms)
+                {
+                    biome.RegisterPlatforms();
+                }
             }
             else if (previousBiome != null)
             {
                 // Connect to previous biome
                 previousBiome.ConnectBiomeToRight(biome);
+                
+                // Only register if not limiting to first biome only
+                if (autoRegisterPlatforms && !onlyRegisterFirstBiome)
+                {
+                    biome.RegisterPlatforms();
+                }
             }
             
             previousBiome = biome;
@@ -302,7 +344,14 @@ public class BiomeChainBuilder : MonoBehaviour
         if (availableBiomes.Count == 0) return;
         
         int randomIndex = Random.Range(0, availableBiomes.Count);
-        AddBiomeToChain(availableBiomes[randomIndex]);
+        BiomeManager newBiome = AddBiomeToChain(availableBiomes[randomIndex]);
+        
+        // Register the newly unlocked biome's platforms
+        if (newBiome != null && autoRegisterPlatforms)
+        {
+            newBiome.RegisterPlatforms();
+            Debug.Log($"Biome {biomeIndex} unlocked! Platforms registered.");
+        }
     }
     
     /// <summary>
@@ -339,11 +388,23 @@ public class BiomeChainBuilder : MonoBehaviour
             if (i == 0)
             {
                 biome.transform.position = startPosition;
+                
+                // Always register first biome's platforms
+                if (autoRegisterPlatforms)
+                {
+                    biome.RegisterPlatforms();
+                }
             }
             else if (previousBiome != null)
             {
                 // Connect to previous biome
                 previousBiome.ConnectBiomeToRight(biome);
+                
+                // Only register if not limiting to first biome only
+                if (autoRegisterPlatforms && !onlyRegisterFirstBiome)
+                {
+                    biome.RegisterPlatforms();
+                }
             }
             
             previousBiome = biome;
@@ -378,6 +439,10 @@ public class BiomeChainBuilder : MonoBehaviour
         }
         
         instantiatedBiomes.Add(biome);
+        
+        // Note: Platform registration is handled by the caller (OnBiomeUnlocked)
+        // This allows more control over when platforms are registered
+        
         return biome;
     }
     

@@ -94,7 +94,7 @@ Transform:
   m_LocalScale: {x: 12, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6601037788619230312}
+  m_Father: {fileID: 5568983030799067650}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &9213747659561733413
 SpriteRenderer:
@@ -355,7 +355,7 @@ Transform:
   m_LocalScale: {x: 12, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6601037788619230312}
+  m_Father: {fileID: 5568983030799067650}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5772062285728901611
 SpriteRenderer:
@@ -636,7 +636,7 @@ Transform:
   m_LocalScale: {x: 22.5, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6601037788619230312}
+  m_Father: {fileID: 5568983030799067650}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &9205023875069312257
 SpriteRenderer:
@@ -898,6 +898,44 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7931761559874673651}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4196762730219522335
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5568983030799067650}
+  m_Layer: 0
+  m_Name: PLATFORMS
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5568983030799067650
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4196762730219522335}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7548117312064888462}
+  - {fileID: 5256973470811412019}
+  - {fileID: 6257359663218464193}
+  - {fileID: 8441461844735262006}
+  - {fileID: 5990126667911139468}
+  - {fileID: 7188344890707586335}
+  - {fileID: 6637716847088430185}
+  m_Father: {fileID: 6601037788619230312}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4230145468305872395
 GameObject:
@@ -1214,7 +1252,7 @@ Transform:
   m_LocalScale: {x: 24.000044, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6601037788619230312}
+  m_Father: {fileID: 5568983030799067650}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7209274264878003572
 SpriteRenderer:
@@ -1371,7 +1409,7 @@ Transform:
   m_LocalScale: {x: 7.0499997, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6601037788619230312}
+  m_Father: {fileID: 5568983030799067650}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7461419354577477427
 SpriteRenderer:
@@ -1667,7 +1705,7 @@ Transform:
   m_LocalScale: {x: 12, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6601037788619230312}
+  m_Father: {fileID: 5568983030799067650}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &773241143004539491
 SpriteRenderer:
@@ -1886,7 +1924,7 @@ Transform:
   m_LocalScale: {x: 7.0499997, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6601037788619230312}
+  m_Father: {fileID: 5568983030799067650}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4838070782386333855
 SpriteRenderer:
@@ -2149,13 +2187,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5141058275114328482}
-  - {fileID: 7548117312064888462}
-  - {fileID: 5256973470811412019}
-  - {fileID: 6257359663218464193}
-  - {fileID: 8441461844735262006}
-  - {fileID: 5990126667911139468}
-  - {fileID: 7188344890707586335}
-  - {fileID: 6637716847088430185}
+  - {fileID: 5568983030799067650}
   - {fileID: 781920444563765202}
   - {fileID: 5010758923650836743}
   - {fileID: 7931761559874673651}
@@ -2178,6 +2210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BiomeManager
   leftConnector: {fileID: 8853298056542036055}
   rightConnector: {fileID: 1037904795133383147}
+  platformsParent: {fileID: 5568983030799067650}
 --- !u!1 &9117132277072539262
 GameObject:
   m_ObjectHideFlags: 0
