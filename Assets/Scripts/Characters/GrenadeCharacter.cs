@@ -17,5 +17,15 @@ public class GrenadeCharacter : CharacterSO
         atk.GetComponent<RangeAttack>().SetData(attackPower, destroyOnTerrain);
         atk.GetComponent<RangeAttack>().SetImpactData(impactDamage, impactDuration);
         atk.GetComponent<Rigidbody2D>().AddForce(new Vector3(direction, 0.5f, 0f) * projectileForce, ForceMode2D.Impulse);
-    } 
+    }
+
+    public override void UpgradeT1()
+    {
+        return;
+    }
+
+    public override void UpgradeT2()
+    {
+        return;
+    }
 }

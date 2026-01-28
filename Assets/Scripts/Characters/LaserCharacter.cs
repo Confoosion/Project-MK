@@ -12,4 +12,14 @@ public class LaserCharacter : CharacterSO
         atk.GetComponent<DelayedAttack>().SetData(attackPower, attackDuration * 0.5f, attackDuration * 0.5f);
         atk.GetComponent<DamageOverTimeAttack>().SetData(0f, attackPower);
     }
+
+    public override void UpgradeT1()
+    {
+        return;
+    }
+
+    public override void UpgradeT2()
+    {
+        return;
+    }
 }

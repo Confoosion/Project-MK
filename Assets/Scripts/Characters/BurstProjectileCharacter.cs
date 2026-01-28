@@ -12,4 +12,14 @@ public class BurstProjectileCharacter : CharacterSO
         // This character should be the only one to "cheat"
         playerAttack.BurstAttack(attackObject, burstCount, burstInterval, bulletVelocity, attackPower);
     }
+
+    public override void UpgradeT1()
+    {
+        return;
+    }
+
+    public override void UpgradeT2()
+    {
+        return;
+    }
 }

@@ -16,4 +16,14 @@ public class MachineGunCharacter : CharacterSO
         float push = weaponKnockback * -direction;
         origin.position = new Vector2(origin.position.x + push, origin.position.y);
     }
+
+    public override void UpgradeT1()
+    {
+        return;
+    }
+
+    public override void UpgradeT2()
+    {
+        return;
+    }
 }

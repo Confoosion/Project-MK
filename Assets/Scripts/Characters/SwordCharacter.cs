@@ -9,4 +9,14 @@ public class SwordCharacter : CharacterSO
         GameObject atk = Instantiate(attackObject, origin.position + new Vector3(direction, 0f, 0f), Quaternion.identity, origin);
         atk.GetComponent<MeleeAttack>().SetData(attackPower, attackDuration);
     }
+
+    public override void UpgradeT1()
+    {
+        return;
+    }
+
+    public override void UpgradeT2()
+    {
+        return;
+    }
 }

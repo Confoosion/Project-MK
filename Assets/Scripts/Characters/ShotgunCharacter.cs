@@ -9,4 +9,14 @@ public class ShotgunCharacter : CharacterSO
         GameObject atk = Instantiate(attackObject, origin.position + new Vector3(direction * 0.5f, 0f, 0f), Quaternion.Euler(new Vector3(0f, 0f, (direction == -1) ? 0f : 180f)));
         atk.transform.GetChild(0).GetComponent<ParticleAttack>().SetData(attackPower, attackDuration, origin);
     }
+
+    public override void UpgradeT1()
+    {
+        return;
+    }
+
+    public override void UpgradeT2()
+    {
+        return;
+    }
 }

@@ -12,4 +12,14 @@ public class ChargerCharacter : CharacterSO
         // "cheated" and used PlayerAttack to access PlayerControl lol oh well it works and looks cool
         playerAttack.GetPlayerControl().ChargeMovement(attackDuration);
     }
+
+    public override void UpgradeT1()
+    {
+        return;
+    }
+
+    public override void UpgradeT2()
+    {
+        return;
+    }
 }

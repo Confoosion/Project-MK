@@ -16,4 +16,14 @@ public class GroundPoundCharacter : CharacterSO
             playerAttack.GetPlayerControl().GroundPoundMovement(groundPoundForce);
         }
     }
+
+    public override void UpgradeT1()
+    {
+        return;
+    }
+
+    public override void UpgradeT2()
+    {
+        return;
+    }
 }
