@@ -400,7 +400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ffef8f3a86d21f418c9ea0ceb3c07f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  character: {fileID: 11400000, guid: f8760caec6ca47d458cd353578531236, type: 2}
+  character: {fileID: 11400000, guid: 81f2d901ee694f748991b721b07f7202, type: 2}
   attackCD: 0
 --- !u!1 &130583398 stripped
 GameObject:
@@ -589,7 +589,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SpawnerManager
   normalEnemy: {fileID: 2645128278329073934, guid: 6bcf59c306d128740bf99549ff8e64c2, type: 3}
   heavyEnemy: {fileID: 3276176162762982235, guid: e740350b07f5f3648af8e53a300665cc, type: 3}
-  flyingEnemy: {fileID: 5509261435439994344, guid: 840f5b62c6ec840528c934979bf41bf4, type: 3}
   angryNormalEnemy: {fileID: 2645128278329073934, guid: 907b429749c6e3f4ab32eb44713d138f, type: 3}
   angryHeavyEnemy: {fileID: 3276176162762982235, guid: f993df8df0f8bb9409f66ce147eeac9f, type: 3}
   spawnersInWorld:
@@ -597,6 +596,7 @@ MonoBehaviour:
   - {fileID: 130583398}
   allEnemiesInWorld: []
   waveNumber: 0
+  baseWaveInterval: 5
   stopGame: 0
 --- !u!1 &409809583
 GameObject:

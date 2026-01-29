@@ -11,6 +11,8 @@ public class LevelManager : MonoBehaviour
 
     public TMP_Text muffinCountText;
 
+    public int difficulty = 1;
+
     void Awake()
     {
         if (Singleton == null)
@@ -33,5 +35,15 @@ public class LevelManager : MonoBehaviour
     {
         muffinCount++;
         muffinCountText.text = "Muffin: " + muffinCount;
+    }
+
+    public void increaseDifficulty()
+    {
+        difficulty++;
+    }
+
+    public void resetDifficulty()
+    {
+        difficulty = 1;
     }
 }

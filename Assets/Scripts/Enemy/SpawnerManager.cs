@@ -20,7 +20,6 @@ public class SpawnerManager : MonoBehaviour
     [SerializeField] public List<GameObject> spawnersInWorld;
     public List<GameObject> allEnemiesInWorld;
     [SerializeField] private int waveNumber = 1;
-    private int difficulty = 1;
     private int difficultyIncreaseValue = 7;
     private int spawnerIndex = 0;
     [SerializeField] float baseWaveInterval = 5.0f;
@@ -48,7 +47,7 @@ public class SpawnerManager : MonoBehaviour
         while (!stopGame)
         {
             populateSpawners(waveNumber);
-            yield return new WaitForSeconds(baseWaveInterval + difficulty);
+            yield return new WaitForSeconds(baseWaveInterval + LevelManager.Singleton.difficulty);
         }
 
     }
@@ -59,10 +58,10 @@ public class SpawnerManager : MonoBehaviour
 
         if (waveNumber % difficultyIncreaseValue == 0)
         {
-            difficulty++;
+            LevelManager.Singleton.increaseDifficulty();
         }
 
-        int randNum = GetRandomNumber(2, 4) + difficulty;
+        int randNum = GetRandomNumber(1, 3) + LevelManager.Singleton.difficulty;
         if (waveNumber <= 3)
         {
             for (int i = 0; i < randNum; i++)
@@ -103,10 +102,10 @@ public class SpawnerManager : MonoBehaviour
     private void updateSpawnerIndex()
     {
 
-        int newSpawnerIndex = GetRandomNumber(0, spawnersInWorld.Count);
+        int newSpawnerIndex = GetRandomNumber(0, spawnersInWorld.Count - 1);
         while (newSpawnerIndex == spawnerIndex)
         {
-            newSpawnerIndex = GetRandomNumber(0, spawnersInWorld.Count);
+            newSpawnerIndex = GetRandomNumber(0, spawnersInWorld.Count - 1);
         }
         spawnerIndex = newSpawnerIndex;
 
