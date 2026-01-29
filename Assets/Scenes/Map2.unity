@@ -521,6 +521,8 @@ GameObject:
   - component: {fileID: 380219108}
   - component: {fileID: 380219109}
   - component: {fileID: 380219110}
+  - component: {fileID: 380219111}
+  - component: {fileID: 380219112}
   m_Layer: 0
   m_Name: MANAGERS
   m_TagString: Untagged
@@ -569,8 +571,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96ea351a80a69f4da05395604cebb5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterManager
-  characterList: []
-  startingCharacter: {fileID: 0}
+  characterList:
+  - {fileID: 11400000, guid: 81f2d901ee694f748991b721b07f7202, type: 2}
+  - {fileID: 11400000, guid: 3346f4ca78f9d0d499f7a78c231d56a3, type: 2}
+  - {fileID: 11400000, guid: b208be4a04eec8746bc939eb7c58e924, type: 2}
+  startingCharacter: {fileID: 11400000, guid: 3346f4ca78f9d0d499f7a78c231d56a3, type: 2}
   characterTransform: {fileID: 409809584}
   characterModel: {fileID: 409809585}
   playerAttack: {fileID: 117719058}
@@ -598,6 +603,43 @@ MonoBehaviour:
   waveNumber: 0
   baseWaveInterval: 5
   stopGame: 0
+--- !u!114 &380219111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380219106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ddbe1c3b055fd94aa58e1c573b0bd7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MuffinSpawner
+  muffin: {fileID: 3183216167711710016, guid: 12b35574bf851e24085d31f255660c52, type: 3}
+  spawnOffset: 1.5
+  spawnHeight: 5
+  platforms:
+  - {fileID: 7534830908089360501}
+  - {fileID: 7534830908089360500}
+  - {fileID: 7534830908089360499}
+  - {fileID: 7534830908089360498}
+  - {fileID: 7534830908089360497}
+  - {fileID: 7534830908089360496}
+  - {fileID: 7534830908089360495}
+--- !u!114 &380219112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380219106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b02615a7065c745758b55eefc9e1d0a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelManager
+  muffinCountText: {fileID: 82327693}
+  difficulty: 1
 --- !u!1 &409809583
 GameObject:
   m_ObjectHideFlags: 0
@@ -1128,6 +1170,41 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44ba3f03c7db34c4e9fa14d4db52e57d, type: 3}
+--- !u!4 &7534830908089360495 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6637716847088430185, guid: 44ba3f03c7db34c4e9fa14d4db52e57d, type: 3}
+  m_PrefabInstance: {fileID: 7534830908089360494}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7534830908089360496 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7188344890707586335, guid: 44ba3f03c7db34c4e9fa14d4db52e57d, type: 3}
+  m_PrefabInstance: {fileID: 7534830908089360494}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7534830908089360497 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5990126667911139468, guid: 44ba3f03c7db34c4e9fa14d4db52e57d, type: 3}
+  m_PrefabInstance: {fileID: 7534830908089360494}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7534830908089360498 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8441461844735262006, guid: 44ba3f03c7db34c4e9fa14d4db52e57d, type: 3}
+  m_PrefabInstance: {fileID: 7534830908089360494}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7534830908089360499 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6257359663218464193, guid: 44ba3f03c7db34c4e9fa14d4db52e57d, type: 3}
+  m_PrefabInstance: {fileID: 7534830908089360494}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7534830908089360500 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5256973470811412019, guid: 44ba3f03c7db34c4e9fa14d4db52e57d, type: 3}
+  m_PrefabInstance: {fileID: 7534830908089360494}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7534830908089360501 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7548117312064888462, guid: 44ba3f03c7db34c4e9fa14d4db52e57d, type: 3}
+  m_PrefabInstance: {fileID: 7534830908089360494}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -15,6 +15,6 @@ MonoBehaviour:
   characterName: Swordsman
   characterModel: {fileID: 7482667652216324306, guid: 884ed7d49e4eb8941a062e4c40debba4, type: 3}
   attackObject: {fileID: 6760747043205599084, guid: 9f2dd8cbfe7806747916caf31b92ee89, type: 3}
-  attackPower: 35
+  attackPower: 50
   attackDuration: 1
   attackCD: 1

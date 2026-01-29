@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45a0e333b119e4b4aaebd7e07d7f5c94, type: 3}
   m_Name: AngryHeavyEnemy
   m_EditorClassIdentifier: Assembly-CSharp::EnemySO
-  health: 200
+  health: 100
   speed: 6
   isFlying: 0
   enemyModel: {fileID: 0}

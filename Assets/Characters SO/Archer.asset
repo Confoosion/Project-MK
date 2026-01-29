@@ -18,4 +18,4 @@ MonoBehaviour:
   attackPower: 35
   attackDuration: 0
   attackCD: 0.75
-  projectileForce: 100
+  projectileForce: 300

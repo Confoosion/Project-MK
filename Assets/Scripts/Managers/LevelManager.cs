@@ -23,6 +23,7 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         muffinCount = 0;
+        MuffinSpawner.Singleton.SpawnMuffin();
     }
 
     // Update is called once per frame
