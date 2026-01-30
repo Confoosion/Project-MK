@@ -22,7 +22,9 @@ public class LevelManager : MonoBehaviour
     }
     void Start()
     {
-        muffinCount = 0;
+        resetMuffinCount();
+        resetDifficulty();
+
         MuffinSpawner.Singleton.SpawnMuffin();
     }
 
@@ -35,6 +37,7 @@ public class LevelManager : MonoBehaviour
     public void addMuffin()
     {
         muffinCount++;
+        GameManager.Singleton.addMuffinCount();
         muffinCountText.text = "Muffin: " + muffinCount;
     }
 
@@ -46,5 +49,10 @@ public class LevelManager : MonoBehaviour
     public void resetDifficulty()
     {
         difficulty = 1;
+    }
+
+    public void resetMuffinCount()
+    {
+        muffinCount = 0;
     }
 }

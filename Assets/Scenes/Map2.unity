@@ -558,7 +558,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PerksManager
   playerControl: {fileID: 117719055}
-  playerAttack: {fileID: 0}
+  playerAttack: {fileID: 117719058}
 --- !u!114 &380219109
 MonoBehaviour:
   m_ObjectHideFlags: 0

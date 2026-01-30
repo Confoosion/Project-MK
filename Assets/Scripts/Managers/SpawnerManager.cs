@@ -26,7 +26,7 @@ public class SpawnerManager : MonoBehaviour
 
     private List<GameObject> specificSpawnList;
 
-    [SerializeField] private bool stopGame = false;
+    [SerializeField] public bool stopGame = false;
 
     void Awake()
     {
