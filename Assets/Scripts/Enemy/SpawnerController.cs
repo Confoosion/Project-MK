@@ -9,6 +9,7 @@ public class SpawnerController : MonoBehaviour
     public List<GameObject> spawnList;
     [Header("True = rightSide, false = leftSide")]
     [SerializeField] private bool spawnerSide; //true = spawner on the right, false = spawner on the left
+    [SerializeField] private bool middleSpawner;
     //When true, enemies should move to the left, when false enemies should move to the right
 
     private int spawnIndex = 0;
@@ -21,17 +22,31 @@ public class SpawnerController : MonoBehaviour
 
         while (spawnList.Count > 0)
         {
-            if (spawnerSide)
+            if (middleSpawner)
             {
-                spawnEnemiesIntoWorld(true);
-
-            }
+                float randomVal = Random.value;
+                if(randomVal > 0.5f)
+                {
+                    spawnEnemiesIntoWorld(true);
+                }
+                else
+                {
+                    spawnEnemiesIntoWorld(false);
+                }
+            } 
             else
             {
-                spawnEnemiesIntoWorld(false);
+                if (spawnerSide)
+                {
+                    spawnEnemiesIntoWorld(true);
 
+                }
+                else
+                {
+                    spawnEnemiesIntoWorld(false);
+
+                }
             }
-
         
 
             yield return new WaitForSeconds(0.7f);
