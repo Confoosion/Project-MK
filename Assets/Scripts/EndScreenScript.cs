@@ -48,6 +48,15 @@ public class EndScreenScript : MonoBehaviour
         GameManager.Singleton.resetMuffinCount();
     }
 
+    public void restartButton()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        GameManager.Singleton.disableEndScreen();
+
+        GameManager.Singleton.resetEnemyKills();
+        GameManager.Singleton.resetMuffinCount();
+    }
+
     public void updateText()
     {
         muffinsCollectedText.text = "Muffins Collected: " + GameManager.Singleton.getMuffinSum();

@@ -33,7 +33,7 @@ public class RangeAttack : MonoBehaviour
         }
         else if (destroyOnTerrain && collider.CompareTag("Terrain"))
         {
-            Debug.Log("HELLO??");
+            Debug.Log("Despawn attack");
             ProjectileDespawn();
         }
     }
