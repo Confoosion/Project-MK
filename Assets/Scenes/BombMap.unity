@@ -597,8 +597,10 @@ MonoBehaviour:
   angryNormalEnemy: {fileID: 2645128278329073934, guid: 907b429749c6e3f4ab32eb44713d138f, type: 3}
   angryHeavyEnemy: {fileID: 3276176162762982235, guid: f993df8df0f8bb9409f66ce147eeac9f, type: 3}
   spawnersInWorld:
-  - {fileID: 993160316}
   - {fileID: 130583398}
+  - {fileID: 615810018}
+  - {fileID: 1158777958}
+  oneAngrySpawner: {fileID: 993160316}
   allEnemiesInWorld: []
   waveNumber: 0
   baseWaveInterval: 5
@@ -909,7 +911,7 @@ Transform:
   m_GameObject: {fileID: 615810018}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.723831, y: -0.11, z: 0}
+  m_LocalPosition: {x: 16.723831, y: -0.34, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1055,6 +1057,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4251798342273459860, guid: 44ba3f03c7db34c4e9fa14d4db52e57d, type: 3}
   m_PrefabInstance: {fileID: 7534830908089360494}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1158777958 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9169701553254012090, guid: 44ba3f03c7db34c4e9fa14d4db52e57d, type: 3}
+  m_PrefabInstance: {fileID: 7534830908089360494}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1213236646
 GameObject:
   m_ObjectHideFlags: 0
@@ -1180,6 +1187,10 @@ PrefabInstance:
     - target: {fileID: 372114600766437802, guid: 44ba3f03c7db34c4e9fa14d4db52e57d, type: 3}
       propertyPath: m_LocalPosition.y
       value: 5.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 1490624436785382579, guid: 44ba3f03c7db34c4e9fa14d4db52e57d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -12.05
       objectReference: {fileID: 0}
     - target: {fileID: 4674412354052521612, guid: 44ba3f03c7db34c4e9fa14d4db52e57d, type: 3}
       propertyPath: middleSpawner
