@@ -622,7 +622,6 @@ MonoBehaviour:
   spawnHeight: 5
   platforms:
   - {fileID: 7534830908089360501}
-  - {fileID: 0}
   - {fileID: 7534830908089360499}
   - {fileID: 7534830908089360498}
   - {fileID: 7534830908089360497}
