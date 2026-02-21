@@ -1,52 +1,63 @@
+// MeleeAttack.cs
 using UnityEngine;
-using System.Collections;
 
-// DETECTS HITS!!! Use for melee/player-connected attacks
-public class MeleeAttack : MonoBehaviour
+public class MeleeAttack : AttackBase
 {
-    private float attackTime;
-    private float damage;
-    private SpriteRenderer spriteRenderer;
-    [SerializeField] private bool BOUNCE_ON_IT;
-    [SerializeField] private float bounceForce;
-
-    public void SetData(float dmg, float atkTime)
+    [SerializeField] private float attackRange = 2f;
+    [SerializeField] private float attackArc = 90f;
+    [SerializeField] private LayerMask enemyLayer;
+    [SerializeField] private GameObject slashEffectPrefab;
+    
+    private float critChance = 0f;
+    
+    public override void Execute(Transform origin)
     {
-        attackTime = atkTime;
-        damage = dmg;
-
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        if (attackTime > 0f)
-            StartCoroutine(AttackCountdown());
-    }
-
-    IEnumerator AttackCountdown()
-    {
-        yield return new WaitForSeconds(attackTime);
-        Destroy(this.gameObject);
-    }
-
-    void OnTriggerEnter2D(Collider2D collider)
-    {
-        if (spriteRenderer != null && spriteRenderer.enabled == false)
+        if (!CanAttack()) return;
+        
+        lastAttackTime = Time.time;
+        
+        // Spawn visual effect
+        if (slashEffectPrefab != null)
         {
-            return;
+            Instantiate(slashEffectPrefab, origin.position, origin.rotation);
         }
-
-        if (collider.CompareTag("Enemy"))
+        
+        // Detect enemies in arc
+        Collider[] hits = Physics.OverlapSphere(origin.position, attackRange, enemyLayer);
+        
+        foreach (var hit in hits)
         {
-            collider.gameObject.GetComponent<EnemyController>().enemyTakeDamage(damage);
-            Debug.Log("Hit enemy!");
-
-            if (BOUNCE_ON_IT)
-            {   // Bounces on enemies, so we will destroy this object and force the player up
-                transform.parent.GetComponent<PlayerControl>().BounceFromGroundPound(bounceForce);
-                Destroy(this.gameObject);
+            Vector3 directionToTarget = (hit.transform.position - origin.position).normalized;
+            float angle = Vector3.Angle(origin.forward, directionToTarget);
+            
+            if (angle < attackArc / 2f)
+            {
+                float damage = baseDamage;
+                
+                // Apply crit chance
+                if (Random.value < critChance)
+                {
+                    damage *= 2f;
+                }
+                
+                // var enemy = hit.GetComponent<IHealth>();
+                // enemy?.TakeDamage(damage);
             }
         }
-        else if (collider.CompareTag("Terrain") && BOUNCE_ON_IT)
-        {   // Should not be able to bounce on the ground, so we will destroy this object
-            Destroy(this.gameObject);
+    }
+    
+    protected override void ApplyUpgradeStats(int tier)
+    {
+        switch (tier)
+        {
+            case 1: // First upgrade
+                baseDamage *= 1.5f;
+                attackRange *= 1.3f;
+                break;
+            case 2: // Second upgrade
+                critChance = 0.25f; // 25% crit chance
+                baseDamage *= 1.4f;
+                break;
         }
     }
 }
