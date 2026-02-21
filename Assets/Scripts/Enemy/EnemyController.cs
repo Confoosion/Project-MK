@@ -12,11 +12,11 @@ public class EnemyController : MonoBehaviour
     {
         health = enemyType.health;
         SpawnerManager.Singleton.allEnemiesInWorld.Add(this.gameObject);
-        
+
     }
     void Update()
     {
-           
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -26,6 +26,7 @@ public class EnemyController : MonoBehaviour
         {
             Debug.Log("player should be dead");
             //Player should be dead
+            collision.gameObject.GetComponent<PlayerControl>().playerDeath();
         }
     }
 
@@ -38,16 +39,32 @@ public class EnemyController : MonoBehaviour
         if (health <= 0)
         {
             enemyDeath();
+            if (this.gameObject.name.Contains("AngryBasic"))
+            {
+                GameManager.Singleton.addAngryBasicEnemyKill();
+            }
+            else if (this.gameObject.name.Contains("AngryHeavy"))
+            {
+                GameManager.Singleton.addAngryHeavyEnemyKill();
+            }
+            else if (this.gameObject.name.Contains("Basic"))
+            {
+                GameManager.Singleton.addBasicEnemyKill();
+            }
+            else if (this.gameObject.name.Contains("Heavy"))
+            {
+                GameManager.Singleton.addHeavyEnemyKill();
+            }
         }
     }
 
 
     private void enemyDeath()
     {
-        
+
         Destroy(this.gameObject);
     }
 
 
-  
+
 }

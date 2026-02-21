@@ -55,12 +55,9 @@ public class MainMenuManager : MonoBehaviour
         if (mapNumber == 1)
         {
             //go to map 1
-        }
-        else if (mapNumber == 2)
-        {
-            //go to map 2
             SceneManager.LoadScene("Map2");
         }
+
 
 
 

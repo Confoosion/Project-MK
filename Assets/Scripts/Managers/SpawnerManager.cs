@@ -7,10 +7,9 @@ public class SpawnerManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public static SpawnerManager Singleton { get; private set; }
 
-[Header("Enemies")]
+    [Header("Enemies")]
     [SerializeField] private GameObject normalEnemy;
     [SerializeField] private GameObject heavyEnemy;
-    [SerializeField] private GameObject flyingEnemy;
     [SerializeField] private GameObject angryNormalEnemy;
     [SerializeField] private GameObject angryHeavyEnemy;
 
@@ -20,12 +19,14 @@ public class SpawnerManager : MonoBehaviour
 
     [SerializeField] public List<GameObject> spawnersInWorld;
     public List<GameObject> allEnemiesInWorld;
-    [SerializeField] private int waveNumber = 0;
+    [SerializeField] private int waveNumber = 1;
+    private int difficultyIncreaseValue = 7;
     private int spawnerIndex = 0;
+    [SerializeField] float baseWaveInterval = 5.0f;
 
     private List<GameObject> specificSpawnList;
 
-    [SerializeField]private bool stopGame = false;
+    [SerializeField] public bool stopGame = false;
 
     void Awake()
     {
@@ -38,7 +39,7 @@ public class SpawnerManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(startGame());
-        
+
     }
 
     IEnumerator startGame()
@@ -46,30 +47,30 @@ public class SpawnerManager : MonoBehaviour
         while (!stopGame)
         {
             populateSpawners(waveNumber);
-            yield return new WaitForSeconds(5.0f);
+            yield return new WaitForSeconds(baseWaveInterval + LevelManager.Singleton.difficulty);
         }
-        
+
     }
 
     private void populateSpawners(int wave)
     {
         specificSpawnList = spawnersInWorld[spawnerIndex].GetComponent<SpawnerController>().spawnList;
-        if (wave < 5)
+
+        if (waveNumber % difficultyIncreaseValue == 0)
         {
-            //add random number (2-4) of enemies (normal) into spawner
-            int randNum = GetRandomNumber(2, 4);
+            LevelManager.Singleton.increaseDifficulty();
+        }
+
+        int randNum = GetRandomNumber(1, 3) + LevelManager.Singleton.difficulty;
+        if (waveNumber <= 3)
+        {
             for (int i = 0; i < randNum; i++)
             {
                 specificSpawnList.Add(normalEnemy);
             }
-            //spawn normal enemies
         }
-
-        else if (wave >= 5 && wave < 10)
+        else
         {
-            //spawn normal and heavy enemies
-            //add random number (3 - 6) of enemies (normal / heavy) into spawner
-            int randNum = GetRandomNumber(3, 6);
             for (int i = 0; i < randNum; i++)
             {
                 float temp = Random.value;
@@ -84,33 +85,13 @@ public class SpawnerManager : MonoBehaviour
             }
         }
 
-        else if (wave >= 10)
-        {
-            //spawn normal, heavy, and flying
-            //add random number (5-9) of enemies (normal / heavy / flying) into spawner
-            int randNum = GetRandomNumber(3, 6);
-            for (int i = 0; i < randNum; i++)
-            {
-                float temp = Random.value;
-                if (temp <= 0.33f)
-                {
-                    specificSpawnList.Add(normalEnemy);
-                }
-                else if (temp > 0.33f && temp <= 0.66f)
-                {
-                    specificSpawnList.Add(heavyEnemy);
-                }
-                else
-                {
-                    specificSpawnList.Add(flyingEnemy);
-                }
-            }
-        }
+
+
 
         //update information
         spawnersInWorld[spawnerIndex].GetComponent<SpawnerController>().startSpawning();
 
-        
+
 
 
         updateSpawnerIndex();
@@ -120,11 +101,15 @@ public class SpawnerManager : MonoBehaviour
 
     private void updateSpawnerIndex()
     {
-        spawnerIndex++;
-        if (spawnerIndex >= spawnersInWorld.Count)
+
+        int newSpawnerIndex = GetRandomNumber(0, spawnersInWorld.Count - 1);
+        while (newSpawnerIndex == spawnerIndex)
         {
-            spawnerIndex = 0;
+            newSpawnerIndex = GetRandomNumber(0, spawnersInWorld.Count - 1);
         }
+        spawnerIndex = newSpawnerIndex;
+
+
     }
 
     private int GetRandomNumber(int min, int max)
@@ -146,12 +131,12 @@ public class SpawnerManager : MonoBehaviour
         }
 
     }
-    
+
     public void RemoveAllEnemies()
     {
-        foreach(GameObject enemy in allEnemiesInWorld)
+        foreach (GameObject enemy in allEnemiesInWorld)
         {
-            if(enemy != null)
+            if (enemy != null)
                 Destroy(enemy);
         }
         allEnemiesInWorld.Clear();

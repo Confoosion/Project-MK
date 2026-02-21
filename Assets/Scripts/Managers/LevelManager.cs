@@ -11,6 +11,8 @@ public class LevelManager : MonoBehaviour
 
     public TMP_Text muffinCountText;
 
+    public int difficulty = 1;
+
     void Awake()
     {
         if (Singleton == null)
@@ -20,7 +22,10 @@ public class LevelManager : MonoBehaviour
     }
     void Start()
     {
-        muffinCount = 0;
+        resetMuffinCount();
+        resetDifficulty();
+
+        MuffinSpawner.Singleton.SpawnMuffin();
     }
 
     // Update is called once per frame
@@ -32,6 +37,22 @@ public class LevelManager : MonoBehaviour
     public void addMuffin()
     {
         muffinCount++;
+        GameManager.Singleton.addMuffinCount();
         muffinCountText.text = "Muffin: " + muffinCount;
+    }
+
+    public void increaseDifficulty()
+    {
+        difficulty++;
+    }
+
+    public void resetDifficulty()
+    {
+        difficulty = 1;
+    }
+
+    public void resetMuffinCount()
+    {
+        muffinCount = 0;
     }
 }

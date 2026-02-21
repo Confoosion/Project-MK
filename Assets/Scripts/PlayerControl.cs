@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using TMPro;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -71,11 +72,12 @@ public class PlayerControl : MonoBehaviour
     {
         if (!movementLocked && !isCharging)
             rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
-        else
+        else if (movementLocked && isCharging)
         {
             horizontal = (isFacingRight) ? 1f : -1f;
             rb.linearVelocity = new Vector2(horizontal * chargeSpeed, rb.linearVelocity.y);
         }
+
     }
 
     private bool IsGrounded()
@@ -154,6 +156,7 @@ public class PlayerControl : MonoBehaviour
 
         //death animation
         //OPen some UI screen 
-        Destroy(this.gameObject);
+        GameManager.Singleton.enableEndScreen();
+        SpawnerManager.Singleton.stopGame = true;
     }
 }
