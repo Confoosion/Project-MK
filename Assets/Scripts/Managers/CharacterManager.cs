@@ -24,12 +24,13 @@ public class CharacterManager : MonoBehaviour
 
     void Start()
     {
+        UpdateCharacterList();
         if (startingCharacter != null)
         {
             BecomeNewCharacter(startingCharacter);
         }
 
-        UpdateCharacterList();
+
 
         Debug.Log("is this happening during a map change?");
     }
@@ -61,6 +62,14 @@ public class CharacterManager : MonoBehaviour
 
     public void UpdateCharacterList()
     {
-        characterList = GameManager.Singleton.characterListGM;
+        while (characterList.Count > 0)
+        {
+            characterList.RemoveAt(0);
+        }
+
+        for (int i = 0; i < GameManager.Singleton.characterListGM.Count; i++)
+        {
+            characterList.Add(GameManager.Singleton.characterListGM[i]);
+        }
     }
 }
