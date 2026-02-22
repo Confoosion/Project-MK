@@ -4,7 +4,8 @@ using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // should take care of everything that happens throughout the level. By level i mean a single map. Should 
+    //handle muffin count, difficulty. Depending on muffin count, it should tell game manager to swtich maps. 
     public static LevelManager Singleton { get; private set; }
 
     private int muffinCount;
@@ -39,6 +40,15 @@ public class LevelManager : MonoBehaviour
         muffinCount++;
         GameManager.Singleton.addMuffinCount();
         muffinCountText.text = "Muffin: " + muffinCount;
+
+
+        if (GameManager.Singleton.muffinsNeededToMoveOn == muffinCount)
+        {
+            resetDifficulty();
+            resetMuffinCount();
+            GameManager.Singleton.NextLevel();
+
+        }
     }
 
     public void increaseDifficulty()

@@ -50,18 +50,20 @@ public class MainMenuManager : MonoBehaviour
         //Map stuff
         //MAP 2 on index 1
         int mapNumber = mapDropdown.value + 1;
-        GameManager.mapNumber = mapNumber;
+        // GameManager.mapNumber = mapNumber;
 
         if (mapNumber == 1)
         {
             //go to map 1
-            SceneManager.LoadScene("Map2");
+            SceneManager.LoadScene("StarterMap");
         }
 
 
 
 
         //Perk stuff
+
+        /*
         int perkNumber = perkDropdown.value;
 
         if (perkNumber == 0)
@@ -96,7 +98,7 @@ public class MainMenuManager : MonoBehaviour
             GameManager.perk = speedPerk;
         }
 
-
+    */
 
     }
 

@@ -124,7 +124,7 @@ public class SpawnerManager : MonoBehaviour
 
     public void CreateAngryVariant(int num)
     {
-        if(oneAngrySpawner != null)
+        if (oneAngrySpawner == null)
         {
             if (num == 0)
             {
@@ -137,13 +137,13 @@ public class SpawnerManager : MonoBehaviour
         }
         else
         {
-            if(num == 0)
+            if (num == 0)
             {
                 oneAngrySpawner.GetComponent<SpawnerController>().spawnList.Add(angryNormalEnemy);
             }
-            else if(num == 1)
+            else if (num == 1)
             {
-                 oneAngrySpawner.GetComponent<SpawnerController>().spawnList.Add(angryHeavyEnemy);
+                oneAngrySpawner.GetComponent<SpawnerController>().spawnList.Add(angryHeavyEnemy);
 
             }
         }

@@ -50,7 +50,7 @@ public class EndScreenScript : MonoBehaviour
 
     public void restartButton()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("StarterMap");
         GameManager.Singleton.disableEndScreen();
 
         GameManager.Singleton.resetEnemyKills();

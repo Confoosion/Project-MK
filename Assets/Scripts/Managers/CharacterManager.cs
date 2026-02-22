@@ -6,7 +6,7 @@ public class CharacterManager : MonoBehaviour
 {
     public static CharacterManager Singleton { get; private set; }
 
-    [SerializeField] private List<CharacterSO> characterList = new();
+    [SerializeField] public List<CharacterSO> characterList = new();
     [SerializeField] private CharacterSO startingCharacter;
     public Transform characterTransform;
     [SerializeField] private SpriteRenderer characterModel;
@@ -28,6 +28,10 @@ public class CharacterManager : MonoBehaviour
         {
             BecomeNewCharacter(startingCharacter);
         }
+
+        UpdateCharacterList();
+
+        Debug.Log("is this happening during a map change?");
     }
 
     public void ChangeCharacter(Sprite newModel, float atkCD)
@@ -53,5 +57,10 @@ public class CharacterManager : MonoBehaviour
         }
 
         playerAttack.SetCharacter(currentCharacter);
+    }
+
+    public void UpdateCharacterList()
+    {
+        characterList = GameManager.Singleton.characterListGM;
     }
 }
