@@ -33,4 +33,14 @@ public class LandMineCharacter : CharacterSO
 
         atk.GetComponent<RangeAttack>().SetData(attackPower, destroyMineTouchingGround);
     }
+
+    public override void UpgradeT1()
+    {
+        return;
+    }
+
+    public override void UpgradeT2()
+    {
+        return;
+    }
 }

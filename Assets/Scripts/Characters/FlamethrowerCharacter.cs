@@ -14,4 +14,14 @@ public class FlamethrowerCharacter : CharacterSO
         }
         atk.GetComponent<ParticleAttack>().SetData(attackPower, attackDuration, origin);
     }
+
+    public override void UpgradeT1()
+    {
+        return;
+    }
+
+    public override void UpgradeT2()
+    {
+        return;
+    }
 }

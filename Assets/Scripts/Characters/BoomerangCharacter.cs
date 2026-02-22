@@ -12,4 +12,14 @@ public class BoomerangCharacter : CharacterSO
 
         atk.GetComponent<ProjectileAttack>().SetData(attackPower, boomerangSpeed, direction);
     }
+
+    public override void UpgradeT1()
+    {
+        return;
+    }
+
+    public override void UpgradeT2()
+    {
+        return;
+    }
 }
