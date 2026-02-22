@@ -52,6 +52,11 @@ public class PlayerAttack : MonoBehaviour
         canAttack = true;
     }
 
+    public void resetAttackCooldown()
+    {
+        canAttack = true;
+    }
+
     public void BurstAttack(GameObject atkObject, int count, float interval, float burstVelocity, float atkPower)
     {
         StartCoroutine(DoBurstAttack(atkObject, count, interval, burstVelocity, atkPower));

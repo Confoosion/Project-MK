@@ -10,7 +10,7 @@ public class CharacterManager : MonoBehaviour
     [SerializeField] private CharacterSO startingCharacter;
     public Transform characterTransform;
     [SerializeField] private SpriteRenderer characterModel;
-    [SerializeField] private PlayerAttack playerAttack;
+    [SerializeField] public PlayerAttack playerAttack;
 
     [SerializeField] private CharacterSO currentCharacter;
 
