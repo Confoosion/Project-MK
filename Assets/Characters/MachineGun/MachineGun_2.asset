@@ -18,6 +18,6 @@ MonoBehaviour:
   level: 2
   attackPower: 16
   attackDuration: 0
-  attackCD: 0.15
+  attackCD: 0.13
   bulletVelocity: 15
   weaponKnockback: 0.25

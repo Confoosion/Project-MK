@@ -6,12 +6,19 @@ public class MachineGunCharacter : CharacterSO
     [Header("Machine Gun Stats")]
     [SerializeField] private float bulletVelocity;
     [SerializeField] private float weaponKnockback;
+    [SerializeField] private float explosionDamage;
+    [SerializeField] private float explosionDuration;
 
     public override void UseWeapon(Transform origin, PlayerAttack playerAttack)
     {
         float direction = (origin.localScale.x == 1) ? -1f : 1f;
         GameObject atk = Instantiate(attackObject, origin.position + new Vector3(direction * 0.5f, 0f, 0f), Quaternion.Euler(new Vector3(0f, 0f, (direction == -1) ? 0f : 180f)));
         atk.GetComponent<ProjectileAttack>().SetData(attackPower, bulletVelocity, direction);
+        
+        if(atk.GetComponent<ProjectileAttack>().impactObject != null)
+        {
+            atk.GetComponent<ProjectileAttack>().SetImpactData(explosionDamage, explosionDuration);
+        }
 
         // Push player back
         float push = weaponKnockback * -direction;
