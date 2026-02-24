@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using Unity.Burst.CompilerServices;
@@ -9,13 +11,32 @@ public class GameManager : MonoBehaviour
     public static GameManager Singleton { get; private set; }
 
     [SerializeField] private GameObject endScreen;
-    [SerializeField] private List<int> normalMaps;
-    [SerializeField] private List<int> fantasyMaps;
-    [SerializeField] private List<int> allMaps;
-    public static int mapNumber;
-    public static PerkSO perk;
+    public int muffinsNeededToMoveOn = 5;
+
+    public List<CharacterSO> characterListGM;
+
+    // public static int mapNumber;
+    // public static PerkSO perk;
     private EndScreenScript endScreenScript;
 
+    [Header("Character SO")]
+    [SerializeField] public CharacterSO BlackHoleCharacter; //1
+    [SerializeField] public CharacterSO BoomerangCharacter; //2
+    [SerializeField] public CharacterSO BowlingBallCharacter; //3
+    [SerializeField] public CharacterSO BurstProjectileCharacter; //4
+    [SerializeField] public CharacterSO ChargerCharacter; //5
+    [SerializeField] public CharacterSO FlamethrowerCharacter; //6
+    [SerializeField] public CharacterSO FreezeRayCharacter; //7
+    [SerializeField] public CharacterSO GrenadeCharacter; //8
+    [SerializeField] public CharacterSO GroundPoundCharacter; //9
+    [SerializeField] public CharacterSO LandMineCharacter; //10
+    [SerializeField] public CharacterSO LaserGunCharacter; //11
+    [SerializeField] public CharacterSO NukeCharacter; //12
+    [SerializeField] public CharacterSO ShotgunCharacter; //13
+
+    private List<String> maps = new List<string> { "BoomerangMap", "GrenadeMap" };
+
+    // variables for the whole game. End of game stats
     private int muffinSum = 0;
     private int basicEnemiesKilled = 0;
     private int angryBasicEnemiesKilled = 0;
@@ -35,6 +56,42 @@ public class GameManager : MonoBehaviour
 
         endScreenScript = gameObject.GetComponent<EndScreenScript>();
     }
+
+
+
+
+
+    public void NextLevel()
+    {
+        int getNewMap = GetRandomNumber(0, maps.Count);
+        string mapString = maps[getNewMap];
+
+        muffinsNeededToMoveOn += 5;
+
+        switch (mapString)
+        {
+            case "BoomerangMap":
+                SceneManager.LoadScene("BoomerangMap");
+                characterListGM.Add(BoomerangCharacter);
+                maps.Remove("BoomerangMap");
+                break;
+
+            case "GrenadeMap":
+                SceneManager.LoadScene("BombMap");
+                characterListGM.Add(GrenadeCharacter);
+                maps.Remove("GrenadeMap");
+                break;
+
+
+        }
+
+    }
+
+
+
+
+
+    //end screen stats stuff
 
     public int getMuffinSum()
     {
@@ -112,7 +169,10 @@ public class GameManager : MonoBehaviour
     }
 
 
-
+    private int GetRandomNumber(int min, int max) //max exclusive
+    {
+        return UnityEngine.Random.Range(min, max);
+    }
 
 
 

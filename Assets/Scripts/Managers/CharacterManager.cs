@@ -6,11 +6,11 @@ public class CharacterManager : MonoBehaviour
 {
     public static CharacterManager Singleton { get; private set; }
 
-    [SerializeField] private List<CharacterSO> characterList = new();
+    [SerializeField] public List<CharacterSO> characterList = new();
     [SerializeField] private CharacterSO startingCharacter;
     public Transform characterTransform;
     [SerializeField] private SpriteRenderer characterModel;
-    [SerializeField] private PlayerAttack playerAttack;
+    [SerializeField] public PlayerAttack playerAttack;
 
     [SerializeField] private CharacterSO currentCharacter;
 
@@ -24,10 +24,15 @@ public class CharacterManager : MonoBehaviour
 
     void Start()
     {
+        UpdateCharacterList();
         if (startingCharacter != null)
         {
             BecomeNewCharacter(startingCharacter);
         }
+
+
+
+        Debug.Log("is this happening during a map change?");
     }
 
     public void ChangeCharacter(Sprite newModel, float atkCD)
@@ -53,5 +58,18 @@ public class CharacterManager : MonoBehaviour
         }
 
         playerAttack.SetCharacter(currentCharacter);
+    }
+
+    public void UpdateCharacterList()
+    {
+        while (characterList.Count > 0)
+        {
+            characterList.RemoveAt(0);
+        }
+
+        for (int i = 0; i < GameManager.Singleton.characterListGM.Count; i++)
+        {
+            characterList.Add(GameManager.Singleton.characterListGM[i]);
+        }
     }
 }

@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+using UnityEngine.InputSystem.Composites;
 
 public class SpawnerManager : MonoBehaviour
 {
@@ -14,10 +15,12 @@ public class SpawnerManager : MonoBehaviour
     [SerializeField] private GameObject angryHeavyEnemy;
 
 
+
     [Header("OtherVariables")]
 
 
     [SerializeField] public List<GameObject> spawnersInWorld;
+    [SerializeField] public GameObject oneAngrySpawner;
     public List<GameObject> allEnemiesInWorld;
     [SerializeField] private int waveNumber = 1;
     private int difficultyIncreaseValue = 7;
@@ -121,13 +124,28 @@ public class SpawnerManager : MonoBehaviour
 
     public void CreateAngryVariant(int num)
     {
-        if (num == 0)
+        if (oneAngrySpawner == null)
         {
-            specificSpawnList.Add(angryNormalEnemy);
+            if (num == 0)
+            {
+                specificSpawnList.Add(angryNormalEnemy);
+            }
+            else if (num == 1)
+            {
+                specificSpawnList.Add(angryHeavyEnemy);
+            }
         }
-        else if (num == 1)
+        else
         {
-            specificSpawnList.Add(angryHeavyEnemy);
+            if (num == 0)
+            {
+                oneAngrySpawner.GetComponent<SpawnerController>().spawnList.Add(angryNormalEnemy);
+            }
+            else if (num == 1)
+            {
+                oneAngrySpawner.GetComponent<SpawnerController>().spawnList.Add(angryHeavyEnemy);
+
+            }
         }
 
     }
