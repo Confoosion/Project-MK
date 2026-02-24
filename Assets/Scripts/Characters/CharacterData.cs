@@ -13,8 +13,6 @@ public class CharacterData : ScriptableObject
     public float baseHealth = 100f;
     public float baseMoveSpeed = 5f;
     
-    [Header("Attack")]
-    public AttackBase attackPrefab; // The attack component to add
     
     [Header("Upgrades")]
     public CharacterUpgrade tier1Upgrade;
