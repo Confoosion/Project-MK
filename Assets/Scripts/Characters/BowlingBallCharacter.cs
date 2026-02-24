@@ -4,6 +4,7 @@ using UnityEngine;
 public class BowlingBallCharacter : CharacterSO
 {
     private GameObject bowlingBall;
+    [Header("Bowling Ball Stats")]
     [SerializeField] private float rollingSpeed;
     [SerializeField] private int pierceAmount;
     
@@ -16,15 +17,5 @@ public class BowlingBallCharacter : CharacterSO
 
             bowlingBall.GetComponent<ProjectileAttack>().SetData(attackPower, rollingSpeed, direction, pierceAmount);
         }
-    }
-
-    public override void UpgradeT1()
-    {
-        return;
-    }
-
-    public override void UpgradeT2()
-    {
-        return;
     }
 }

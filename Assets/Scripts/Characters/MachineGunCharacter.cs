@@ -3,6 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Characters/Machine Gun Character")]
 public class MachineGunCharacter : CharacterSO
 {
+    [Header("Machine Gun Stats")]
     [SerializeField] private float bulletVelocity;
     [SerializeField] private float weaponKnockback;
 
@@ -15,15 +16,5 @@ public class MachineGunCharacter : CharacterSO
         // Push player back
         float push = weaponKnockback * -direction;
         origin.position = new Vector2(origin.position.x + push, origin.position.y);
-    }
-
-    public override void UpgradeT1()
-    {
-        return;
-    }
-
-    public override void UpgradeT2()
-    {
-        return;
     }
 }

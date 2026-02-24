@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public abstract class CharacterSO : ScriptableObject
 {
@@ -7,6 +8,7 @@ public abstract class CharacterSO : ScriptableObject
     public GameObject attackObject;
 
     [Header("Basic Stats")]
+    public int level = 1;
     public float attackPower;
     public float attackDuration;
     public float attackCD;
@@ -23,10 +25,4 @@ public abstract class CharacterSO : ScriptableObject
 
     // Use this function for coding attacks
     public abstract void UseWeapon(Transform origin, PlayerAttack playerAttack);
-
-    // Use this function for 1st Upgrade
-    public abstract void UpgradeT1();
-
-    // Use this function for 2nd Upgrade
-    public abstract void UpgradeT2();
 }

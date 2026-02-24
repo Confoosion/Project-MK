@@ -3,6 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Characters/Archer Character")]
 public class ArcherCharacter : CharacterSO
 {
+    [Header("Archer Stats")]
     [SerializeField] float projectileForce;
     private bool destroyArrowOnTerrain = true;
 
@@ -14,14 +15,4 @@ public class ArcherCharacter : CharacterSO
         atk.GetComponent<RangeAttack>().SetData(attackPower, destroyArrowOnTerrain);
         atk.GetComponent<Rigidbody2D>().AddForce(((direction == 1) ? Vector3.right : Vector3.left) * projectileForce, ForceMode2D.Impulse);
     } 
-
-    public override void UpgradeT1()
-    {
-        return;
-    }
-
-    public override void UpgradeT2()
-    {
-        return;
-    }
 }

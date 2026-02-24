@@ -3,6 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Characters/Black Hole Character")]
 public class BlackHoleCharacter : CharacterSO
 {
+    [Header("Blackhole Stats")]
     [SerializeField] private float bulletVelocity;
     public override void UseWeapon(Transform origin, PlayerAttack playerAttack)
     {
@@ -11,15 +12,5 @@ public class BlackHoleCharacter : CharacterSO
 
         atk.GetComponent<ProjectileAttack>().SetData(0f, bulletVelocity, direction);
         atk.GetComponent<ProjectileAttack>().SetImpactData(attackPower, attackDuration);
-    }
-
-    public override void UpgradeT1()
-    {
-        return;
-    }
-
-    public override void UpgradeT2()
-    {
-        return;
     }
 }
