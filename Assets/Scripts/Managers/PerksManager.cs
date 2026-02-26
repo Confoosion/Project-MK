@@ -28,7 +28,7 @@ public class PerksManager : MonoBehaviour
 
     public void IncreaseSpeed(float num)
     {
-        playerControl.speed += num;
+        playerControl.MAXSPEED += num;
     }
 
     public void IncreaseDamage(float dmgMultiplier)
