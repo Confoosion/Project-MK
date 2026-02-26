@@ -15,6 +15,7 @@ public class ProjectileAttack : MonoBehaviour
     [SerializeField] private bool physicsObject;
     [SerializeField] private int bounceAmount;
     private int pierceAmount;
+    private int pierces;
     public GameObject impactObject;
     private float impactDamage;
     private float impactDuration;
@@ -25,12 +26,14 @@ public class ProjectileAttack : MonoBehaviour
         layerMask = LayerMask.NameToLayer("Wall");
     }
 
-    public void SetData(float dmg, float vel, float direction, int piercing = 0)
+    public void SetData(float dmg, float vel, float direction, int piercing = 0, int bounces = 0)
     {
         damage = dmg;
         speed = vel;
         facing = direction;
         pierceAmount = piercing;
+        pierces = 0;
+        bounceAmount = bounces;
 
         rb = GetComponent<Rigidbody2D>();
     }
@@ -47,14 +50,13 @@ public class ProjectileAttack : MonoBehaviour
         {
             Debug.Log("Hit enemy!");
             collider.gameObject.GetComponent<EnemyController>().enemyTakeDamage(damage);
-            if (pierceAmount > 0)
+            if (pierceAmount > 0 && pierces < pierceAmount)
             {
-                pierceAmount--;
+                pierces++;
             }
             else if (canBounceOffEnemies && bounceAmount > 0)
             {
-                bounceAmount--;
-                facing *= -1f;
+                DoBounce();
             }
             else
             {
@@ -66,14 +68,20 @@ public class ProjectileAttack : MonoBehaviour
         {
             if (canBounceOffWalls && bounceAmount > 0 && collider.gameObject.layer == layerMask)
             {
-                bounceAmount--;
-                facing *= -1f;
+                DoBounce();
             }
             else if(!canRollOnGround)
             {
                 ProjectileDespawn();
             }
         }
+    }
+
+    void DoBounce()
+    {
+        bounceAmount--;
+        facing *= -1f;
+        pierces = 0;
     }
 
     void FixedUpdate()
