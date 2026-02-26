@@ -5275,9 +5275,9 @@ MonoBehaviour:
   endScreen: {fileID: 1582270464}
   muffinsNeededToMoveOn: 5
   characterListGM:
-  - {fileID: 11400000, guid: 81f2d901ee694f748991b721b07f7202, type: 2}
-  - {fileID: 11400000, guid: 3346f4ca78f9d0d499f7a78c231d56a3, type: 2}
-  - {fileID: 11400000, guid: b208be4a04eec8746bc939eb7c58e924, type: 2}
+  - {fileID: 11400000, guid: 1ff278db77721e14995af4221dc744d7, type: 2}
+  - {fileID: 11400000, guid: 89a37dad5845243f7911df194ca3f003, type: 2}
+  - {fileID: 11400000, guid: deaa1d0b792064b23ac600853020a905, type: 2}
   BlackHoleCharacter: {fileID: 11400000, guid: 4f59c4a6954aace4691e8a1b37b164c6, type: 2}
   BoomerangCharacter: {fileID: 11400000, guid: 7977f2754c7769146a5e2d35815a5524, type: 2}
   BowlingBallCharacter: {fileID: 11400000, guid: cf6b7ffe1b7f1594291ac5142ddf5a31, type: 2}

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 637255430174672351}
   - component: {fileID: 2417580598683878540}
   m_Layer: 0
-  m_Name: LandMine
+  m_Name: UpgradedLandMine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -226,4 +226,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6594d9331674e4abf59943e039fdd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RangeAttack
-  impactObject: {fileID: 0}
+  impactObject: {fileID: 4747574840651725223, guid: e6981119ff653684e8b38bac1354ed77, type: 3}

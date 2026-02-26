@@ -6,6 +6,7 @@ public class LandMineCharacter : CharacterSO
 {
     private bool destroyMineTouchingGround = false;
     private List<GameObject> landMines = new List<GameObject>();
+    private float explosionDuration = 0.2f;
     public override void UseWeapon(Transform origin, PlayerAttack playerAttack)
     {
         if (landMines.Count > 9)
@@ -32,5 +33,9 @@ public class LandMineCharacter : CharacterSO
         landMines.Insert(0, atk);
 
         atk.GetComponent<RangeAttack>().SetData(attackPower, destroyMineTouchingGround);
+        if(atk.GetComponent<RangeAttack>().impactObject != null)
+        {
+            atk.GetComponent<RangeAttack>().SetImpactData(attackPower, explosionDuration);
+        }
     }
 }
