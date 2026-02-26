@@ -21,3 +21,5 @@ MonoBehaviour:
   attackCD: 0.13
   bulletVelocity: 15
   weaponKnockback: 0.25
+  explosionDamage: 10
+  explosionDuration: 0.2

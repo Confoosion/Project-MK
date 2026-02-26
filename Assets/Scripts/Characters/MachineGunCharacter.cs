@@ -17,6 +17,7 @@ public class MachineGunCharacter : CharacterSO
         
         if(atk.GetComponent<ProjectileAttack>().impactObject != null)
         {
+            Debug.Log("Has impact object");
             atk.GetComponent<ProjectileAttack>().SetImpactData(explosionDamage, explosionDuration);
         }
 

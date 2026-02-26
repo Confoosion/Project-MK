@@ -94,7 +94,7 @@ public class ProjectileAttack : MonoBehaviour
             GameObject impact = Instantiate(impactObject, transform.position, Quaternion.identity);
             if (impact.GetComponent<MeleeAttack>())
             {
-                // impact.GetComponent<MeleeAttack>().SetData(impactDamage, impactDuration);
+                impact.GetComponent<MeleeAttack>().SetData(impactDamage, impactDuration);
             }
         }
     }
