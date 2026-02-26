@@ -22,3 +22,5 @@ MonoBehaviour:
   projectileForce: 10
   impactDamage: 35
   impactDuration: 1
+  burstCount: 2
+  burstRate: 0.15
