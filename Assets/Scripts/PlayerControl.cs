@@ -163,6 +163,8 @@ public class PlayerControl : MonoBehaviour
     public void GainSpeedBoost(float boost)
     {
         speed += boost;
+        if(speed > 15f)
+            speed = 15f;
     }
 
     public void playerDeath()
