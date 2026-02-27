@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5124e32c069384a83b95478b70323f, type: 3}
+  m_Name: Grenade_2
+  m_EditorClassIdentifier: Assembly-CSharp::GrenadeCharacter
+  characterName: Grenade Gary
+  characterModel: {fileID: 21300000, guid: 2f6f8c3519f694c219ce0dbf4d7cc9b8, type: 3}
+  attackObject: {fileID: 6843444029887957941, guid: c5abd31384c56134a860df440affc955, type: 3}
+  level: 2
+  attackPower: 15
+  attackDuration: 0
+  attackCD: 1
+  projectileForce: 10
+  impactDamage: 35
+  impactDuration: 1

@@ -3,6 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Characters/Ground Pound Character")]
 public class GroundPoundCharacter : CharacterSO
 {
+    [Header("Ground Pound Stats")]
     [SerializeField] private float groundPoundForce;
     private GameObject groundPoundAttack;
 
@@ -11,19 +12,9 @@ public class GroundPoundCharacter : CharacterSO
         if (groundPoundAttack == null)
         {
             groundPoundAttack = Instantiate(attackObject, origin.position + new Vector3(0f, -0.5f, 0f), Quaternion.identity, origin);
-            groundPoundAttack.GetComponent<MeleeAttack>().SetData(attackPower, attackDuration);
+            // groundPoundAttack.GetComponent<MeleeAttack>().SetData(attackPower, attackDuration);
 
             playerAttack.GetPlayerControl().GroundPoundMovement(groundPoundForce);
         }
-    }
-
-    public override void UpgradeT1()
-    {
-        return;
-    }
-
-    public override void UpgradeT2()
-    {
-        return;
     }
 }
