@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public CharacterSO NukeCharacter; //12
     [SerializeField] public CharacterSO ShotgunCharacter; //13
 
-    private List<String> maps = new List<string> { "BoomerangMap", "GrenadeMap" };
+    private List<String> maps = new List<string> { "BoomerangMap", "GrenadeMap", "LandMineMap" };
 
     // variables for the whole game. End of game stats
     private int muffinSum = 0;
@@ -82,6 +82,11 @@ public class GameManager : MonoBehaviour
                 maps.Remove("GrenadeMap");
                 break;
 
+            case "LandMineMap":
+                SceneManager.LoadScene("LandMineMap");
+                characterListGM.Add(LandMineCharacter);
+                maps.Remove("LandMineMap");
+                break;
 
         }
 
