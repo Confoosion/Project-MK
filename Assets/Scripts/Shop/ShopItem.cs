@@ -2,9 +2,11 @@ using UnityEngine;
 
 public class ShopItem : ScriptableObject
 {
+    public string itemName;
+    public Sprite itemIcon;
     public int price;
 
-    public void BuyItem()
+    public virtual void BuyItem()
     {
         // Buy item and deduct price from wherever currency is being stored
         return;

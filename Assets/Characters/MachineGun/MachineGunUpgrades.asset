@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f29125791da8e6a4c9b543489edcc50d, type: 3}
+  m_Name: MachineGunUpgrades
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterSetSO
+  itemName: Gunner
+  price: 0
+  upgrades:
+  - character: {fileID: 11400000, guid: b208be4a04eec8746bc939eb7c58e924, type: 2}
+    upgradePrice: 0
+  - character: {fileID: 11400000, guid: 5619911b2f9324b5894db2724ee8f600, type: 2}
+    upgradePrice: 1
+  - character: {fileID: 11400000, guid: 5bc9b2bd2300f4a5e860843001f6f2a0, type: 2}
+    upgradePrice: 2
+  currentLevel: 1
