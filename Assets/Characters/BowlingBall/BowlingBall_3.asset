@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BowlingBallCharacter
   characterName: Bowler Bob
   characterModel: {fileID: 7482667652216324306, guid: 884ed7d49e4eb8941a062e4c40debba4, type: 3}
-  attackObject: {fileID: 5376833307798343989, guid: a1d03efe9955f8742a4ed5a51c6788cc, type: 3}
+  attackObject: {fileID: 5376833307798343989, guid: 43df7767106aeb742a9d5be84134c90d, type: 3}
   level: 3
   attackPower: 50
   attackDuration: 0

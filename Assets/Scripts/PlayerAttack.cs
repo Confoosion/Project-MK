@@ -57,18 +57,47 @@ public class PlayerAttack : MonoBehaviour
         canAttack = true;
     }
 
-    public void BurstAttack(GameObject atkObject, int count, float interval, float burstVelocity, float atkPower)
+    // public void BurstAttack(GameObject atkObject, int count, float interval, float burstVelocity, float atkPower)
+    // {
+    //     StartCoroutine(DoBurstAttack(atkObject, count, interval, burstVelocity, atkPower));
+    // }
+
+    // IEnumerator DoBurstAttack(GameObject atkObject, int count, float interval, float burstVelocity, float atkPower)
+    // {
+    //     for (int i = 0; i < count; i++)
+    //     {
+    //         float direction = (transform.localScale.x == 1) ? -1f : 1f;
+    //         GameObject atk = Instantiate(atkObject, transform.position + new Vector3(direction * 0.5f, 0f, 0f), Quaternion.Euler(new Vector3(0f, 0f, (direction == -1) ? 0f : 180f)));
+    //         atk.GetComponent<ProjectileAttack>().SetData(atkPower, burstVelocity, direction);
+
+    //         yield return new WaitForSeconds(interval);
+    //     }
+    // }
+
+    public void BurstAttack(GameObject atkObject, int count, float interval, float burstVelocity, float atkPower, Vector2 angleForce = default, bool destroyOnTerrain = false, float impactDamage = 0f, float impactDuration = 0f)
     {
-        StartCoroutine(DoBurstAttack(atkObject, count, interval, burstVelocity, atkPower));
+        StartCoroutine(DoBurstAttack(atkObject, count, interval, burstVelocity, atkPower, angleForce, destroyOnTerrain, impactDamage, impactDuration));
     }
 
-    IEnumerator DoBurstAttack(GameObject atkObject, int count, float interval, float burstVelocity, float atkPower)
+    IEnumerator DoBurstAttack(GameObject atkObject, int count, float interval, float burstVelocity, float atkPower, Vector2 angleForce, bool destroyOnTerrain, float impactDamage, float impactDuration)
     {
         for (int i = 0; i < count; i++)
         {
             float direction = (transform.localScale.x == 1) ? -1f : 1f;
             GameObject atk = Instantiate(atkObject, transform.position + new Vector3(direction * 0.5f, 0f, 0f), Quaternion.Euler(new Vector3(0f, 0f, (direction == -1) ? 0f : 180f)));
-            atk.GetComponent<ProjectileAttack>().SetData(atkPower, burstVelocity, direction);
+
+            if (angleForce != Vector2.zero)
+            {
+                atk.GetComponent<RangeAttack>().SetData(atkPower, destroyOnTerrain);
+                atk.GetComponent<RangeAttack>().SetImpactData(impactDamage, impactDuration);
+
+                Vector2 directedForce = new Vector2(angleForce.x * direction, angleForce.y);
+                atk.GetComponent<Rigidbody2D>().AddForce(directedForce, ForceMode2D.Impulse);
+            }
+            else
+            {
+                atk.GetComponent<ProjectileAttack>().SetData(atkPower, burstVelocity, direction);
+            }
 
             yield return new WaitForSeconds(interval);
         }

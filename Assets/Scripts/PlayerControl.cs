@@ -5,7 +5,8 @@ using TMPro;
 public class PlayerControl : MonoBehaviour
 {
     [Header("Player Stats")]
-    public float speed;
+    public float MAXSPEED;
+    [SerializeField] private float speed;
     public float chargeSpeed;
     public int extraJumps;
     [SerializeField] private float jumpPower;
@@ -33,6 +34,7 @@ public class PlayerControl : MonoBehaviour
             perk.ApplyPerk();
         }
 
+        speed = MAXSPEED;
         ResetJumps();
     }
 
@@ -71,7 +73,16 @@ public class PlayerControl : MonoBehaviour
     void FixedUpdate()
     {
         if (!movementLocked && !isCharging)
+        {
+            if(speed > MAXSPEED)
+            {
+                speed -= Time.deltaTime * 1.5f;
+                if(speed < MAXSPEED)
+                    speed = MAXSPEED;
+            }
+
             rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
+        }
         else if (movementLocked && isCharging)
         {
             horizontal = (isFacingRight) ? 1f : -1f;
@@ -147,6 +158,13 @@ public class PlayerControl : MonoBehaviour
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
         rb.AddForce(Vector2.up * bounceForce, ForceMode2D.Impulse);
         jumpLocked = false;
+    }
+
+    public void GainSpeedBoost(float boost)
+    {
+        speed += boost;
+        if(speed > 15f)
+            speed = 15f;
     }
 
     public void playerDeath()

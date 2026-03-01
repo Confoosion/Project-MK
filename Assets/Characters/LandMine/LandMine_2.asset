@@ -18,4 +18,4 @@ MonoBehaviour:
   level: 2
   attackPower: 100
   attackDuration: 0
-  attackCD: 1
+  attackCD: 0.5

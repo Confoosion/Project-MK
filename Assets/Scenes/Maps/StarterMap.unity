@@ -306,7 +306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a831f702dccacf428a7b8b55cddfb02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerControl
-  speed: 8
+  MAXSPEED: 8
   chargeSpeed: 15
   extraJumps: 0
   jumpPower: 20

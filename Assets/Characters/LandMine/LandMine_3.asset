@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LandMineCharacter
   characterName: Land Mine guy
   characterModel: {fileID: 7482667652216324306, guid: 884ed7d49e4eb8941a062e4c40debba4, type: 3}
-  attackObject: {fileID: 2791287070309783046, guid: c8bfc82e9b65b4141acf48eb63170cbb, type: 3}
+  attackObject: {fileID: 2791287070309783046, guid: d0794c1dbf0e2e941b0ffdf1da4dcc0c, type: 3}
   level: 3
   attackPower: 100
   attackDuration: 0
-  attackCD: 1
+  attackCD: 0.5

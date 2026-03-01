@@ -16,9 +16,11 @@ MonoBehaviour:
   characterModel: {fileID: 21300000, guid: 2f6f8c3519f694c219ce0dbf4d7cc9b8, type: 3}
   attackObject: {fileID: 6843444029887957941, guid: c5abd31384c56134a860df440affc955, type: 3}
   level: 3
-  attackPower: 15
+  attackPower: 20
   attackDuration: 0
   attackCD: 1
   projectileForce: 10
-  impactDamage: 35
+  impactDamage: 50
   impactDuration: 1
+  burstCount: 2
+  burstRate: 0.15

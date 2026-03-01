@@ -20,3 +20,5 @@ MonoBehaviour:
   attackDuration: 0
   attackCD: 3
   boomerangSpeed: 12
+  boomerangBounces: 4
+  boomerangPierces: 3

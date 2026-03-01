@@ -18,5 +18,7 @@ MonoBehaviour:
   level: 3
   attackPower: 50
   attackDuration: 0
-  attackCD: 0.6
+  attackCD: 0.45
   projectileForce: 250
+  shootExtraArrows: 1
+  arrowOffset: 20

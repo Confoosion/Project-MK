@@ -21,4 +21,4 @@ MonoBehaviour:
   attackCD: 1.3
   burstCount: 3
   burstInterval: 0.2
-  bulletVelocity: 12
+  bulletVelocity: 10
