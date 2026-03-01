@@ -173,7 +173,7 @@ TextureImporter:
       - {x: -128, y: 4}
       - {x: -80, y: -76}
       - {x: 72, y: -76}
-      - {x: 72, y: 74}
+      - {x: 72, y: 75}
     customData: 
     physicsShape:
     - - {x: -128, y: 128}
