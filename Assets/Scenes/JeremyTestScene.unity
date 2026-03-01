@@ -297,10 +297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96ea351a80a69f4da05395604cebb5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterManager
-  characterList:
-  - {fileID: 11400000, guid: 81f2d901ee694f748991b721b07f7202, type: 2}
-  - {fileID: 11400000, guid: b208be4a04eec8746bc939eb7c58e924, type: 2}
-  startingCharacter: {fileID: 11400000, guid: 3346f4ca78f9d0d499f7a78c231d56a3, type: 2}
+  startingCharacter: {fileID: 11400000, guid: 76bfdc0b8503b486ea3b793f5e9e9357, type: 2}
   characterTransform: {fileID: 2118088992}
   characterModel: {fileID: 2118088993}
   playerAttack: {fileID: 202594073}
@@ -835,9 +832,9 @@ MonoBehaviour:
   endScreen: {fileID: 1076661527}
   muffinsNeededToMoveOn: 5
   characterListGM:
-  - {fileID: 11400000, guid: 81f2d901ee694f748991b721b07f7202, type: 2}
-  - {fileID: 11400000, guid: 3346f4ca78f9d0d499f7a78c231d56a3, type: 2}
-  - {fileID: 11400000, guid: b208be4a04eec8746bc939eb7c58e924, type: 2}
+  - {fileID: 11400000, guid: 44c5345bd3775493bbabea5a4f157cb1, type: 2}
+  - {fileID: 11400000, guid: 76bfdc0b8503b486ea3b793f5e9e9357, type: 2}
+  - {fileID: 11400000, guid: 5bc9b2bd2300f4a5e860843001f6f2a0, type: 2}
   BlackHoleCharacter: {fileID: 11400000, guid: 4f59c4a6954aace4691e8a1b37b164c6, type: 2}
   BoomerangCharacter: {fileID: 11400000, guid: 7977f2754c7769146a5e2d35815a5524, type: 2}
   BowlingBallCharacter: {fileID: 11400000, guid: cf6b7ffe1b7f1594291ac5142ddf5a31, type: 2}

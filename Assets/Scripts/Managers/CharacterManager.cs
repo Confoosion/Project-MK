@@ -6,7 +6,7 @@ public class CharacterManager : MonoBehaviour
 {
     public static CharacterManager Singleton { get; private set; }
 
-    [SerializeField] public List<CharacterSO> characterList = new();
+    private List<CharacterSO> characterList = new();
     [SerializeField] private CharacterSO startingCharacter;
     public Transform characterTransform;
     [SerializeField] private SpriteRenderer characterModel;
