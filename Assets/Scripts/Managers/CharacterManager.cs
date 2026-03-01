@@ -1,13 +1,14 @@
-using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CharacterManager : MonoBehaviour
 {
     public static CharacterManager Singleton { get; private set; }
 
     private List<CharacterSO> characterList = new();
-    [SerializeField] private CharacterSO startingCharacter;
+    [SerializeField] public CharacterSO startingCharacter;
     public Transform characterTransform;
     [SerializeField] private SpriteRenderer characterModel;
     [SerializeField] public PlayerAttack playerAttack;
@@ -19,6 +20,12 @@ public class CharacterManager : MonoBehaviour
         if (Singleton == null)
         {
             Singleton = this;
+            DontDestroyOnLoad(gameObject);
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -29,10 +36,6 @@ public class CharacterManager : MonoBehaviour
         {
             BecomeNewCharacter(startingCharacter);
         }
-
-
-
-        Debug.Log("is this happening during a map change?");
     }
 
     public void ChangeCharacter(Sprite newModel, float atkCD)
@@ -57,7 +60,7 @@ public class CharacterManager : MonoBehaviour
             characterList.Remove(newCharacter);
         }
 
-        playerAttack.SetCharacter(currentCharacter);
+        //playerAttack.SetCharacter(currentCharacter);
     }
 
     public void UpdateCharacterList()
@@ -70,6 +73,17 @@ public class CharacterManager : MonoBehaviour
         for (int i = 0; i < GameManager.Singleton.characterListGM.Count; i++)
         {
             characterList.Add(GameManager.Singleton.characterListGM[i]);
+        }
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name != "MainMenu")
+        {
+            GameObject playerRef = GameManager.Singleton.playerObject;
+            characterTransform = playerRef.transform;
+            characterModel = playerRef.GetComponentInChildren<SpriteRenderer>();
+            playerAttack = playerRef.GetComponent<PlayerAttack>();
         }
     }
 }

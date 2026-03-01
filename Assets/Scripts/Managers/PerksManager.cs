@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PerksManager : MonoBehaviour
 {
@@ -14,11 +15,18 @@ public class PerksManager : MonoBehaviour
         if (Singleton == null)
         {
             Singleton = this;
+            DontDestroyOnLoad(gameObject);
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
-        if (playerAttack.GetCharacter() != null)
+        else
         {
-            character = playerAttack.GetCharacter();
+            Destroy(gameObject);
         }
+
+        //if (playerAttack.GetCharacter() != null)
+        //{
+        //    character = playerAttack.GetCharacter();
+        //}
     }
 
     public void AddJumps(int num)
@@ -36,6 +44,15 @@ public class PerksManager : MonoBehaviour
         if (character)
         {
             character.attackPower *= dmgMultiplier;
+        }
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name != "MainMenu")
+        {
+            playerAttack = GameManager.Singleton.playerObject.GetComponent<PlayerAttack>();
+            playerControl = GameManager.Singleton.playerObject.GetComponent<PlayerControl>();
         }
     }
 }

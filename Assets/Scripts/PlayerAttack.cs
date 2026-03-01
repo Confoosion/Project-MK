@@ -1,5 +1,7 @@
-using UnityEngine;
 using System.Collections;
+using Unity.VisualScripting;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -10,8 +12,24 @@ public class PlayerAttack : MonoBehaviour
     private bool canAttack = true;
     private int nukeUses;
 
+    private static PlayerAttack Singleton;
+
+    private void Awake()
+    {
+        if (Singleton == null)
+        {
+            Singleton = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     void Start()
     {
+        character = CharacterManager.Singleton.startingCharacter;
         character.EquipCharacter();
     }
 

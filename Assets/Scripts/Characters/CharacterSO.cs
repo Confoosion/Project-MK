@@ -19,7 +19,7 @@ public abstract class CharacterSO : ScriptableObject
         {
             return;
         }
-
+        Debug.Log("equip");
         CharacterManager.Singleton.ChangeCharacter(characterModel, attackCD);
     }
 

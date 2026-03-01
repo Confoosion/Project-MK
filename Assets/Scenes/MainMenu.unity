@@ -2890,6 +2890,70 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 905881445}
   m_CullTransparentMesh: 1
+--- !u!1 &920931501
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 920931504}
+  - component: {fileID: 920931503}
+  - component: {fileID: 920931502}
+  m_Layer: 0
+  m_Name: DDOL_Managers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &920931502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920931501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d96ea351a80a69f4da05395604cebb5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterManager
+  startingCharacter: {fileID: 11400000, guid: 76bfdc0b8503b486ea3b793f5e9e9357, type: 2}
+  characterTransform: {fileID: 0}
+  characterModel: {fileID: 0}
+  playerAttack: {fileID: 0}
+  currentCharacter: {fileID: 0}
+--- !u!114 &920931503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920931501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f184aabf6a67d549b491609d3ddcfe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PerksManager
+  playerControl: {fileID: 0}
+  playerAttack: {fileID: 0}
+--- !u!4 &920931504
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920931501}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.72586, y: 0.25358, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &973865149
 GameObject:
   m_ObjectHideFlags: 0
@@ -5272,6 +5336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccb0d27b25a563f448d80c22fa725022, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  playerObject: {fileID: 3951368733954264982, guid: 5eebe7014e9e7dc42818829ec7e1b56a, type: 3}
   endScreen: {fileID: 1582270464}
   muffinsNeededToMoveOn: 5
   characterListGM:
@@ -6012,3 +6077,4 @@ SceneRoots:
   - {fileID: 1857784502}
   - {fileID: 231899840}
   - {fileID: 844679667}
+  - {fileID: 920931504}
