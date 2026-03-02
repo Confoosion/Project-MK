@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Player")]
     [SerializeField] public GameObject playerObject;
+    public GameObject spawnedPlayer {get; private set;}
 
     [SerializeField] private GameObject endScreen;
     public int muffinsNeededToMoveOn = 5;
@@ -101,7 +102,9 @@ public class GameManager : MonoBehaviour
         {
             if (!GameObject.FindGameObjectWithTag("Player"))
             {
-                Instantiate(playerObject);
+                spawnedPlayer = Instantiate(playerObject);
+                CharacterManager.Singleton.characterTransform = spawnedPlayer.transform;
+                CharacterManager.Singleton.characterModel = spawnedPlayer.GetComponentInChildren<SpriteRenderer>();
             }
             
 

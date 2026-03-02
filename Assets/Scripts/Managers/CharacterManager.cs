@@ -10,7 +10,7 @@ public class CharacterManager : MonoBehaviour
     private List<CharacterSO> characterList = new();
     [SerializeField] public CharacterSO startingCharacter;
     public Transform characterTransform;
-    [SerializeField] private SpriteRenderer characterModel;
+    [SerializeField] public SpriteRenderer characterModel;
     //[SerializeField] public PlayerAttack playerAttack;
 
     [SerializeField] private CharacterSO currentCharacter;
@@ -78,10 +78,6 @@ public class CharacterManager : MonoBehaviour
     {
         if (scene.name != "MainMenu")
         {
-            GameObject playerRef = GameManager.Singleton.playerObject;
-            characterTransform = playerRef.transform;
-            characterModel = playerRef.GetComponentInChildren<SpriteRenderer>();
-
             if (startingCharacter != null)
             {
                 BecomeNewCharacter(startingCharacter);
