@@ -18,13 +18,13 @@ public class AngryEnemyConverter : MonoBehaviour
     {
         if (collider.gameObject.name.Contains("Basic"))
         {
-            Debug.Log("basic enemy fell");
+            //Debug.Log("basic enemy fell");
             Destroy(collider.gameObject);
             SpawnerManager.Singleton.CreateAngryVariant(0);
         }
         else if (collider.gameObject.name.Contains("Heavy"))
         {
-            Debug.Log("Heavy enemy fell");
+            //Debug.Log("Heavy enemy fell");
             Destroy(collider.gameObject);
             SpawnerManager.Singleton.CreateAngryVariant(1);
 

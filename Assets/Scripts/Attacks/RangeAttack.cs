@@ -23,24 +23,23 @@ public class RangeAttack : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log("COLLIDED WITH " + collider.transform.tag);
         if (collider.CompareTag("Enemy"))
         {
-            Debug.Log("Hit enemy!");
+            //Debug.Log("Hit enemy!");
             collider.gameObject.GetComponent<EnemyController>().enemyTakeDamage(damage);
 
             ProjectileDespawn();
         }
         else if (destroyOnTerrain && collider.CompareTag("Terrain"))
         {
-            Debug.Log("Despawn attack");
+            //Debug.Log("Despawn attack");
             ProjectileDespawn();
         }
     }
 
     private void ProjectileDespawn()
     {
-        Debug.Log("Collided");
+        //Debug.Log("Collided");
         SpawnImpact();
         Destroy(this.gameObject);
     }

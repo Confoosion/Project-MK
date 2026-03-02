@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Maps/BombMap.unity
     guid: 0afce6f38674440b386d6422b9ba68f1
+  - enabled: 1
+    path: Assets/Scenes/Maps/LandMineMap.unity
+    guid: c1b69f23128e34878bd72047c714e034
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

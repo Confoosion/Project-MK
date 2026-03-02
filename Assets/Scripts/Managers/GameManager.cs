@@ -10,6 +10,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Singleton { get; private set; }
 
+    [Header("Player")]
+    [SerializeField] public GameObject playerObject;
+    public GameObject spawnedPlayer {get; private set;}
+
     [SerializeField] private GameObject endScreen;
     public int muffinsNeededToMoveOn = 5;
 
@@ -34,7 +38,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public CharacterSO NukeCharacter; //12
     [SerializeField] public CharacterSO ShotgunCharacter; //13
 
-    private List<String> maps = new List<string> { "BoomerangMap", "GrenadeMap", "LandMineMap" };
+    private List<String> maps = new List<string> { "BoomerangMap", "BombMap", "LandMineMap" };
 
     // variables for the whole game. End of game stats
     private int muffinSum = 0;
@@ -43,30 +47,30 @@ public class GameManager : MonoBehaviour
     private int angryHeavyEnemiesKilled = 0;
     private int heavyEnemiesKilled = 0;
 
+
     void Awake()
     {
-        if (Singleton != null && Singleton != this)
+        if (Singleton == null)
         {
-            Destroy(this.gameObject);
-            return;
+            Singleton = this;
+            DontDestroyOnLoad(gameObject);
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
-
-        Singleton = this;
-        DontDestroyOnLoad(this.gameObject);
+        else
+        {
+            Destroy(gameObject);
+        }
 
         endScreenScript = gameObject.GetComponent<EndScreenScript>();
     }
-
-
-
 
 
     public void NextLevel()
     {
         int getNewMap = GetRandomNumber(0, maps.Count);
         string mapString = maps[getNewMap];
-
-        muffinsNeededToMoveOn += 5;
+        
+        muffinsNeededToMoveOn += muffinsNeededToMoveOn;
 
         switch (mapString)
         {
@@ -76,10 +80,10 @@ public class GameManager : MonoBehaviour
                 maps.Remove("BoomerangMap");
                 break;
 
-            case "GrenadeMap":
+            case "BombMap":
                 SceneManager.LoadScene("BombMap");
                 characterListGM.Add(GrenadeCharacter);
-                maps.Remove("GrenadeMap");
+                maps.Remove("BombMap");
                 break;
 
             case "LandMineMap":
@@ -92,9 +96,34 @@ public class GameManager : MonoBehaviour
 
     }
 
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name != "MainMenu")
+        {
+            if (!GameObject.FindGameObjectWithTag("Player"))
+            {
+                spawnedPlayer = Instantiate(playerObject);
+                CharacterManager.Singleton.characterTransform = spawnedPlayer.transform;
+                CharacterManager.Singleton.characterModel = spawnedPlayer.GetComponentInChildren<SpriteRenderer>();
+            }
 
+            if (spawnedPlayer != null)
+            {
+                Transform spawnPoint = GetRandomSpawnPoint();
+                if (spawnPoint != null)
+                {
+                    spawnedPlayer.transform.position = spawnPoint.position;
+                }
+            }
+        }
+    }
 
+    private Transform GetRandomSpawnPoint()
+    {
+        GameObject[] spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
 
+        return spawnPoints.Length > 0 ? spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Length)].transform : null;
+    }
 
     //end screen stats stuff
 

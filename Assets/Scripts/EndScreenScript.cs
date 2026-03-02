@@ -46,6 +46,8 @@ public class EndScreenScript : MonoBehaviour
 
         GameManager.Singleton.resetEnemyKills();
         GameManager.Singleton.resetMuffinCount();
+
+        Destroy(PlayerControl.Singleton.gameObject);
     }
 
     public void restartButton()
@@ -55,6 +57,8 @@ public class EndScreenScript : MonoBehaviour
 
         GameManager.Singleton.resetEnemyKills();
         GameManager.Singleton.resetMuffinCount();
+
+        PlayerControl.Singleton.movementLocked = false;
     }
 
     public void updateText()

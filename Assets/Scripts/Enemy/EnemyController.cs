@@ -24,7 +24,6 @@ public class EnemyController : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("player should be dead");
             //Player should be dead
             collision.gameObject.GetComponent<PlayerControl>().playerDeath();
         }
@@ -35,7 +34,6 @@ public class EnemyController : MonoBehaviour
     public void enemyTakeDamage(float damage)
     {
         health -= damage;
-        Debug.Log("Enemy took damage, health is now: " + health);
         if (health <= 0)
         {
             enemyDeath();

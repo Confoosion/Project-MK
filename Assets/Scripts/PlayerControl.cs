@@ -1,6 +1,7 @@
-using UnityEngine;
 using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
+using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
-    private bool movementLocked = false;
+    public bool movementLocked = false;
     private bool isCharging = false;
     private bool jumpLocked = false;
 
@@ -26,6 +27,21 @@ public class PlayerControl : MonoBehaviour
     private bool isFacingRight;
     private int extraJumpCount;
     private bool onGround = true;
+
+    public static PlayerControl Singleton;
+
+    private void Awake()
+    {
+        if (Singleton == null)
+        {
+            Singleton = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {
@@ -169,11 +185,11 @@ public class PlayerControl : MonoBehaviour
 
     public void playerDeath()
     {
-        Debug.Log("Player died");
+        // Debug.Log("Player died");
         movementLocked = true;
 
-        //death animation
-        //OPen some UI screen 
+        // death animation
+        // Open end UI screen 
         GameManager.Singleton.enableEndScreen();
         SpawnerManager.Singleton.stopGame = true;
     }
