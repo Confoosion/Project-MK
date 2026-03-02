@@ -7,7 +7,7 @@ public class CharacterManager : MonoBehaviour
 {
     public static CharacterManager Singleton { get; private set; }
 
-    private List<CharacterSO> characterList = new();
+    [SerializeField] private List<CharacterSO> characterList = new();
     [SerializeField] public CharacterSO startingCharacter;
     public Transform characterTransform;
     [SerializeField] public SpriteRenderer characterModel;
@@ -36,9 +36,7 @@ public class CharacterManager : MonoBehaviour
 
     public void ChangeCharacter(Sprite newModel, float atkCD)
     {
-        Debug.Log($"before: {characterModel.gameObject.name} | {characterModel.sprite}");
         characterModel.sprite = newModel;
-        Debug.Log($"after: {characterModel.gameObject.name} | {characterModel.sprite}");
         PlayerAttack.Singleton.attackCD = atkCD;
     }
 
@@ -46,6 +44,10 @@ public class CharacterManager : MonoBehaviour
     {
         if (specificCharacter != null)
         {
+            if (currentCharacter)
+            {
+                characterList.Add(currentCharacter);
+            }
             currentCharacter = specificCharacter;
             characterList.Remove(specificCharacter);
         }
@@ -63,10 +65,7 @@ public class CharacterManager : MonoBehaviour
 
     public void UpdateCharacterList()
     {
-        while (characterList.Count > 0)
-        {
-            characterList.RemoveAt(0);
-        }
+        characterList = new();
 
         for (int i = 0; i < GameManager.Singleton.characterListGM.Count; i++)
         {
@@ -76,7 +75,7 @@ public class CharacterManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name != "MainMenu")
+        if (scene.name == "StarterMap")
         {
             if (startingCharacter != null)
             {

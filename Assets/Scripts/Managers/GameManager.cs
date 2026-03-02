@@ -106,20 +106,19 @@ public class GameManager : MonoBehaviour
                 CharacterManager.Singleton.characterTransform = spawnedPlayer.transform;
                 CharacterManager.Singleton.characterModel = spawnedPlayer.GetComponentInChildren<SpriteRenderer>();
             }
-            
 
-            if (playerObject != null)
+            if (spawnedPlayer != null)
             {
                 Transform spawnPoint = GetRandomSpawnPoint();
                 if (spawnPoint != null)
                 {
-                    playerObject.transform.position = spawnPoint.position;
+                    spawnedPlayer.transform.position = spawnPoint.position;
                 }
             }
         }
     }
 
-    private Transform GetRandomSpawnPoint ()
+    private Transform GetRandomSpawnPoint()
     {
         GameObject[] spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
 
