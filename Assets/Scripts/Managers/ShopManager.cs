@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
+using TMPro;
 
 public class ShopManager : MonoBehaviour
 {
@@ -15,6 +17,8 @@ public class ShopManager : MonoBehaviour
         }
     }
 
+    [Header("Currency")]
+    [SerializeField] private TextMeshProUGUI currencyText; 
     [SerializeField] private int characterCurrency;
 
     [Header("Characters")]
@@ -29,7 +33,7 @@ public class ShopManager : MonoBehaviour
         int loadedCurrency;
         ShopSaveSystem.Load(characterSets, out loadedCurrency);
         characterCurrency = loadedCurrency;
-
+        UpdateCurrencyDisplay();
         PopulateCharacterShop();
     }
 
@@ -51,7 +55,13 @@ public class ShopManager : MonoBehaviour
     {
         characterCurrency += amount;
         ShopSaveSystem.SetCurrency(characterCurrency);
+        UpdateCurrencyDisplay();
         SaveShop();
+    }
+
+    private void UpdateCurrencyDisplay()
+    {
+        currencyText.SetText(characterCurrency.ToString());
     }
 
     private void OnApplicationQuit()
