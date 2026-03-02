@@ -2920,10 +2920,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96ea351a80a69f4da05395604cebb5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterManager
+  characterList: []
   startingCharacter: {fileID: 11400000, guid: 76bfdc0b8503b486ea3b793f5e9e9357, type: 2}
   characterTransform: {fileID: 0}
   characterModel: {fileID: 0}
-  playerAttack: {fileID: 0}
   currentCharacter: {fileID: 0}
 --- !u!114 &920931503
 MonoBehaviour:
@@ -5338,7 +5338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   playerObject: {fileID: 3951368733954264982, guid: 5eebe7014e9e7dc42818829ec7e1b56a, type: 3}
   endScreen: {fileID: 1582270464}
-  muffinsNeededToMoveOn: 2
+  muffinsNeededToMoveOn: 5
   characterListGM:
   - {fileID: 11400000, guid: 81f2d901ee694f748991b721b07f7202, type: 2}
   - {fileID: 11400000, guid: 3346f4ca78f9d0d499f7a78c231d56a3, type: 2}
