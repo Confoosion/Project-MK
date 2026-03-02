@@ -10,15 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f29125791da8e6a4c9b543489edcc50d, type: 3}
-  m_Name: MachineGunUpgrades
+  m_Name: SwordsmanSet
   m_EditorClassIdentifier: Assembly-CSharp::CharacterSetSO
-  itemName: Gunner
-  price: 0
+  itemName: Sword Guy!
+  itemIcon: {fileID: 0}
+  price: 1
   upgrades:
-  - character: {fileID: 11400000, guid: b208be4a04eec8746bc939eb7c58e924, type: 2}
-    upgradePrice: 0
-  - character: {fileID: 11400000, guid: 5619911b2f9324b5894db2724ee8f600, type: 2}
+  - character: {fileID: 11400000, guid: 3346f4ca78f9d0d499f7a78c231d56a3, type: 2}
+    characterIcon: {fileID: 0}
     upgradePrice: 1
-  - character: {fileID: 11400000, guid: 5bc9b2bd2300f4a5e860843001f6f2a0, type: 2}
+  - character: {fileID: 11400000, guid: 5fb71bb9db3d74ed6ab9b0d1f58f9770, type: 2}
+    characterIcon: {fileID: 0}
     upgradePrice: 2
-  currentLevel: 1
+  - character: {fileID: 11400000, guid: 76bfdc0b8503b486ea3b793f5e9e9357, type: 2}
+    characterIcon: {fileID: 0}
+    upgradePrice: 100

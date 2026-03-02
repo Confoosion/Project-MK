@@ -10,15 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f29125791da8e6a4c9b543489edcc50d, type: 3}
-  m_Name: ArcherUpgrades
+  m_Name: ArcherSet
   m_EditorClassIdentifier: Assembly-CSharp::CharacterSetSO
   itemName: Archer
-  price: 0
+  itemIcon: {fileID: 0}
+  price: 2
   upgrades:
   - character: {fileID: 11400000, guid: 81f2d901ee694f748991b721b07f7202, type: 2}
-    upgradePrice: 0
-  - character: {fileID: 11400000, guid: 7ade4631544e04b4fac55e843d978629, type: 2}
+    characterIcon: {fileID: 0}
     upgradePrice: 1
-  - character: {fileID: 11400000, guid: 44c5345bd3775493bbabea5a4f157cb1, type: 2}
+  - character: {fileID: 11400000, guid: 7ade4631544e04b4fac55e843d978629, type: 2}
+    characterIcon: {fileID: 0}
     upgradePrice: 2
-  currentLevel: 1
+  - character: {fileID: 11400000, guid: 44c5345bd3775493bbabea5a4f157cb1, type: 2}
+    characterIcon: {fileID: 0}
+    upgradePrice: 100

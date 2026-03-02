@@ -7,29 +7,72 @@ public class CharacterSetSO : ShopItem
     public class CharacterUpgrade
     {
         public CharacterSO character;
-        public Sprite upgradeIcon;
+        public Sprite characterIcon;
         public int upgradePrice;
     }
 
     public CharacterUpgrade[] upgrades = new CharacterUpgrade[3];
-    public int currentLevel = 1;
+    // public int currentLevel = 1;
 
     public override void BuyItem()
     {
-        if (currentLevel >= upgrades.Length) return;
+        CharacterSetData data = ShopSaveSystem.GetCharacterData(name);
 
-        CharacterUpgrade next = upgrades[currentLevel-1];
-        price = next.upgradePrice;
+        if(data == null || data.currentLevel >= upgrades.Length)
+        {
+            Debug.Log("Max level");
+            return;
+        }
 
-        base.BuyItem();
+        CharacterUpgrade currentUpgrade = upgrades[data.currentLevel - 1];
+        int upgradePrice = currentUpgrade.upgradePrice;
 
-        // e.g. GameManager.Instance.UnlockCharacter(next.character);
-        currentLevel++;
+        Debug.Log("Upgrade price is: " + upgradePrice + " and you have: " + ShopManager.Singleton.GetCharacterCurrency());
+
+        if(ShopManager.Singleton.GetCharacterCurrency() < upgradePrice)
+        {
+            Debug.Log("Too broke to buy");
+            return;
+        }
+
+        ShopManager.Singleton.AddCharacterCurrency(-upgradePrice);
+        ShopSaveSystem.UpdateCharacterLevel(name, data.currentLevel + 1);
+
+        ShopManager.Singleton.SaveShop();
+
+        Debug.Log(name + " upgraded to level " + (data.currentLevel));
+    }
+
+    public int GetCurrentLevel()
+    {
+        CharacterSetData data = ShopSaveSystem.GetCharacterData(name);
+        return (data != null ? data.currentLevel : 1);
+    }
+
+    public bool IsUnlocked()
+    {
+        CharacterSetData data = ShopSaveSystem.GetCharacterData(name);
+        return (data != null && data.isUnlocked);
+    }
+
+    public CharacterUpgrade GetCurrentUpgrade()
+    {
+        int level = GetCurrentLevel();
+        return(upgrades[Mathf.Clamp(level - 1, 0, upgrades.Length - 1)]);
+    }
+
+    public CharacterUpgrade GetNextUpgrade()
+    {
+        int level = GetCurrentLevel();
+        if(level >= upgrades.Length)
+            return null;
+        return(upgrades[level]);
     }
 
     public void ChangeDisplay(int lvl)
     {
+        Debug.Log(this + " " + lvl);
         price = upgrades[lvl-1].upgradePrice;
-        itemIcon = upgrades[lvl-1].upgradeIcon;
+        itemIcon = upgrades[lvl-1].characterIcon;
     }
 }
