@@ -5338,7 +5338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   playerObject: {fileID: 3951368733954264982, guid: 5eebe7014e9e7dc42818829ec7e1b56a, type: 3}
   endScreen: {fileID: 1582270464}
-  muffinsNeededToMoveOn: 5
+  muffinsNeededToMoveOn: 2
   characterListGM:
   - {fileID: 11400000, guid: 81f2d901ee694f748991b721b07f7202, type: 2}
   - {fileID: 11400000, guid: 3346f4ca78f9d0d499f7a78c231d56a3, type: 2}

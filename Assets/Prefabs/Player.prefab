@@ -92,6 +92,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  movementLocked: 0
 --- !u!114 &4395045806453624289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,7 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ffef8f3a86d21f418c9ea0ceb3c07f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  character: {fileID: 11400000, guid: 3346f4ca78f9d0d499f7a78c231d56a3, type: 2}
+  character: {fileID: 11400000, guid: 81f2d901ee694f748991b721b07f7202, type: 2}
   attackCD: 0.6
 --- !u!50 &152251922751767017
 Rigidbody2D:
@@ -413,7 +414,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 884ed7d49e4eb8941a062e4c40debba4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 09db63027bb8cbf4ea9ea29930aee163, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

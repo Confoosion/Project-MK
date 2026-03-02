@@ -12,7 +12,7 @@ public class PlayerAttack : MonoBehaviour
     private bool canAttack = true;
     private int nukeUses;
 
-    private static PlayerAttack Singleton;
+    public static PlayerAttack Singleton;
 
     private void Awake()
     {

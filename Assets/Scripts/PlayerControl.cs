@@ -19,7 +19,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
-    private bool movementLocked = false;
+    public bool movementLocked = false;
     private bool isCharging = false;
     private bool jumpLocked = false;
 
@@ -28,7 +28,7 @@ public class PlayerControl : MonoBehaviour
     private int extraJumpCount;
     private bool onGround = true;
 
-    private static PlayerControl Singleton;
+    public static PlayerControl Singleton;
 
     private void Awake()
     {

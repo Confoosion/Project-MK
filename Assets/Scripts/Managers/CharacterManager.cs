@@ -11,7 +11,7 @@ public class CharacterManager : MonoBehaviour
     [SerializeField] public CharacterSO startingCharacter;
     public Transform characterTransform;
     [SerializeField] private SpriteRenderer characterModel;
-    [SerializeField] public PlayerAttack playerAttack;
+    //[SerializeField] public PlayerAttack playerAttack;
 
     [SerializeField] private CharacterSO currentCharacter;
 
@@ -32,16 +32,14 @@ public class CharacterManager : MonoBehaviour
     void Start()
     {
         UpdateCharacterList();
-        if (startingCharacter != null)
-        {
-            BecomeNewCharacter(startingCharacter);
-        }
     }
 
     public void ChangeCharacter(Sprite newModel, float atkCD)
     {
+        Debug.Log($"before: {characterModel.gameObject.name} | {characterModel.sprite}");
         characterModel.sprite = newModel;
-        playerAttack.attackCD = atkCD;
+        Debug.Log($"after: {characterModel.gameObject.name} | {characterModel.sprite}");
+        PlayerAttack.Singleton.attackCD = atkCD;
     }
 
     public void BecomeNewCharacter(CharacterSO specificCharacter = null)
@@ -59,8 +57,8 @@ public class CharacterManager : MonoBehaviour
             currentCharacter = newCharacter;
             characterList.Remove(newCharacter);
         }
-
-        //playerAttack.SetCharacter(currentCharacter);
+        if (PlayerAttack.Singleton) 
+            PlayerAttack.Singleton.SetCharacter(currentCharacter);
     }
 
     public void UpdateCharacterList()
@@ -83,7 +81,11 @@ public class CharacterManager : MonoBehaviour
             GameObject playerRef = GameManager.Singleton.playerObject;
             characterTransform = playerRef.transform;
             characterModel = playerRef.GetComponentInChildren<SpriteRenderer>();
-            playerAttack = playerRef.GetComponent<PlayerAttack>();
+
+            if (startingCharacter != null)
+            {
+                BecomeNewCharacter(startingCharacter);
+            }
         }
     }
 }

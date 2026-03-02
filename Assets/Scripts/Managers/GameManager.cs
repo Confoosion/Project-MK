@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
         int getNewMap = GetRandomNumber(0, maps.Count);
         string mapString = maps[getNewMap];
         
-        muffinsNeededToMoveOn = 0 + muffinsNeededToMoveOn;
+        muffinsNeededToMoveOn += muffinsNeededToMoveOn;
 
         switch (mapString)
         {
@@ -101,7 +101,6 @@ public class GameManager : MonoBehaviour
         {
             if (!GameObject.FindGameObjectWithTag("Player"))
             {
-                Debug.LogWarning("No player");
                 Instantiate(playerObject);
             }
             
