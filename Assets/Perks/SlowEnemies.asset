@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f9006ae5cf4cdb40a2199d67171f180, type: 3}
-  m_Name: DoubleJump
-  m_EditorClassIdentifier: Assembly-CSharp::DoubleJumpPerk
-  perkName: Double Jump
-  perkDescription: You can now jump in the air.
+  m_Script: {fileID: 11500000, guid: 93c48d60922edf34f92f23e11fcb3608, type: 3}
+  m_Name: SlowEnemies
+  m_EditorClassIdentifier: Assembly-CSharp::PerkSO
+  perkName: Slow Enemies
+  perkDescription: Slows enemies movement down
   icon: {fileID: 0}
-  jumps: 1
+  perkType: 3
+  value: 1

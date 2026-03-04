@@ -31,7 +31,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (perk != null)
         {
-            perk.ApplyPerk();
+            PerksManager.Singleton.EquipPerk(perk);
         }
 
         speed = MAXSPEED;
