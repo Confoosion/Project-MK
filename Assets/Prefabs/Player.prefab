@@ -81,12 +81,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a831f702dccacf428a7b8b55cddfb02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerControl
-  MAXSPEED: 10
+  MAXSPEED: 8
   speed: 0
   chargeSpeed: 12
-  extraJumps: 1
+  extraJumps: 0
   jumpPower: 20
-  perk: {fileID: 11400000, guid: 148029b8ff651ee4c858db440ebde376, type: 2}
+  perk: {fileID: 0}
   rb: {fileID: 152251922751767017}
   groundCheck: {fileID: 7667857109142624511}
   groundLayer:

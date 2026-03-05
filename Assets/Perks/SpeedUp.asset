@@ -16,4 +16,4 @@ MonoBehaviour:
   perkDescription: Gain some extra speed
   icon: {fileID: 0}
   perkType: 1
-  value: 2
+  value: 3

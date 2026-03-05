@@ -11,7 +11,7 @@ public class FlyingEnemyMovement : EnemyController
 {
 
     [SerializeField] private Transform playerPosition;
-    private float speed;
+    // private float speed;
     
     [SerializeField] private List<GameObject> middleObjects;
 
@@ -24,7 +24,7 @@ public class FlyingEnemyMovement : EnemyController
 
     void Start()
     {
-        speed = enemyType.speed;
+        SetSpeed();
 
         playerPosition = GameObject.Find("Player").transform;
         GameObject tmp = GameObject.Find("FlyingEnemyMarkers");

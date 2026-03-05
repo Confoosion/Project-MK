@@ -4,7 +4,7 @@ public class BasicEnemyMovement : EnemyController
 {
 
     public GameObject direction;
-    private float speed;
+    // private float speed;
     [SerializeField] private bool cannotMove;
     [SerializeField] private LayerMask wallLayer;
 
@@ -12,7 +12,8 @@ public class BasicEnemyMovement : EnemyController
 
     void Start()
     {
-        speed = enemyType.speed;
+        // Sets speed in EnemyController since we're inheriting the class
+        SetSpeed();
     }
 
     // Update is called once per frame

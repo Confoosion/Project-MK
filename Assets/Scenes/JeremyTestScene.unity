@@ -1442,10 +1442,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96ea351a80a69f4da05395604cebb5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterManager
+  characterList: []
   startingCharacter: {fileID: 11400000, guid: 76bfdc0b8503b486ea3b793f5e9e9357, type: 2}
   characterTransform: {fileID: 0}
   characterModel: {fileID: 0}
-  playerAttack: {fileID: 0}
   currentCharacter: {fileID: 0}
 --- !u!114 &1465386406
 MonoBehaviour:
@@ -1459,8 +1459,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f184aabf6a67d549b491609d3ddcfe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PerksManager
-  playerControl: {fileID: 0}
-  playerAttack: {fileID: 0}
+  maxActivePerks: 1
+  activePerks: []
 --- !u!4 &1465386407
 Transform:
   m_ObjectHideFlags: 0

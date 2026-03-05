@@ -23,11 +23,6 @@ public class ArcherCharacter : CharacterSO
 
             foreach (float offset in offsets)
             {
-                // atk = Instantiate(attackObject, origin.position + new Vector3(0f, 0.25f, 0f), Quaternion.Euler(new Vector3(0f, 0f, (direction == -1) ? 180f : 0f)));
-
-                // atk.GetComponent<RangeAttack>().SetData(attackPower, destroyArrowOnTerrain);
-                // atk.GetComponent<Rigidbody2D>().AddForce(((direction == 1) ? Vector3.right : Vector3.left) * projectileForce + new Vector3(0f, offset, 0f), ForceMode2D.Impulse);
-
                 Vector2 force = ((direction == 1) ? Vector3.right : Vector3.left) * projectileForce + new Vector3(0f, offset, 0f);
                 float angle = Mathf.Atan2(force.y, force.x) * Mathf.Rad2Deg;
 

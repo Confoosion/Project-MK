@@ -5,20 +5,30 @@ public class PerksManager : MonoBehaviour
 {
     public static PerksManager Singleton { get; private set; }
 
-    [SerializeField] private PlayerControl playerControl;
-    [SerializeField] private PlayerAttack playerAttack;
+    private PlayerControl playerControl;
+    private PlayerAttack playerAttack;
     [SerializeField] private int maxActivePerks = 1; // Change to 2 whenever you're ready
 
     private CharacterSO character;
-    private List<PerkSO> activePerks = new List<PerkSO>();
+    [SerializeField] private List<PerkSO> activePerks = new List<PerkSO>();
 
     void Awake()
     {
         if (Singleton == null)
             Singleton = this;
 
-        if (playerAttack.GetCharacter() != null)
-            character = playerAttack.GetCharacter();
+        // if (playerAttack.GetCharacter() != null)
+        //     character = playerAttack.GetCharacter();
+    }
+
+    public void SetPlayerControlReference(PlayerControl pControl)
+    {
+        playerControl = pControl;
+    }
+
+    public void SetPlayerAttackReference(PlayerAttack pAttack)
+    {
+        playerAttack = pAttack;
     }
 
     // Returns true if successful
@@ -60,6 +70,12 @@ public class PerksManager : MonoBehaviour
         return activePerks[slot];
     }
 
+    public void ApplyActivePerk()
+    {
+        if(activePerks.Count > 0)
+            ApplyPerk(activePerks[0]);
+    }
+
     public bool IsEquipped(PerkSO perk) => activePerks.Contains(perk);
 
     private void ApplyPerk(PerkSO perk)
@@ -72,13 +88,12 @@ public class PerksManager : MonoBehaviour
             case PerkType.Speed:
                 playerControl.MAXSPEED += perk.value;
                 break;
-            // case PerkType.Damage:
-            //     if (character != null)
-            //         character.attackPower *= perk.value;
-            //     break;
-            // case PerkType.SlowEnemies:
-            //     EnemyManager.Singleton.ApplySlowToAll(perk.value);
-            //     break;
+            case PerkType.Damage:
+                // Implemented in EnemyController (when taking damage, checks for damage perk and applies dmg value)
+                break;
+            case PerkType.SlowEnemies:
+                // Implemented in EnemyController (when spawned, checks for slow enemies perk and decreases speed)
+                break;
         }
     }
 
@@ -92,13 +107,12 @@ public class PerksManager : MonoBehaviour
             case PerkType.Speed:
                 playerControl.MAXSPEED -= perk.value;
                 break;
-            // case PerkType.Damage:
-            //     if (character != null)
-            //         character.attackPower /= perk.value; // Reverse the multiply
-            //     break;
-            // case PerkType.SlowEnemies:
-            //     EnemyManager.Singleton.RemoveSlowFromAll(perk.value);
-            //     break;
+            case PerkType.Damage:
+                // Nothing to reverse since it's all done in EnemyController
+                break;
+            case PerkType.SlowEnemies:
+                // Nothing to reverse since it's all done in EnemyController
+                break;
         }
     }
 }

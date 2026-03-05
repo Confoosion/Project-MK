@@ -45,10 +45,13 @@ public class PlayerControl : MonoBehaviour
 
     void Start()
     {
-        if (perk != null)
-        {
-            PerksManager.Singleton.EquipPerk(perk);
-        }
+        // if (perk != null)
+        // {
+        //     PerksManager.Singleton.EquipPerk(perk);
+        // }
+        PerksManager.Singleton.SetPlayerControlReference(this);
+
+        PerksManager.Singleton.ApplyActivePerk();
 
         speed = MAXSPEED;
         ResetJumps();

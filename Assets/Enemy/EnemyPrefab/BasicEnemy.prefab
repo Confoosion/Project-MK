@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 9036305613590891495}
   - component: {fileID: 7067597937836994458}
   - component: {fileID: 3670256433639178318}
-  - component: {fileID: 1895697394817683472}
   - component: {fileID: 6673643818240209973}
   m_Layer: 7
   m_Name: BasicEnemy
@@ -159,19 +158,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1895697394817683472
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2645128278329073934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64ea84865470c45448b1df77cc97ba11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyController
-  enemyType: {fileID: 11400000, guid: 9262e9d0f4d52b14197233138a217651, type: 2}
 --- !u!114 &6673643818240209973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,7 +201,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6047415959258837829}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: -0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 1.2, z: 2}
   m_ConstrainProportionsScale: 0
