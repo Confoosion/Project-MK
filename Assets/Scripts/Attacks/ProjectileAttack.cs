@@ -48,7 +48,6 @@ public class ProjectileAttack : MonoBehaviour
     {
         if (collider.CompareTag("Enemy"))
         {
-            Debug.Log("Hit enemy!");
             collider.gameObject.GetComponent<EnemyController>().enemyTakeDamage(damage);
             if (pierceAmount > 0 && pierces < pierceAmount)
             {

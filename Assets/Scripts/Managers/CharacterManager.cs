@@ -1,16 +1,17 @@
-using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CharacterManager : MonoBehaviour
 {
     public static CharacterManager Singleton { get; private set; }
 
-    [SerializeField] public List<CharacterSO> characterList = new();
-    [SerializeField] private CharacterSO startingCharacter;
+    [SerializeField] private List<CharacterSO> characterList = new();
+    [SerializeField] public CharacterSO startingCharacter;
     public Transform characterTransform;
-    [SerializeField] private SpriteRenderer characterModel;
-    [SerializeField] public PlayerAttack playerAttack;
+    [SerializeField] public SpriteRenderer characterModel;
+    //[SerializeField] public PlayerAttack playerAttack;
 
     [SerializeField] private CharacterSO currentCharacter;
 
@@ -19,32 +20,34 @@ public class CharacterManager : MonoBehaviour
         if (Singleton == null)
         {
             Singleton = this;
+            DontDestroyOnLoad(gameObject);
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 
     void Start()
     {
         UpdateCharacterList();
-        if (startingCharacter != null)
-        {
-            BecomeNewCharacter(startingCharacter);
-        }
-
-
-
-        Debug.Log("is this happening during a map change?");
     }
 
     public void ChangeCharacter(Sprite newModel, float atkCD)
     {
         characterModel.sprite = newModel;
-        playerAttack.attackCD = atkCD;
+        PlayerAttack.Singleton.attackCD = atkCD;
     }
 
     public void BecomeNewCharacter(CharacterSO specificCharacter = null)
     {
         if (specificCharacter != null)
         {
+            if (currentCharacter)
+            {
+                characterList.Add(currentCharacter);
+            }
             currentCharacter = specificCharacter;
             characterList.Remove(specificCharacter);
         }
@@ -56,20 +59,28 @@ public class CharacterManager : MonoBehaviour
             currentCharacter = newCharacter;
             characterList.Remove(newCharacter);
         }
-
-        playerAttack.SetCharacter(currentCharacter);
+        if (PlayerAttack.Singleton) 
+            PlayerAttack.Singleton.SetCharacter(currentCharacter);
     }
 
     public void UpdateCharacterList()
     {
-        while (characterList.Count > 0)
-        {
-            characterList.RemoveAt(0);
-        }
+        characterList = new();
 
         for (int i = 0; i < GameManager.Singleton.characterListGM.Count; i++)
         {
             characterList.Add(GameManager.Singleton.characterListGM[i]);
+        }
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "StarterMap")
+        {
+            if (startingCharacter != null)
+            {
+                BecomeNewCharacter(startingCharacter);
+            }
         }
     }
 }

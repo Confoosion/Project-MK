@@ -37,7 +37,7 @@ public class MeleeAttack : MonoBehaviour
         if (collider.CompareTag("Enemy"))
         {
             collider.gameObject.GetComponent<EnemyController>().enemyTakeDamage(damage);
-            Debug.Log("Hit enemy!");
+            // Debug.Log("Hit enemy!");
 
             if (BOUNCE_ON_IT)
             {   // Bounces on enemies, so we will destroy this object and force the player up

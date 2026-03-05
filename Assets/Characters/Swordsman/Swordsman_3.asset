@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Swordsman_3
   m_EditorClassIdentifier: Assembly-CSharp::SwordCharacter
   characterName: Swordsman
-  characterModel: {fileID: 7482667652216324306, guid: 884ed7d49e4eb8941a062e4c40debba4, type: 3}
+  characterModel: {fileID: 21300000, guid: 09db63027bb8cbf4ea9ea29930aee163, type: 3}
   attackObject: {fileID: 6760747043205599084, guid: 99cee2df59dde374ab4d814e4099bed5, type: 3}
   level: 3
   attackPower: 100

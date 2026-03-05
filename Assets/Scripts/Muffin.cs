@@ -8,7 +8,7 @@ public class Muffin : MonoBehaviour
         {
             MuffinSpawner.Singleton.SpawnMuffin();
             CharacterManager.Singleton.BecomeNewCharacter();
-            CharacterManager.Singleton.playerAttack.resetAttackCooldown();
+            PlayerAttack.Singleton.resetAttackCooldown();
             LevelManager.Singleton.addMuffin();
 
 
