@@ -2,74 +2,49 @@ using UnityEngine;
 
 public class BasicEnemyMovement : EnemyController
 {
-
-    public GameObject direction;
-    // private float speed;
-    [SerializeField] private bool cannotMove;
+    [SerializeField] private bool canMove = true;
     [SerializeField] private LayerMask wallLayer;
-
-
+    private int direction = 1;
+    private Rigidbody2D rb;
 
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
+
         // Sets speed in EnemyController since we're inheriting the class
         SetSpeed();
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (!cannotMove)
+        if(canMove)
         {
-            checkMovement();
-        } 
+            rb.linearVelocity = new Vector2(speed * direction, rb.linearVelocity.y);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
         if ((wallLayer.value & 1 << collision.transform.gameObject.layer) != 0)
         {
-            flipDirection();
+            direction *= -1;
+            UpdateSpriteDirection();
         }
-
-        
-    }
-
-    private void flipDirection()
-    {
-        if (direction.transform.rotation.eulerAngles.z == 90)
+        else if(collision.transform.CompareTag("Player"))
         {
-            setMoveDirection(true);
-        }
-        else if (direction.transform.rotation.eulerAngles.z == 270)
-        {
-            setMoveDirection(false);
+            KillPlayer(collision.gameObject);
         }
     }
 
-    private void checkMovement()
+    public void SetMoveDirection(int dir)
     {
-        if (direction.transform.rotation.eulerAngles.z == 90)
-        {
-            transform.Translate(Vector2.left * speed * Time.deltaTime);
-        }
-        else if (direction.transform.rotation.eulerAngles.z == 270)
-        {
-            transform.Translate(Vector2.right * speed * Time.deltaTime);
-        }
+        direction = dir;
+        UpdateSpriteDirection();
     }
 
-    public void setMoveDirection(bool moveRight)
+    private void UpdateSpriteDirection()
     {
-        if (moveRight)
-        {
-            direction.transform.rotation = Quaternion.Euler(0, 0, 270);
-        }
-        else
-        {
-            direction.transform.rotation = Quaternion.Euler(0, 0, 90);
-        }
+        transform.localScale = new Vector3(-direction, transform.localScale.y, transform.localScale.z);
     }
 }
 

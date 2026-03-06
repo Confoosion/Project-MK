@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
-using UnityEngine.InputSystem.Composites;
 
 public class SpawnerManager : MonoBehaviour
 {
@@ -92,7 +91,7 @@ public class SpawnerManager : MonoBehaviour
 
 
         //update information
-        spawnersInWorld[spawnerIndex].GetComponent<SpawnerController>().startSpawning();
+        spawnersInWorld[spawnerIndex].GetComponent<SpawnerController>().StartSpawning();
 
 
 

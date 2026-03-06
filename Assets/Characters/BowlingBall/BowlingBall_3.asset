@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BowlingBall_3
   m_EditorClassIdentifier: Assembly-CSharp::BowlingBallCharacter
   characterName: Bowler Bob
-  characterModel: {fileID: 7482667652216324306, guid: 884ed7d49e4eb8941a062e4c40debba4, type: 3}
+  characterModel: {fileID: 21300000, guid: ef3d2ce939d750a49876b36ee4a2c9f0, type: 3}
   attackObject: {fileID: 5376833307798343989, guid: 43df7767106aeb742a9d5be84134c90d, type: 3}
   level: 3
   attackPower: 50
@@ -21,3 +21,4 @@ MonoBehaviour:
   attackCD: 1
   rollingSpeed: 8
   pierceAmount: 100
+  bounceAmount: 100

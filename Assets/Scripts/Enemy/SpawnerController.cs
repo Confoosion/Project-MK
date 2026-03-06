@@ -3,88 +3,51 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 
+public enum SpawnDirection { Right, Left , Random }
 public class SpawnerController : MonoBehaviour
 {
-
     public List<GameObject> spawnList;
-    [Header("True = rightSide, false = leftSide")]
-    [SerializeField] private bool spawnerSide; //true = spawner on the right, false = spawner on the left
-    [SerializeField] private bool middleSpawner;
-    //When true, enemies should move to the left, when false enemies should move to the right
+    [SerializeField] private SpawnDirection spawnDirection; // Which way should the objects spawn
 
-    private int spawnIndex = 0;
+    // [SerializeField] private SpawnDirection middleSpawner; //When true, enemies should move to the left, when false enemies should move to the right
 
+    // private int spawnIndex = 0;
 
-
-
-    IEnumerator spawnEnemy()
+    public void StartSpawning()
     {
+        StartCoroutine(SpawnEnemy());
+    }
 
+    IEnumerator SpawnEnemy()
+    {
         while (spawnList.Count > 0)
         {
-            if (middleSpawner)
+            if(spawnDirection == SpawnDirection.Random)
             {
-                float randomVal = Random.value;
-                if(randomVal > 0.5f)
-                {
-                    spawnEnemiesIntoWorld(true);
-                }
-                else
-                {
-                    spawnEnemiesIntoWorld(false);
-                }
-            } 
+                SpawnEnemiesIntoWorld();
+            }
             else
             {
-                if (spawnerSide)
-                {
-                    spawnEnemiesIntoWorld(true);
-
-                }
-                else
-                {
-                    spawnEnemiesIntoWorld(false);
-
-                }
+                SpawnEnemiesIntoWorld(spawnDirection == SpawnDirection.Left ? -1 : 1);                
             }
-        
-
+            
             yield return new WaitForSeconds(0.7f);
         }
-
-
-
     }
 
-    void Start()
+    private void SpawnEnemiesIntoWorld(int dir = 0)
     {
-        
-    }
+        if(dir == 0) // Doesn't have a direction, so randomly picks for you
+            dir = Random.value < 0.5f ? -1 : 1;
 
-    // Update is called once per frame
-    void Update()
-    {
+        GameObject enemy = Instantiate(spawnList[0], transform.position, Quaternion.identity);
+        // Instantiate(spawnList[0], transform.position);
 
-    }
+        if (enemy.GetComponent<BasicEnemyMovement>())//make sure we get this information,....
+            enemy.GetComponent<BasicEnemyMovement>().SetMoveDirection(dir); //set direction of enemy
 
-    public void startSpawning()
-    {
-        StartCoroutine(spawnEnemy());
-    }
-
-    private void spawnEnemiesIntoWorld(bool dir)
-    {
-        Instantiate(spawnList[spawnIndex], transform.position, Quaternion.Euler(0, 0, 0));
-        if (spawnList[spawnIndex].GetComponent<BasicEnemyMovement>())//make sure we get this information,....
-        {
-            spawnList[spawnIndex].GetComponent<BasicEnemyMovement>().setMoveDirection(dir); //set direction of enemy
-        }
-        
-               
         //SpawnerManager.Singleton.allEnemiesInWorld.Add(spawnList[spawnIndex]); //add to big enemy list
 
-        spawnList.RemoveAt(spawnIndex);
+        spawnList.RemoveAt(0);
     }
-
-    
 }

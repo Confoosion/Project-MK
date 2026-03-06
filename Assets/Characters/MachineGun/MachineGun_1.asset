@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MachineGun_1
   m_EditorClassIdentifier: Assembly-CSharp::MachineGunCharacter
   characterName: Gunner Guy
-  characterModel: {fileID: 7482667652216324306, guid: 884ed7d49e4eb8941a062e4c40debba4, type: 3}
+  characterModel: {fileID: 21300000, guid: 8b54c1e3ed69c7645a22f40ef05dcb36, type: 3}
   attackObject: {fileID: 1406789531465883097, guid: e384a924c1da0f74b91eab5bba0b0965, type: 3}
   level: 1
   attackPower: 20

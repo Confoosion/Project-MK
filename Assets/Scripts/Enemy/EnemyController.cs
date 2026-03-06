@@ -25,15 +25,14 @@ public class EnemyController : MonoBehaviour
             speed = enemyType.speed;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            //Player should be dead
-            collision.gameObject.GetComponent<PlayerControl>().playerDeath();
-        }
-    }
+    // protected void OnCollisionEnter2D(Collision2D collision)
+    // {
+    //     if (collision.gameObject.CompareTag("Player"))
+    //     {
+    //         //Player should be dead
+    //         collision.gameObject.GetComponent<PlayerControl>().playerDeath();
+    //     }
+    // }
 
     //ENEMY Taking Damage and dying
 
@@ -73,10 +72,12 @@ public class EnemyController : MonoBehaviour
 
     private void enemyDeath()
     {
-
         Destroy(this.gameObject);
     }
 
-
+    protected void KillPlayer(GameObject player)
+    {
+        player.GetComponent<PlayerControl>().playerDeath();
+    }
 
 }

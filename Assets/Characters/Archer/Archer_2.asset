@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Archer_2
   m_EditorClassIdentifier: Assembly-CSharp::ArcherCharacter
   characterName: Archer
-  characterModel: {fileID: 7482667652216324306, guid: 884ed7d49e4eb8941a062e4c40debba4, type: 3}
+  characterModel: {fileID: 21300000, guid: 1019713d6a7f3b24cabc5ded04f500e2, type: 3}
   attackObject: {fileID: 1259166576830395927, guid: 609b1329c4c267f4d906b2986508dc5b, type: 3}
   level: 2
   attackPower: 30
