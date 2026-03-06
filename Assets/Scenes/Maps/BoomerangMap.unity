@@ -608,8 +608,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnerController
   spawnList: []
-  spawnerSide: 0
-  middleSpawner: 0
+  spawnDirection: 1
 --- !u!4 &766713822 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6601037788619230312, guid: 44ba3f03c7db34c4e9fa14d4db52e57d, type: 3}
@@ -660,8 +659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnerController
   spawnList: []
-  spawnerSide: 1
-  middleSpawner: 0
+  spawnDirection: 0
 --- !u!1 &1093864000
 GameObject:
   m_ObjectHideFlags: 0

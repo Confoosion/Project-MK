@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 93c48d60922edf34f92f23e11fcb3608, type: 3}
-  m_Name: FutureTeller
+  m_Name: FortuneTeller
   m_EditorClassIdentifier: Assembly-CSharp::PerkSO
-  perkName: Future Teller
+  perkName: Fortune Teller
   perkDescription: Muffins show which character you will become next
   icon: {fileID: 0}
   perkType: 4

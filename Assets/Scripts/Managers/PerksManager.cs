@@ -88,12 +88,15 @@ public class PerksManager : MonoBehaviour
             case PerkType.Speed:
                 playerControl.MAXSPEED += perk.value;
                 break;
-            case PerkType.Damage:
-                // Implemented in EnemyController (when taking damage, checks for damage perk and applies dmg value)
-                break;
-            case PerkType.SlowEnemies:
-                // Implemented in EnemyController (when spawned, checks for slow enemies perk and decreases speed)
-                break;
+            // case PerkType.Damage:
+            //     // Implemented in EnemyController (when taking damage, checks for damage perk and applies dmg value)
+            //     break;
+            // case PerkType.SlowEnemies:
+            //     // Implemented in EnemyController (when spawned, checks for slow enemies perk and decreases speed)
+            //     break;
+            // case PerkType.FortuneTeller:
+            //     // Would like to implement in the Muffin class and have a head sprite of the character show above the muffin, but we don't have any character sprites yet
+            //     break;
         }
     }
 
@@ -107,12 +110,14 @@ public class PerksManager : MonoBehaviour
             case PerkType.Speed:
                 playerControl.MAXSPEED -= perk.value;
                 break;
-            case PerkType.Damage:
-                // Nothing to reverse since it's all done in EnemyController
-                break;
-            case PerkType.SlowEnemies:
-                // Nothing to reverse since it's all done in EnemyController
-                break;
+            // case PerkType.FortuneTeller:
+            //     break;
+            // case PerkType.Damage:
+            //     // Nothing to reverse since it's all done in EnemyController
+            //     break;
+            // case PerkType.SlowEnemies:
+            //     // Nothing to reverse since it's all done in EnemyController
+            //     break;
         }
     }
 }
