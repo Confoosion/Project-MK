@@ -1,5 +1,13 @@
 using UnityEngine;
 
+public enum PerkRarity
+{
+    Common,
+    Rare,
+    Epic,
+    Legendary
+}
+
 public enum PerkType
 {
     DoubleJump,
@@ -16,6 +24,7 @@ public class PerkSO : ScriptableObject
     [TextArea] public string perkDescription;
     public Sprite icon;
 
+    public PerkRarity perkRarity;
     public PerkType perkType;
     public float value; // jumps, speed amount, dmg multiplier, slow %, etc.
 }

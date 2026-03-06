@@ -27,6 +27,10 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private Transform characterShopParent;
 
     // Perks eventually
+    [Header("Perks")]
+    [SerializeField] private PerkSO[] ALL_PERKS;
+    [SerializeField] private PerkSO[] perksInMachine;
+    
 
     void Start()
     {

@@ -15,5 +15,6 @@ MonoBehaviour:
   perkName: Double Jump
   perkDescription: You jump a second time
   icon: {fileID: 0}
+  perkRarity: 1
   perkType: 0
   value: 1
