@@ -26,7 +26,6 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private GameObject characterShopItemPrefab;
     [SerializeField] private Transform characterShopParent;
 
-    // Perks eventually
     [Header("Perks")]
     [SerializeField] private PerkMachineSO perkMachine;
 
@@ -49,6 +48,7 @@ public class ShopManager : MonoBehaviour
         PopulateCharacterShop();
     }
 
+    // ========== CHARACTERS ==========
     private void PopulateCharacterShop()
     {
         foreach(CharacterSetSO set in characterSets)
@@ -58,6 +58,13 @@ public class ShopManager : MonoBehaviour
         }
     }
 
+    // ========== PERKS ==========
+    public void PullPerk()
+    {
+        PerkSO perk = PerkGachaManager.Singleton.RollGacha();
+    }
+
+    // ========== CURRENCY ========== 
     public int GetCharacterCurrency()
     {
         return(characterCurrency);
@@ -76,6 +83,7 @@ public class ShopManager : MonoBehaviour
         currencyText.SetText(characterCurrency.ToString());
     }
 
+    // ========== SAVING ==========
     private void OnApplicationQuit()
     {
         SaveShop();
@@ -98,6 +106,7 @@ public class ShopManager : MonoBehaviour
     {
         ShopSaveSystem.DeleteSaveData();
 
+        // Reset Characters
         foreach(var charSet in characterSets)
         {
             CharacterSetData data = ShopSaveSystem.GetCharacterData(charSet.name);
@@ -120,8 +129,22 @@ public class ShopManager : MonoBehaviour
             Destroy(child.gameObject);
         }
         PopulateCharacterShop();
+
+        // Reset Perks
+        PerkMachineData perkMachineData = ShopSaveSystem.GetPerkMachineData();
+        if(perkMachineData != null)
+        {
+            perkMachineData.currentTier = 1;
+            perkMachineData.ownedPerks.Clear();
+            perkMachineData.pityCounter = 0;
+        }
+
+        // Reset Currency
+        characterCurrency = 0;
+        ShopSaveSystem.SetCurrency(0);
     }
 
+    // ========== SHOP UI ==========
     public void SwitchPage(int pageDirection = 0)
     {
         // Initialize page
