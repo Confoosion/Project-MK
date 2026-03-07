@@ -38,21 +38,21 @@ public class PerkMachineSO : ScriptableObject
         return(tiers[Mathf.Clamp(tier - 1, 0, tiers.Length - 1)]);
     }
 
-    public void UpgradePerkMachine()
+    public bool UpgradePerkMachine()
     {
         int currentTier = GetCurrentTier();
 
         if(currentTier >= tiers.Length)
         {
             Debug.Log("Already max tier Perk Machine!");
-            return;
+            return false;
         }
 
         int upgradePrice = tiers[currentTier].upgradePrice;
         if(ShopManager.Singleton.GetCharacterCurrency() < upgradePrice)
         {
             Debug.Log("Too broke to upgrade Perk Machine!");
-            return;
+            return false;
         }
 
         ShopManager.Singleton.AddCharacterCurrency(-upgradePrice);
@@ -61,6 +61,7 @@ public class PerkMachineSO : ScriptableObject
 
         ShopManager.Singleton.SaveShop();
 
-        Debug.Log("Gacha upgraded to tier " + currentTier + 1 + "\n" + tiers[currentTier].perksUnlocked.Length + " new perks unlocked!");
+        Debug.Log("Gacha upgraded to tier " + (currentTier + 1) + "\n" + tiers[currentTier].perksUnlocked.Length + " new perks unlocked!");
+        return true;
     }
 }

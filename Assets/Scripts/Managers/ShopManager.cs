@@ -35,6 +35,9 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private GameObject[] shopPages;
     private int currentPageIndex;
     [SerializeField] private TextMeshProUGUI switchPageText;
+    [SerializeField] private TextMeshProUGUI perkMachineTierText;
+    [SerializeField] private TextMeshProUGUI upgradeMachineLabel;
+    [SerializeField] private TextMeshProUGUI upgradeMachineAmount;
 
     void Start()
     {
@@ -46,6 +49,8 @@ public class ShopManager : MonoBehaviour
 
         UpdateCurrencyDisplay();
         PopulateCharacterShop();
+
+        UpdatePerkMachineUI();
     }
 
     // ========== CHARACTERS ==========
@@ -62,6 +67,14 @@ public class ShopManager : MonoBehaviour
     public void PullPerk()
     {
         PerkSO perk = PerkGachaManager.Singleton.RollGacha();
+    }
+
+    public void UpgradePerkMachine()
+    {
+        if(perkMachine.UpgradePerkMachine())
+        {
+            UpdatePerkMachineUI();
+        }
     }
 
     // ========== CURRENCY ========== 
@@ -139,6 +152,8 @@ public class ShopManager : MonoBehaviour
             perkMachineData.pityCounter = 0;
         }
 
+        UpdatePerkMachineUI();
+
         // Reset Currency
         characterCurrency = 0;
         ShopSaveSystem.SetCurrency(0);
@@ -175,5 +190,26 @@ public class ShopManager : MonoBehaviour
         int underscore = shopPages[currentPageIndex].name.IndexOf("_");
         string pageText = shopPages[currentPageIndex].name.Substring(0, underscore);
         switchPageText.SetText(pageText + " Page");
+    }
+
+    public void UpdatePerkMachineUI()
+    {
+        int currTier = perkMachine.GetCurrentTier();
+        perkMachineTierText.SetText("Tier " + currTier.ToString());
+        
+        PerkSetSO nextTierSettings;
+    
+        if(currTier + 1 <= perkMachine.tiers.Length)
+        {
+            nextTierSettings = perkMachine.tiers[currTier];
+
+            upgradeMachineLabel.SetText("Upgrade to Tier " + nextTierSettings.tierLevel.ToString());
+            upgradeMachineAmount.SetText("[" + nextTierSettings.upgradePrice + " Currency]");
+        }
+        else
+        {
+            upgradeMachineLabel.SetText("MAX TIER REACHED");
+            upgradeMachineAmount.SetText("");
+        }
     }
 }

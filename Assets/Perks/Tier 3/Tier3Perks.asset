@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd75d80f9e5bfe74292c43bc4bb11dd0, type: 3}
   m_Name: Tier3Perks
   m_EditorClassIdentifier: Assembly-CSharp::PerkSetSO
-  tierLevel: 0
+  tierLevel: 3
   upgradePrice: 20
   perksUnlocked: []
