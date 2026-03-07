@@ -29,13 +29,21 @@ public class ShopManager : MonoBehaviour
     // Perks eventually
     [Header("Perks")]
     [SerializeField] private PerkMachineSO perkMachine;
-    
+
+    [Space]
+
+    [Header("Shop UI")]
+    [SerializeField] private GameObject[] shopPages;
+    private int currentPageIndex;
+    [SerializeField] private TextMeshProUGUI switchPageText;
 
     void Start()
     {
         int loadedCurrency;
         ShopSaveSystem.Load(characterSets, perkMachine, out loadedCurrency);
         characterCurrency = loadedCurrency;
+
+        SwitchPage(0);
 
         UpdateCurrencyDisplay();
         PopulateCharacterShop();
@@ -112,5 +120,37 @@ public class ShopManager : MonoBehaviour
             Destroy(child.gameObject);
         }
         PopulateCharacterShop();
+    }
+
+    public void SwitchPage(int pageDirection = 0)
+    {
+        // Initialize page
+        if(pageDirection == 0)
+        {
+            foreach(GameObject page in shopPages)
+            {
+                page.SetActive(false);
+            }
+
+            shopPages[0].SetActive(true);
+            currentPageIndex = 0;
+        }
+        // Swap page
+        else 
+        {
+            shopPages[currentPageIndex].SetActive(false);
+
+            currentPageIndex += pageDirection;
+            if(currentPageIndex < 0)
+                currentPageIndex = shopPages.Length - 1;
+            else if(currentPageIndex > shopPages.Length - 1)
+                currentPageIndex = 0; 
+
+            shopPages[currentPageIndex].SetActive(true);
+        }
+
+        int underscore = shopPages[currentPageIndex].name.IndexOf("_");
+        string pageText = shopPages[currentPageIndex].name.Substring(0, underscore);
+        switchPageText.SetText(pageText + " Page");
     }
 }
