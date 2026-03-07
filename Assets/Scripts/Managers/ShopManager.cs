@@ -28,15 +28,15 @@ public class ShopManager : MonoBehaviour
 
     // Perks eventually
     [Header("Perks")]
-    [SerializeField] private PerkSO[] ALL_PERKS;
-    [SerializeField] private PerkSO[] perksInMachine;
+    [SerializeField] private PerkMachineSO perkMachine;
     
 
     void Start()
     {
         int loadedCurrency;
-        ShopSaveSystem.Load(characterSets, out loadedCurrency);
+        ShopSaveSystem.Load(characterSets, perkMachine, out loadedCurrency);
         characterCurrency = loadedCurrency;
+
         UpdateCurrencyDisplay();
         PopulateCharacterShop();
     }
@@ -83,7 +83,7 @@ public class ShopManager : MonoBehaviour
 
     public void SaveShop()
     {
-        ShopSaveSystem.Save(characterSets, characterCurrency);
+        ShopSaveSystem.Save(characterSets, characterCurrency, perkMachine);
     }
 
     public void ResetShop()

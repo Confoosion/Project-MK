@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PerkMachineSO
   tiers:
   - {fileID: 11400000, guid: 115b37cae21982a49921a565b37c11d1, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: f1d4abaf8a9026349884af0330f83412, type: 2}
+  - {fileID: 11400000, guid: f9550611134c7424797f7e4915270248, type: 2}
   commonWeight: 60
   rareWeight: 30

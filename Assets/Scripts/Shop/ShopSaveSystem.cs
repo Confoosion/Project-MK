@@ -4,6 +4,19 @@ using System.IO;
 using UnityEngine;
 
 [Serializable]
+public class PerkMachineData
+{
+    public int currentTier;
+    public List<string> ownedPerks = new List<string>();
+    public int pityCounter = 0;
+
+    public PerkMachineData(int tier)
+    {
+        currentTier = tier;
+    }
+}
+
+[Serializable]
 public class CharacterSetData
 {
     public string characterSetName;  // SO name as unique ID
@@ -23,6 +36,8 @@ public class ShopSaveData
 {
     public List<CharacterSetData> characterSets = new List<CharacterSetData>();
     public int characterCurrency;
+
+    public PerkMachineData perkMachine = new PerkMachineData(1);
 }
 
 public static class ShopSaveSystem
@@ -32,6 +47,7 @@ public static class ShopSaveSystem
     // Runtime data (NOT the ScriptableObjects!)
     private static Dictionary<string, CharacterSetData> runtimeCharacterData = new Dictionary<string, CharacterSetData>();
     private static int runtimeCurrency = 0;
+    private static PerkMachineData runtimePerkMachineData = new PerkMachineData(1);
     
     // Reset on domain reload (when Unity recompiles scripts)
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
@@ -39,11 +55,12 @@ public static class ShopSaveSystem
     {
         runtimeCharacterData.Clear();
         runtimeCurrency = 0;
+        runtimePerkMachineData = new PerkMachineData(1);
         Debug.Log("ShopSaveSystem: Reset after domain reload");
     }
     
     // ========== SAVE DATA ==========
-    public static void Save(CharacterSetSO[] characterSets, int currency)
+    public static void Save(CharacterSetSO[] characterSets, int currency, PerkMachineSO perkMachine)
     {
         ShopSaveData saveData = new ShopSaveData();
         saveData.characterCurrency = currency;
@@ -59,6 +76,9 @@ public static class ShopSaveSystem
             }
         }
         
+        // Save perk machine
+        saveData.perkMachine = runtimePerkMachineData;
+
         string json = JsonUtility.ToJson(saveData, true);
         File.WriteAllText(SavePath, json);
         
@@ -66,7 +86,7 @@ public static class ShopSaveSystem
     }
     
     // ========== LOAD DATA ==========
-    public static void Load(CharacterSetSO[] characterSets, out int loadedCurrency)
+    public static void Load(CharacterSetSO[] characterSets, PerkMachineSO perkMachine, out int loadedCurrency)
     {
         // Initialize runtime data from ScriptableObject defaults
         runtimeCharacterData.Clear();
@@ -79,6 +99,8 @@ public static class ShopSaveSystem
             );
         }
         
+        runtimePerkMachineData = new PerkMachineData(1);
+
         // Default currency
         loadedCurrency = 0;
         
@@ -99,6 +121,12 @@ public static class ShopSaveSystem
                     }
                 }
                 
+                // Load perk machine
+                if(saveData.perkMachine != null)
+                {
+                    runtimePerkMachineData = saveData.perkMachine;
+                }
+
                 // Load currency
                 loadedCurrency = saveData.characterCurrency;
                 runtimeCurrency = loadedCurrency;
@@ -150,7 +178,18 @@ public static class ShopSaveSystem
             runtimeCharacterData[characterSetName].isUnlocked = true;
         }
     }
+
+    // ========== PERK MACHINE DATA ==========
+    public static PerkMachineData GetPerkMachineData()
+    {
+        return(runtimePerkMachineData);
+    }
     
+    public static void UpgradePerkMachineTier(int newTier)
+    {
+        runtimePerkMachineData.currentTier = newTier;
+    }
+
     // ========== CURRENCY ==========
     public static int GetCurrency()
     {
