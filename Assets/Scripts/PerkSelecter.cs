@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
 
@@ -7,41 +9,68 @@ public class PerkSelecter : MonoBehaviour
     [Header("UI")]
     [SerializeField] private TextMeshProUGUI perkLabel;
     [SerializeField] private Image perkIcon;
+    [SerializeField] private GameObject perkOwnedTextObject;
 
     [Header("Perks")]
-    [SerializeField] private PerkSO[] ALL_PERKS;
+    [SerializeField] private List<PerkSO> All_Perks;
     [SerializeField] private PerkSO currentPerkSelected;
     [SerializeField] private PerkSO currentPerkHighlighted;
     private int perkIndex = 0;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private PerkMachineData perkMachineData;
+    private PerkMachineSO perkMachine;
+
+    void Awake()
+    {
+        perkMachine = PerksManager.Singleton.GetPerkMachine();
+        perkMachineData = ShopSaveSystem.GetPerkMachineData();
+    }
+
     void Start()
     {
-    
+        All_Perks.Clear();
+        All_Perks.Add(null);
+
+        PerkSO[] perksInData = perkMachine.GetAvailablePerks();
+        foreach(PerkSO perk in perksInData)
+        {
+            All_Perks.Add(perk);
+        }
     }
 
     public void SwitchPerk(int direction)
     {
         perkIndex += direction;
-        if(perkIndex > ALL_PERKS.Length)
+        if(perkIndex >= All_Perks.Count)
             perkIndex = 0;
         else if(perkIndex < 0)
-            perkIndex = ALL_PERKS.Length - 1;
+            perkIndex = All_Perks.Count - 1;
 
-        currentPerkHighlighted = ALL_PERKS[perkIndex];
+        currentPerkHighlighted = All_Perks[perkIndex];
 
-        UpdatePerkSelectUI();
+        currentPerkSelected = null;
+        if(currentPerkHighlighted != null)
+        {
+            if(ShopSaveSystem.IsPerkUnlocked(currentPerkHighlighted.name))
+            {
+                currentPerkSelected = currentPerkHighlighted;
+            }
+        }
+
+        UpdatePerkSelectUI(currentPerkHighlighted);
     }
 
-    public void UpdatePerkSelectUI()
+    public void UpdatePerkSelectUI(PerkSO perk)
     {
-        if(currentPerkHighlighted == null)
+        if(perk == null)
         {
             perkLabel.SetText("None");
         }
         else
         {
-            perkLabel.SetText(currentPerkHighlighted.perkName);
+            perkLabel.SetText(perk.perkName);
+            
+            perkOwnedTextObject.SetActive(!ShopSaveSystem.IsPerkUnlocked(perk.name));
         }
     }
 }

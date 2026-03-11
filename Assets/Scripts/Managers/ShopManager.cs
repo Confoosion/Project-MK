@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class ShopManager : MonoBehaviour
 {
@@ -216,5 +217,11 @@ public class ShopManager : MonoBehaviour
             upgradeMachineLabel.SetText("MAX TIER REACHED");
             upgradeMachineAmount.SetText("");
         }
+    }
+
+    public void GoToMainMenuScene()
+    {
+        SaveShop();
+        SceneManager.LoadScene("MainMenu");
     }
 }

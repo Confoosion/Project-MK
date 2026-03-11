@@ -15,6 +15,8 @@ public class CharacterManager : MonoBehaviour
 
     [SerializeField] private CharacterSO currentCharacter;
 
+    [SerializeField] private CharacterSetSO[] FULL_CHARACTER_LIST; 
+
     void Awake()
     {
         if (Singleton == null)
@@ -82,5 +84,10 @@ public class CharacterManager : MonoBehaviour
                 BecomeNewCharacter(startingCharacter);
             }
         }
+    }
+
+    public CharacterSetSO[] GetFullCharacterList()
+    {
+        return(FULL_CHARACTER_LIST);
     }
 }

@@ -12,6 +12,10 @@ public class PerksManager : MonoBehaviour
     private CharacterSO character;
     [SerializeField] private List<PerkSO> activePerks = new List<PerkSO>();
 
+    [Space]
+
+    [SerializeField] private PerkMachineSO perkMachine;
+
     void Awake()
     {
         if (Singleton == null)
@@ -119,5 +123,10 @@ public class PerksManager : MonoBehaviour
             //     // Nothing to reverse since it's all done in EnemyController
             //     break;
         }
+    }
+
+    public PerkMachineSO GetPerkMachine()
+    {
+        return(perkMachine);
     }
 }

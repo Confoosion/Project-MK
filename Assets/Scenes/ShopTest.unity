@@ -835,7 +835,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 451992558}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &451992558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2449,10 +2461,10 @@ RectTransform:
   - {fileID: 1632631321}
   - {fileID: 407855010}
   - {fileID: 1996350488}
-  - {fileID: 451992556}
   - {fileID: 2086224701}
   - {fileID: 463813172}
   - {fileID: 1701496769}
+  - {fileID: 451992556}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3129,6 +3141,7 @@ MonoBehaviour:
   characterShopItemPrefab: {fileID: 7259688762831074853, guid: 09fb1f63d81c5f64f8e751628bd2569e, type: 3}
   characterShopParent: {fileID: 1792568204}
   perkMachine: {fileID: 11400000, guid: effeb26084931194daf8f5950dba8315, type: 2}
+  playerPerks: []
   shopPages:
   - {fileID: 1632631320}
   - {fileID: 407855009}

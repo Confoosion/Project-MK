@@ -63,14 +63,14 @@ public static class ShopSaveSystem
     private static PerkMachineData runtimePerkMachineData = new PerkMachineData(1);
     
     // Reset on domain reload (when Unity recompiles scripts)
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
-    private static void OnDomainReload()
-    {
-        runtimeCharacterData.Clear();
-        runtimeCurrency = 0;
-        runtimePerkMachineData = new PerkMachineData(1);
-        Debug.Log("ShopSaveSystem: Reset after domain reload");
-    }
+    // [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    // private static void OnDomainReload()
+    // {
+    //     runtimeCharacterData.Clear();
+    //     runtimeCurrency = 0;
+    //     runtimePerkMachineData = new PerkMachineData(1);
+    //     Debug.Log("ShopSaveSystem: Reset after domain reload");
+    // }
     
     // ========== SAVE DATA ==========
     public static void Save(CharacterSetSO[] characterSets, int currency)

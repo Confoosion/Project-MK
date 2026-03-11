@@ -47,7 +47,6 @@ public class GameManager : MonoBehaviour
     private int angryHeavyEnemiesKilled = 0;
     private int heavyEnemiesKilled = 0;
 
-
     void Awake()
     {
         if (Singleton == null)
@@ -64,6 +63,11 @@ public class GameManager : MonoBehaviour
         endScreenScript = gameObject.GetComponent<EndScreenScript>();
     }
 
+    void Start()
+    {
+        int tempCurrency = 0;
+        ShopSaveSystem.Load(CharacterManager.Singleton.GetFullCharacterList(), out tempCurrency);
+    }
 
     public void NextLevel()
     {
@@ -98,7 +102,7 @@ public class GameManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name != "MainMenu")
+        if (scene.name != "MainMenu" && scene.name != "ShopTest")
         {
             if (!GameObject.FindGameObjectWithTag("Player"))
             {
