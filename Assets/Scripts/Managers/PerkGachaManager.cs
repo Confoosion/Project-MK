@@ -22,6 +22,7 @@ public class PerkGachaManager : MonoBehaviour
     {
         PerkSetSO currentTier = perkMachine.GetCurrentTierSettings();
 
+        // Check if player has enough currency
         if(ShopManager.Singleton.GetCharacterCurrency() < GACHA_PRICE)
         {
             Debug.Log("Too broke to gacha!");
@@ -38,7 +39,15 @@ public class PerkGachaManager : MonoBehaviour
         }
 
         PerkMachineData perkMachineData = ShopSaveSystem.GetPerkMachineData();
-        List<string> ownedPerks = perkMachineData.ownedPerks;
+
+        List<string> ownedPerks = new List<string>();
+        foreach(PerkData perkData in perkMachineData.ownedPerks)
+        {
+            if(perkData.isUnlocked)
+            {
+                ownedPerks.Add(perkData.perkName);
+            }
+        }
 
         perkMachineData.pityCounter++;
 
@@ -61,7 +70,7 @@ public class PerkGachaManager : MonoBehaviour
 
         if(isNewPerk)
         {
-            ownedPerks.Add(rolledPerk.name);
+            ShopSaveSystem.UnlockPerk(rolledPerk.name);
             perkMachineData.pityCounter = 0;
             Debug.Log("NEW PERK: " + rolledPerk.perkName);
         }
@@ -97,19 +106,23 @@ public class PerkGachaManager : MonoBehaviour
 
     public bool HasPerk(PerkSO perk)
     {
-        PerkMachineData data = ShopSaveSystem.GetPerkMachineData();
-        return(data.ownedPerks.Contains(perk.name));
+        // PerkMachineData data = ShopSaveSystem.GetPerkMachineData();
+        // return(data.ownedPerks.Contains(perk.name));
+        return(ShopSaveSystem.IsPerkUnlocked(perk.name));
     }
 
     public List<PerkSO> GetOwnedPerks()
     {
+        List<PerkData> unlockedPerks = ShopSaveSystem.GetUnlockedPerks();
+
         PerkMachineData data = ShopSaveSystem.GetPerkMachineData();
         PerkSO[] allPerks = perkMachine.GetAvailablePerks();
 
         List<PerkSO> owned = new List<PerkSO>();
-        foreach(var perk in allPerks)
+        foreach(PerkData perkData in unlockedPerks)
         {
-            if(data.ownedPerks.Contains(perk.name))
+            PerkSO perk = System.Array.Find(allPerks, p => p.name == perkData.perkName);
+            if(perk != null)
             {
                 owned.Add(perk);
             }

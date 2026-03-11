@@ -13,7 +13,7 @@ public class ShopManager : MonoBehaviour
         if(Singleton == null)
         {
             Singleton = this;
-            DontDestroyOnLoad(this.gameObject);
+            // DontDestroyOnLoad(this.gameObject);
         }
     }
 
@@ -28,6 +28,7 @@ public class ShopManager : MonoBehaviour
 
     [Header("Perks")]
     [SerializeField] private PerkMachineSO perkMachine;
+    [SerializeField] private List<PerkSO> playerPerks;
 
     [Space]
 
@@ -67,6 +68,10 @@ public class ShopManager : MonoBehaviour
     public void PullPerk()
     {
         PerkSO perk = PerkGachaManager.Singleton.RollGacha();
+        if(!playerPerks.Contains(perk))
+        {
+            playerPerks.Add(perk);
+        }
     }
 
     public void UpgradePerkMachine()

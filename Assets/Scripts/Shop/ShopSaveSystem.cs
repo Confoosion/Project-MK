@@ -4,10 +4,23 @@ using System.IO;
 using UnityEngine;
 
 [Serializable]
+public class PerkData
+{
+    public string perkName;
+    public bool isUnlocked;
+    
+    public PerkData(string name, bool unlocked)
+    {
+        perkName = name;
+        isUnlocked = unlocked;
+    }
+}
+
+[Serializable]
 public class PerkMachineData
 {
     public int currentTier;
-    public List<string> ownedPerks = new List<string>();
+    public List<PerkData> ownedPerks = new List<PerkData>();
     public int pityCounter = 0;
 
     public PerkMachineData(int tier)
@@ -180,6 +193,30 @@ public static class ShopSaveSystem
     }
 
     // ========== PERK MACHINE DATA ==========
+    public static bool IsPerkUnlocked(string perkName)
+    {
+        PerkMachineData data = GetPerkMachineData();
+        PerkData perkData = data.ownedPerks.Find(p => p.perkName == perkName);
+        return(perkData != null && perkData.isUnlocked);    
+    }
+
+    public static void UnlockPerk(string perkName)
+    {
+        PerkMachineData data = GetPerkMachineData();
+        PerkData existingPerk = data.ownedPerks.Find(p => p.perkName == perkName);
+
+        if(existingPerk != null)
+            existingPerk.isUnlocked = true;
+        else
+            data.ownedPerks.Add(new PerkData(perkName, true));
+    }
+
+    public static List<PerkData> GetUnlockedPerks()
+    {
+        PerkMachineData data = GetPerkMachineData();
+        return(data.ownedPerks.FindAll(p => p.isUnlocked));
+    }
+
     public static PerkMachineData GetPerkMachineData()
     {
         return(runtimePerkMachineData);
