@@ -73,7 +73,7 @@ public static class ShopSaveSystem
     }
     
     // ========== SAVE DATA ==========
-    public static void Save(CharacterSetSO[] characterSets, int currency, PerkMachineSO perkMachine)
+    public static void Save(CharacterSetSO[] characterSets, int currency)
     {
         ShopSaveData saveData = new ShopSaveData();
         saveData.characterCurrency = currency;
@@ -99,7 +99,7 @@ public static class ShopSaveSystem
     }
     
     // ========== LOAD DATA ==========
-    public static void Load(CharacterSetSO[] characterSets, PerkMachineSO perkMachine, out int loadedCurrency)
+    public static void Load(CharacterSetSO[] characterSets, out int loadedCurrency)
     {
         // Initialize runtime data from ScriptableObject defaults
         runtimeCharacterData.Clear();

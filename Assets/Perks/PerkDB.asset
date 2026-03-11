@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68665f497efd2914ba1b5b82093f4a31, type: 3}
+  m_Name: PerkDB
+  m_EditorClassIdentifier: Assembly-CSharp::PerkDatabase
+  allPerks:
+  - {fileID: 11400000, guid: cfa14fe027a9a6c469a58a726f90ffdd, type: 2}
+  - {fileID: 11400000, guid: a4267226e2fb7a54ba5f18a52d0b23ea, type: 2}
+  - {fileID: 11400000, guid: 81e54b83d36c7bd4b9ba20bddfc69774, type: 2}
+  - {fileID: 11400000, guid: 2c2948872cb974d4fadd8da4a1ea8f7d, type: 2}
+  - {fileID: 11400000, guid: 2012411aea653154d9ee9516529f865e, type: 2}
+  perkMachine: {fileID: 11400000, guid: effeb26084931194daf8f5950dba8315, type: 2}

@@ -43,7 +43,7 @@ public class ShopManager : MonoBehaviour
     void Start()
     {
         int loadedCurrency;
-        ShopSaveSystem.Load(characterSets, perkMachine, out loadedCurrency);
+        ShopSaveSystem.Load(characterSets, out loadedCurrency);
         characterCurrency = loadedCurrency;
 
         SwitchPage(0);
@@ -117,7 +117,7 @@ public class ShopManager : MonoBehaviour
 
     public void SaveShop()
     {
-        ShopSaveSystem.Save(characterSets, characterCurrency, perkMachine);
+        ShopSaveSystem.Save(characterSets, characterCurrency);
     }
 
     public void ResetShop()
