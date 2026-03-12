@@ -45,8 +45,8 @@ public class MainMenuManager : MonoBehaviour
         // }
 
         // // Equip selected Perk
-        // if(perkSelecter.GetSelectedPerk() != null)
-        PerksManager.Singleton.EquipPerk(perkSelecter.GetSelectedPerk());
+        if(perkSelecter.GetSelectedPerk() != null)
+            PerksManager.Singleton.EquipPerk(perkSelecter.GetSelectedPerk());
 
         //Map stuff
         //MAP 2 on index 1
