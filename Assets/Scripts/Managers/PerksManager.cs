@@ -56,7 +56,7 @@ public class PerksManager : MonoBehaviour
             UnapplyPerk(activePerks[slot]);
 
         activePerks[slot] = newPerk;
-        ApplyPerk(newPerk);
+        // ApplyPerk(newPerk);
         return true;
     }
 
@@ -64,7 +64,7 @@ public class PerksManager : MonoBehaviour
     {
         if (slot >= activePerks.Count || activePerks[slot] == null) return;
 
-        UnapplyPerk(activePerks[slot]);
+        // UnapplyPerk(activePerks[slot]);
         activePerks[slot] = null;
     }
 

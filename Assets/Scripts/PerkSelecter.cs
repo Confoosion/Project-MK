@@ -73,4 +73,9 @@ public class PerkSelecter : MonoBehaviour
             perkOwnedTextObject.SetActive(!ShopSaveSystem.IsPerkUnlocked(perk.name));
         }
     }
+
+    public PerkSO GetSelectedPerk()
+    {
+        return(currentPerkSelected);
+    }
 }

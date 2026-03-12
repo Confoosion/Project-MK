@@ -712,6 +712,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MainMenuManager
   mainMenuCanvas: {fileID: 231899836}
   perkMapCanvas: {fileID: 844679663}
+  perkSelecter: {fileID: 1877831877}
 --- !u!1 &158320471
 GameObject:
   m_ObjectHideFlags: 0
@@ -2357,7 +2358,22 @@ MonoBehaviour:
   characterTransform: {fileID: 0}
   characterModel: {fileID: 0}
   currentCharacter: {fileID: 0}
-  FULL_CHARACTER_LIST: []
+  FULL_CHARACTER_LIST:
+  - {fileID: 11400000, guid: 2db5ac84bd6faec4e8fe8ac4a4904b12, type: 2}
+  - {fileID: 11400000, guid: 9b2796af08be42740bb39110f9122813, type: 2}
+  - {fileID: 11400000, guid: bbc9c3dc47d7bec4c8435515dc365624, type: 2}
+  - {fileID: 11400000, guid: 30ce9037028dc6d4a8e5e4960fbfbf6f, type: 2}
+  - {fileID: 11400000, guid: 55cd52dac884d384a8983a6e22881d12, type: 2}
+  - {fileID: 11400000, guid: 85dede4b84946b847aaae37661122094, type: 2}
+  - {fileID: 11400000, guid: 9a6e9f81f8c7e664ea586ede5d04f2db, type: 2}
+  - {fileID: 11400000, guid: 01bd3e05187d204468f14aa8e5d554f3, type: 2}
+  - {fileID: 11400000, guid: 56a37b6a7381c094b8139265ab8fba58, type: 2}
+  - {fileID: 11400000, guid: 10a8eadde9219d3408955f328f753677, type: 2}
+  - {fileID: 11400000, guid: b8dddb8227c9f8846a707a534b7dc488, type: 2}
+  - {fileID: 11400000, guid: d5df850c491d5a8448f9d3cc9c3502ba, type: 2}
+  - {fileID: 11400000, guid: 53e437cbe7447584498593dc1d084d38, type: 2}
+  - {fileID: 11400000, guid: ed9d6922a760b9f49b3369b630d7ef10, type: 2}
+  - {fileID: 11400000, guid: 7a9c68e567dc0de44be9b60908b113de, type: 2}
 --- !u!114 &920931503
 MonoBehaviour:
   m_ObjectHideFlags: 0

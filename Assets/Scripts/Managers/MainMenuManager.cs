@@ -13,6 +13,9 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private GameObject perkMapCanvas;
 
 
+    [Header("Perks")]
+    [SerializeField] private PerkSelecter perkSelecter;
+
     void Start()
     {
         mainMenuCanvas.SetActive(true);
@@ -35,6 +38,16 @@ public class MainMenuManager : MonoBehaviour
 
     public void menuStartButton()
     {
+        // // Clear Perk slot
+        // if(PerksManager.Singleton.GetActivePerk())
+        // {
+        //     PerksManager.Singleton.UnequipPerk();
+        // }
+
+        // // Equip selected Perk
+        // if(perkSelecter.GetSelectedPerk() != null)
+        PerksManager.Singleton.EquipPerk(perkSelecter.GetSelectedPerk());
+
         //Map stuff
         //MAP 2 on index 1
         // int mapNumber = mapDropdown.value + 1;
