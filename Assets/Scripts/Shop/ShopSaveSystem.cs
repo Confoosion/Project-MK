@@ -61,6 +61,7 @@ public static class ShopSaveSystem
     private static Dictionary<string, CharacterSetData> runtimeCharacterData = new Dictionary<string, CharacterSetData>();
     private static int runtimeCurrency = 0;
     private static PerkMachineData runtimePerkMachineData = new PerkMachineData(1);
+    private static CharacterSetSO[] runtimeCharacterSets;
     
     // Reset on domain reload (when Unity recompiles scripts)
     // [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
@@ -69,6 +70,7 @@ public static class ShopSaveSystem
     //     runtimeCharacterData.Clear();
     //     runtimeCurrency = 0;
     //     runtimePerkMachineData = new PerkMachineData(1);
+    //     runtimeCharacterSets = null;
     //     Debug.Log("ShopSaveSystem: Reset after domain reload");
     // }
     
@@ -97,10 +99,23 @@ public static class ShopSaveSystem
         
         Debug.Log($"Shop data saved to: {SavePath}");
     }
+
+    public static void Save()
+    {
+        if(runtimeCharacterSets == null)
+        {
+            Debug.LogError("Save Unsuccessful. References not loaded. Call Load() first");
+            return;
+        }
+
+        Save(runtimeCharacterSets, runtimeCurrency);
+    }
     
     // ========== LOAD DATA ==========
     public static void Load(CharacterSetSO[] characterSets, out int loadedCurrency)
     {
+        runtimeCharacterSets = characterSets;
+
         // Initialize runtime data from ScriptableObject defaults
         runtimeCharacterData.Clear();
         foreach (var charSet in characterSets)
@@ -189,6 +204,8 @@ public static class ShopSaveSystem
         if (runtimeCharacterData.ContainsKey(characterSetName))
         {
             runtimeCharacterData[characterSetName].isUnlocked = true;
+
+            Save();
         }
     }
 
@@ -236,6 +253,11 @@ public static class ShopSaveSystem
     public static void SetCurrency(int amount)
     {
         runtimeCurrency = amount;
+    }
+
+    public static void AddCurrency(int amount)
+    {
+        runtimeCurrency += amount;
     }
     
     // ========== UTILITY ==========

@@ -29,7 +29,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Start()
     {
-        character = CharacterManager.Singleton.startingCharacter;
+        character = CharacterManager.Singleton.GetCurrentCharacter();
         character.EquipCharacter();
 
         PerksManager.Singleton.SetPlayerAttackReference(this);

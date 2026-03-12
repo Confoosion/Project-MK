@@ -17,26 +17,26 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject endScreen;
     public int muffinsNeededToMoveOn = 5;
 
-    public List<CharacterSO> characterListGM;
+    // public List<CharacterSO> characterListGM;
 
     // public static int mapNumber;
     // public static PerkSO perk;
     private EndScreenScript endScreenScript;
 
-    [Header("Character SO")]
-    [SerializeField] public CharacterSO BlackHoleCharacter; //1
-    [SerializeField] public CharacterSO BoomerangCharacter; //2
-    [SerializeField] public CharacterSO BowlingBallCharacter; //3
-    [SerializeField] public CharacterSO BurstProjectileCharacter; //4
-    [SerializeField] public CharacterSO ChargerCharacter; //5
-    [SerializeField] public CharacterSO FlamethrowerCharacter; //6
-    [SerializeField] public CharacterSO FreezeRayCharacter; //7
-    [SerializeField] public CharacterSO GrenadeCharacter; //8
-    [SerializeField] public CharacterSO GroundPoundCharacter; //9
-    [SerializeField] public CharacterSO LandMineCharacter; //10
-    [SerializeField] public CharacterSO LaserGunCharacter; //11
-    [SerializeField] public CharacterSO NukeCharacter; //12
-    [SerializeField] public CharacterSO ShotgunCharacter; //13
+    // [Header("Character SO")]
+    // [SerializeField] public CharacterSO BlackHoleCharacter; //1
+    // [SerializeField] public CharacterSO BoomerangCharacter; //2
+    // [SerializeField] public CharacterSO BowlingBallCharacter; //3
+    // [SerializeField] public CharacterSO BurstProjectileCharacter; //4
+    // [SerializeField] public CharacterSO ChargerCharacter; //5
+    // [SerializeField] public CharacterSO FlamethrowerCharacter; //6
+    // [SerializeField] public CharacterSO FreezeRayCharacter; //7
+    // [SerializeField] public CharacterSO GrenadeCharacter; //8
+    // [SerializeField] public CharacterSO GroundPoundCharacter; //9
+    // [SerializeField] public CharacterSO LandMineCharacter; //10
+    // [SerializeField] public CharacterSO LaserGunCharacter; //11
+    // [SerializeField] public CharacterSO NukeCharacter; //12
+    // [SerializeField] public CharacterSO ShotgunCharacter; //13
 
     private List<String> maps = new List<string> { "BoomerangMap", "BombMap", "LandMineMap" };
 
@@ -80,19 +80,19 @@ public class GameManager : MonoBehaviour
         {
             case "BoomerangMap":
                 SceneManager.LoadScene("BoomerangMap");
-                characterListGM.Add(BoomerangCharacter);
+                // characterListGM.Add(BoomerangCharacter);
                 maps.Remove("BoomerangMap");
                 break;
 
             case "BombMap":
                 SceneManager.LoadScene("BombMap");
-                characterListGM.Add(GrenadeCharacter);
+                // characterListGM.Add(GrenadeCharacter);
                 maps.Remove("BombMap");
                 break;
 
             case "LandMineMap":
                 SceneManager.LoadScene("LandMineMap");
-                characterListGM.Add(LandMineCharacter);
+                // characterListGM.Add(LandMineCharacter);
                 maps.Remove("LandMineMap");
                 break;
 

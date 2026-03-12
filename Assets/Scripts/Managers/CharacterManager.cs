@@ -8,7 +8,7 @@ public class CharacterManager : MonoBehaviour
     public static CharacterManager Singleton { get; private set; }
 
     [SerializeField] private List<CharacterSO> characterList = new();
-    [SerializeField] public CharacterSO startingCharacter;
+    // [SerializeField] public CharacterSO startingCharacter;
     public Transform characterTransform;
     [SerializeField] public SpriteRenderer characterModel;
     //[SerializeField] public PlayerAttack playerAttack;
@@ -31,15 +31,20 @@ public class CharacterManager : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        UpdateCharacterList();
-    }
+    // void Start()
+    // {
+    //     UpdateCharacterList();
+    // }
 
     public void ChangeCharacter(Sprite newModel, float atkCD)
     {
         characterModel.sprite = newModel;
         PlayerAttack.Singleton.attackCD = atkCD;
+    }
+
+    public CharacterSO GetCurrentCharacter()
+    {
+        return(currentCharacter);
     }
 
     public void BecomeNewCharacter(CharacterSO specificCharacter = null)
@@ -69,20 +74,26 @@ public class CharacterManager : MonoBehaviour
     {
         characterList = new();
 
-        for (int i = 0; i < GameManager.Singleton.characterListGM.Count; i++)
+        foreach(CharacterSetSO character in FULL_CHARACTER_LIST)
         {
-            characterList.Add(GameManager.Singleton.characterListGM[i]);
+            if(ShopSaveSystem.GetCharacterData(character.name).isUnlocked)
+            {
+                characterList.Add(character.GetCurrentUpgrade().character);
+            }
         }
+
+
+        // for (int i = 0; i < GameManager.Singleton.characterListGM.Count; i++)
+        // {
+        //     characterList.Add(GameManager.Singleton.characterListGM[i]);
+        // }
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (scene.name == "StarterMap")
         {
-            if (startingCharacter != null)
-            {
-                BecomeNewCharacter(startingCharacter);
-            }
+            BecomeNewCharacter(characterList[0]);
         }
     }
 

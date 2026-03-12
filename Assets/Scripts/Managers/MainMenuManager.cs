@@ -38,13 +38,10 @@ public class MainMenuManager : MonoBehaviour
 
     public void menuStartButton()
     {
-        // // Clear Perk slot
-        // if(PerksManager.Singleton.GetActivePerk())
-        // {
-        //     PerksManager.Singleton.UnequipPerk();
-        // }
+        // Update Character List
+        CharacterManager.Singleton.UpdateCharacterList();
 
-        // // Equip selected Perk
+        // Equip selected Perk
         if(perkSelecter.GetSelectedPerk() != null)
             PerksManager.Singleton.EquipPerk(perkSelecter.GetSelectedPerk());
 

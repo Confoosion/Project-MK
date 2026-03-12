@@ -65,6 +65,7 @@ public class PerkSelecter : MonoBehaviour
         if(perk == null)
         {
             perkLabel.SetText("None");
+            perkOwnedTextObject.SetActive(false);
         }
         else
         {
