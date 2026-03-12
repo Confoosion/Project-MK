@@ -12,8 +12,19 @@ public class MapUnlocks : MonoBehaviour
         {
             foreach(CharacterSetSO character in characterUnlocks)
             {
+                // Check if it was already unlocked
+                if(ShopSaveSystem.IsCharacterUnlocked(character.name))
+                {
+                    Debug.Log("Character already unlocked");
+                    continue;
+                }
+
+                // Unlocking
                 Debug.Log("Unlocking " + character.name);
                 ShopSaveSystem.UnlockCharacter(character.name);
+
+                // Adding to List
+                CharacterManager.Singleton.AddCharacterToList(character.GetCurrentUpgrade().character);
             }
         }
 

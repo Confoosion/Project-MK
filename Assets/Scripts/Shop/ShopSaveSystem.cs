@@ -209,6 +209,11 @@ public static class ShopSaveSystem
         }
     }
 
+    public static bool IsCharacterUnlocked(string characterSetName)
+    {
+        return(runtimeCharacterData[characterSetName].isUnlocked);
+    }
+
     // ========== PERK MACHINE DATA ==========
     public static bool IsPerkUnlocked(string perkName)
     {

@@ -81,12 +81,11 @@ public class CharacterManager : MonoBehaviour
                 characterList.Add(character.GetCurrentUpgrade().character);
             }
         }
+    }
 
-
-        // for (int i = 0; i < GameManager.Singleton.characterListGM.Count; i++)
-        // {
-        //     characterList.Add(GameManager.Singleton.characterListGM[i]);
-        // }
+    public void AddCharacterToList(CharacterSO character)
+    {
+        characterList.Add(character);
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)

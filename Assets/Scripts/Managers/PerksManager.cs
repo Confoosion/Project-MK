@@ -84,6 +84,8 @@ public class PerksManager : MonoBehaviour
 
     private void ApplyPerk(PerkSO perk)
     {
+        if(perk == null) return;
+        
         switch (perk.perkType)
         {
             case PerkType.DoubleJump:

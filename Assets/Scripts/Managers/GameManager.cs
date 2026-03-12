@@ -69,6 +69,21 @@ public class GameManager : MonoBehaviour
         ShopSaveSystem.Load(CharacterManager.Singleton.GetFullCharacterList(), out tempCurrency);
     }
 
+    public void RestartGame()
+    {
+        CharacterManager.Singleton.UpdateCharacterList();
+
+        DisableEndScreen();
+
+        resetEnemyKills();
+        resetMuffinCount();
+
+        SceneManager.LoadScene("StarterMap");
+
+        if(PlayerControl.Singleton)
+            PlayerControl.Singleton.movementLocked = false;
+    }
+
     public void NextLevel()
     {
         int getNewMap = GetRandomNumber(0, maps.Count);
@@ -200,7 +215,7 @@ public class GameManager : MonoBehaviour
         endScreenScript.updateText();
 
     }
-    public void disableEndScreen()
+    public void DisableEndScreen()
     {
         endScreen.SetActive(false);
         endScreenScript.updateText();

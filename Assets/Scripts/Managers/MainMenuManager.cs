@@ -38,24 +38,19 @@ public class MainMenuManager : MonoBehaviour
 
     public void menuStartButton()
     {
-        // Update Character List
-        CharacterManager.Singleton.UpdateCharacterList();
+        // // Update Character List
+        // CharacterManager.Singleton.UpdateCharacterList();
 
-        // Equip selected Perk
+        // // Equip selected Perk
         if(perkSelecter.GetSelectedPerk() != null)
             PerksManager.Singleton.EquipPerk(perkSelecter.GetSelectedPerk());
+        else
+            PerksManager.Singleton.UnequipPerk();
 
-        //Map stuff
-        //MAP 2 on index 1
-        // int mapNumber = mapDropdown.value + 1;
-        // GameManager.mapNumber = mapNumber;
+        GameManager.Singleton.RestartGame();
 
-        SceneManager.LoadScene("StarterMap");
-        // if (mapNumber == 1)
-        // {
-        //     //go to map 1
-        //     SceneManager.LoadScene("StarterMap");
-        // }
+        // // Load starting map
+        // SceneManager.LoadScene("StarterMap");
     }
 
     public void GoToShopScene()

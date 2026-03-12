@@ -42,7 +42,7 @@ public class EndScreenScript : MonoBehaviour
     public void mainMenuButton()
     {
         SceneManager.LoadScene("MainMenu");
-        GameManager.Singleton.disableEndScreen();
+        GameManager.Singleton.DisableEndScreen();
 
         GameManager.Singleton.resetEnemyKills();
         GameManager.Singleton.resetMuffinCount();
@@ -52,13 +52,13 @@ public class EndScreenScript : MonoBehaviour
 
     public void restartButton()
     {
-        SceneManager.LoadScene("StarterMap");
-        GameManager.Singleton.disableEndScreen();
+        // SceneManager.LoadScene("StarterMap");
+        // GameManager.Singleton.disableEndScreen();
 
-        GameManager.Singleton.resetEnemyKills();
-        GameManager.Singleton.resetMuffinCount();
+        // GameManager.Singleton.resetEnemyKills();
+        // GameManager.Singleton.resetMuffinCount();
 
-        PlayerControl.Singleton.movementLocked = false;
+        // PlayerControl.Singleton.movementLocked = false;
     }
 
     public void updateText()
