@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PerkSO
   perkName: More Damage
   perkDescription: Gain extra damage
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 0f6ede402d6a908408c4feff859a9e0d, type: 3}
+  perkRarity: 0
   perkType: 2
   value: 1

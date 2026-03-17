@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PerkSO
   perkName: Double Jump
   perkDescription: You jump a second time
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 5609736b12856484b9fa63c388b11616, type: 3}
   perkRarity: 1
   perkType: 0
   value: 1

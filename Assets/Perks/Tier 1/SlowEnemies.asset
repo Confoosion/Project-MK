@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PerkSO
   perkName: Slow Enemies
   perkDescription: Slows enemies movement down
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 9327cd88504f60a4384abe228577f00e, type: 3}
+  perkRarity: 0
   perkType: 3
   value: 1
