@@ -29,6 +29,7 @@ public class ShopManager : MonoBehaviour
 
     [Header("Perks")]
     [SerializeField] private PerkMachineSO perkMachine;
+    [SerializeField] private GachaAnimation gachaAnimation;
     [SerializeField] private List<PerkSO> playerPerks;
 
     [Space]
@@ -69,6 +70,10 @@ public class ShopManager : MonoBehaviour
     public void PullPerk()
     {
         PerkSO perk = PerkGachaManager.Singleton.RollGacha();
+        if(perk != null)
+        {
+            gachaAnimation.StartSpin(perk, perkMachine.GetAvailablePerks());
+        }
         if(!playerPerks.Contains(perk))
         {
             playerPerks.Add(perk);
