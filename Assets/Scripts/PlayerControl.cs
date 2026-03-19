@@ -11,7 +11,7 @@ public class PlayerControl : MonoBehaviour
     public float chargeSpeed;
     public int extraJumps;
     [SerializeField] private float jumpPower;
-
+    public bool movementLocked = false;
     [SerializeField] private PerkSO perk;
 
     [Header("Components")]
@@ -19,7 +19,11 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
-    public bool movementLocked = false;
+    [Space]
+
+    [Header("Debug")]
+    [SerializeField] private bool godMode = false;
+
     private bool isCharging = false;
     private bool jumpLocked = false;
 
@@ -188,12 +192,15 @@ public class PlayerControl : MonoBehaviour
 
     public void playerDeath()
     {
-        // Debug.Log("Player died");
-        movementLocked = true;
+        if(!godMode)
+        {
+            // Debug.Log("Player died");
+            movementLocked = true;
 
-        // death animation
-        // Open end UI screen 
-        GameManager.Singleton.enableEndScreen();
-        SpawnerManager.Singleton.stopGame = true;
+            // death animation
+            // Open end UI screen 
+            GameManager.Singleton.enableEndScreen();
+            SpawnerManager.Singleton.stopGame = true;
+        }
     }
 }
