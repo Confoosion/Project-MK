@@ -8,7 +8,6 @@ public class GachaAnimation : MonoBehaviour
 {
     [SerializeField] private RectTransform itemContainer;
     [SerializeField] private GameObject itemSlotPrefab;
-    // [SerializeField] private Image winnerHighlight;
 
     [Header("Animation Settings")]
     [SerializeField] private int totalSlots = 30;
@@ -18,10 +17,6 @@ public class GachaAnimation : MonoBehaviour
 
     [Header("Timing Settings")]
     [SerializeField] private Vector2 spinDuration = new Vector2(2f, 3f);
-    [SerializeField] private float fastScrollDuration = 0.5f;
-    [SerializeField] private float slowScrollDuration = 1.5f;
-    [SerializeField] private float finalSnapDuration = 0.3f;
-    [SerializeField] private float initialSpeed = 3000f;
 
     private List<GameObject> perkSlots = new List<GameObject>();
     private PerkSO winnerPerk;
@@ -91,21 +86,11 @@ public class GachaAnimation : MonoBehaviour
     private void SetupSlotUI(GameObject slotObj, PerkSO perk)
     {
         Image icon = slotObj.GetComponent<Image>();
-        // TextMeshProUGUI nameText = slotObj.transform.Find("PerkName")?.GetComponent<TextMeshProUGUI>();
         
         if(icon != null && perk.icon != null)
         {
             icon.sprite = perk.icon;
         }
-
-        // if(nameText != null)
-        // {
-        //     nameText.text = perk.perkName;
-        // }
-
-        // PerkSlotData data = slotObj.AddComponent<PerkSlotData>();
-        // data.perk = perk;
-        // data.background = background;
     }
 
     private IEnumerator AnimateScroll(float startY, float endY, float duration)
@@ -125,11 +110,6 @@ public class GachaAnimation : MonoBehaviour
 
         itemContainer.anchoredPosition = new Vector2(0, endY);
     }
-
-    // private IEnumerator RevealWinner()
-    // {
-        
-    // }
 
     public bool IsAnimating()
     {
