@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
         resetEnemyKills();
         resetMuffinCount();
 
-        SceneManager.LoadScene("StarterMap");
+        SceneManager.LoadScene("RuinedCityMap");
 
         if(PlayerControl.Singleton)
             PlayerControl.Singleton.movementLocked = false;
