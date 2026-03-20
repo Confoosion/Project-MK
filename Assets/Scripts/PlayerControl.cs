@@ -21,6 +21,12 @@ public class PlayerControl : MonoBehaviour
 
     [Space]
 
+    [Header("Sounds")]
+    [SerializeField] AudioClip jumpSFX;
+    [SerializeField] float jumpVolume;
+
+    [Space]
+
     [Header("Debug")]
     [SerializeField] private bool godMode = false;
 
@@ -79,12 +85,12 @@ public class PlayerControl : MonoBehaviour
             // Jumping from the ground
             if (Input.GetButtonDown("Jump") && onGround && !jumpLocked)
             {
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpPower);
+                Jump();
             }
             // Double jump
             else if (Input.GetButtonDown("Jump") && !onGround && extraJumpCount > 0 && !jumpLocked)
             {
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpPower);
+                Jump();
                 extraJumpCount--;
             }
 
@@ -139,6 +145,12 @@ public class PlayerControl : MonoBehaviour
             localScale.x *= -1f;
             transform.localScale = localScale;
         }
+    }
+
+    private void Jump()
+    {
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpPower);
+        SoundManager.Singleton.PlayPlayerAudio(jumpSFX, jumpVolume);
     }
 
     // Used if player equips Double Jump Perk

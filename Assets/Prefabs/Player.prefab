@@ -86,13 +86,16 @@ MonoBehaviour:
   chargeSpeed: 12
   extraJumps: 0
   jumpPower: 20
+  movementLocked: 0
   perk: {fileID: 0}
   rb: {fileID: 152251922751767017}
   groundCheck: {fileID: 7667857109142624511}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  movementLocked: 0
+  jumpSFX: {fileID: 8300000, guid: bd570726437eb7148a9c025eb3730695, type: 3}
+  jumpVolume: 0.75
+  godMode: 0
 --- !u!114 &4395045806453624289
 MonoBehaviour:
   m_ObjectHideFlags: 0

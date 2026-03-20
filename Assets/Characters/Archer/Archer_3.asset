@@ -19,6 +19,8 @@ MonoBehaviour:
   attackPower: 30
   attackDuration: 0
   attackCD: 0.45
+  attackSFX: {fileID: 8300000, guid: c94e5309d5e438249939e49bd68de7df, type: 3}
+  attackVolume: 0.25
   projectileForce: 250
   shootExtraArrows: 1
   arrowOffset: 20
