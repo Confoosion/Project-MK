@@ -23,9 +23,9 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private int characterCurrency;
 
     [Header("Characters")]
-    [SerializeField] private CharacterSetSO[] characterSets;
     [SerializeField] private GameObject characterShopItemPrefab;
     [SerializeField] private Transform characterShopParent;
+    [SerializeField] private CharacterSetSO[] characterSets;
 
     [Header("Perks")]
     [SerializeField] private PerkMachineSO perkMachine;

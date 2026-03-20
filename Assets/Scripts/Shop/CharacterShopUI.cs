@@ -12,6 +12,8 @@ public class CharacterShopUI : MonoBehaviour
     [SerializeField] private Button upgradeButton;
     [SerializeField] private GameObject lockedOverlay;
 
+    [SerializeField] private AudioClip buttonPressedSFX;
+
     private CharacterSetSO characterSet;
 
     public void Initialize(CharacterSetSO _set)
@@ -73,7 +75,8 @@ public class CharacterShopUI : MonoBehaviour
 
     private void OnUpgradeClicked()
     {
-        characterSet.BuyItem();
+        if(characterSet.BuyItem())
+            SoundManager.Singleton.PlayUIAudio(buttonPressedSFX);
 
         UpdateDisplay();
     }

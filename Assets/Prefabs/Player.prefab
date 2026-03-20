@@ -93,7 +93,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  jumpSFX: {fileID: 8300000, guid: bd570726437eb7148a9c025eb3730695, type: 3}
+  jumpSFX: {fileID: 8300000, guid: ac3b1f02cd89775448f0ba7c68aa3b44, type: 3}
   jumpVolume: 0.75
   godMode: 0
 --- !u!114 &4395045806453624289

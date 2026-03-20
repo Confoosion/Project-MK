@@ -22,6 +22,8 @@ public class SoundManager : MonoBehaviour
     // public AudioMixer mainAudioMixer;
     public AudioSource masterAudioSource;
     public AudioSource playerAudioSource;
+    public AudioSource attackAudioSource;
+    public AudioSource UIAudioSource;
 
     public void PlayCharacterAttackAudio(CharacterSO character)
     {
@@ -36,8 +38,19 @@ public class SoundManager : MonoBehaviour
         PlayAudio(playerAudioSource, audio, volume);
     }
 
+    public void PlayAttackAudio(AudioClip audio, float volume = 1f)
+    {
+        PlayAudio(attackAudioSource, audio, volume);
+    }
+
+    public void PlayUIAudio(AudioClip audio, float volume = 1f)
+    {
+        PlayAudio(UIAudioSource, audio, volume);
+    }
+
     private void PlayAudio(AudioSource source, AudioClip audio, float volume)
     {
-        source.PlayOneShot(audio, volume);
+        if(audio != null)
+            source.PlayOneShot(audio, volume);
     }
 }

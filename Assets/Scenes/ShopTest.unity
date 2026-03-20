@@ -3171,15 +3171,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   itemContainer: {fileID: 1589129611}
   itemSlotPrefab: {fileID: 3761683129369720398, guid: b19fcdf0aa984de4fae56aa4413da15e, type: 3}
+  gachaSpinSFX: {fileID: 8300000, guid: c31d5ac585ca43140b52ada22b8cff23, type: 3}
   totalSlots: 30
   winnerSlotIndex: 22
   slotHeight: 100
   slotOffset: 125
-  spinDuration: {x: 2, y: 3}
-  fastScrollDuration: 0.5
-  slowScrollDuration: 1.5
-  finalSnapDuration: 0.3
-  initialSpeed: 3000
+  spinDuration: {x: 4, y: 4.5}
 --- !u!1 &1996350487
 GameObject:
   m_ObjectHideFlags: 0
@@ -3459,6 +3456,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   currencyText: {fileID: 980129196}
   characterCurrency: 0
+  characterShopItemPrefab: {fileID: 7259688762831074853, guid: 09fb1f63d81c5f64f8e751628bd2569e, type: 3}
+  characterShopParent: {fileID: 1792568204}
   characterSets:
   - {fileID: 11400000, guid: 2db5ac84bd6faec4e8fe8ac4a4904b12, type: 2}
   - {fileID: 11400000, guid: 9b2796af08be42740bb39110f9122813, type: 2}
@@ -3475,8 +3474,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 10a8eadde9219d3408955f328f753677, type: 2}
   - {fileID: 11400000, guid: 53e437cbe7447584498593dc1d084d38, type: 2}
   - {fileID: 11400000, guid: ed9d6922a760b9f49b3369b630d7ef10, type: 2}
-  characterShopItemPrefab: {fileID: 7259688762831074853, guid: 09fb1f63d81c5f64f8e751628bd2569e, type: 3}
-  characterShopParent: {fileID: 1792568204}
   perkMachine: {fileID: 11400000, guid: effeb26084931194daf8f5950dba8315, type: 2}
   gachaAnimation: {fileID: 1886625564}
   playerPerks: []

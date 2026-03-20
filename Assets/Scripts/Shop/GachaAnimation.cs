@@ -8,6 +8,7 @@ public class GachaAnimation : MonoBehaviour
 {
     [SerializeField] private RectTransform itemContainer;
     [SerializeField] private GameObject itemSlotPrefab;
+    [SerializeField] private AudioClip gachaSpinSFX;
 
     [Header("Animation Settings")]
     [SerializeField] private int totalSlots = 30;
@@ -36,7 +37,8 @@ public class GachaAnimation : MonoBehaviour
     private IEnumerator SpinAnimation(PerkSO[] availablePerks)
     {
         isAnimating = true;
-
+        SoundManager.Singleton.PlayUIAudio(gachaSpinSFX);
+        
         SetupPerkStrip(availablePerks);
 
         float startY = 0;
