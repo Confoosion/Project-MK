@@ -110,7 +110,6 @@ public class GameManager : MonoBehaviour
                 // characterListGM.Add(LandMineCharacter);
                 maps.Remove("LandMineMap");
                 break;
-
         }
 
     }
