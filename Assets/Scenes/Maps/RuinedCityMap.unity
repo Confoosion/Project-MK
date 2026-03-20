@@ -322,12 +322,12 @@ SpriteRenderer:
   m_SortingLayer: -1
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 4108dd1bfb3864c4fb17bd9c7cf1d0a9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3cf121ee77b6c1840ba8b9b8d1de3513, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 153.59999, y: 120}
+  m_Size: {x: 19.2, y: 15}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -342,7 +342,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1159,8 +1159,8 @@ Transform:
   m_GameObject: {fileID: 1474546062}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.4991, y: -5.15, z: 0}
-  m_LocalScale: {x: 11.105982, y: 0.7230742, z: 1}
+  m_LocalPosition: {x: 13.0818, y: -5.15, z: 0}
+  m_LocalScale: {x: 12.271342, y: 0.7230742, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2726956261852056172}
@@ -1178,7 +1178,7 @@ PlatformEffector2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RotationalOffset: 0
-  m_UseOneWay: 0
+  m_UseOneWay: 1
   m_UseOneWayGrouping: 0
   m_SurfaceArc: 180
   m_UseSideFriction: 0
@@ -1527,7 +1527,7 @@ PlatformEffector2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RotationalOffset: 0
-  m_UseOneWay: 0
+  m_UseOneWay: 1
   m_UseOneWayGrouping: 0
   m_SurfaceArc: 180
   m_UseSideFriction: 0
@@ -1824,8 +1824,8 @@ Transform:
   m_GameObject: {fileID: 2093181887}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.9201, y: -5.15, z: 0}
-  m_LocalScale: {x: 11.067246, y: 0.7230742, z: 1}
+  m_LocalPosition: {x: -12.7853, y: -5.15, z: 0}
+  m_LocalScale: {x: 12.797208, y: 0.7230742, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2726956261852056172}
@@ -1843,7 +1843,7 @@ PlatformEffector2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RotationalOffset: 0
-  m_UseOneWay: 0
+  m_UseOneWay: 1
   m_UseOneWayGrouping: 0
   m_SurfaceArc: 180
   m_UseSideFriction: 0
@@ -2170,7 +2170,7 @@ Transform:
   m_GameObject: {fileID: 5934766912195166380}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19.8, y: 2.56, z: -2}
+  m_LocalPosition: {x: 19.7, y: 2.51, z: -2}
   m_LocalScale: {x: 1, y: 35, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2324,18 +2324,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &6076020107224946187
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7294483691700142070}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3249937bc92272142890ee3c84edc254, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EntityDestroyer
 --- !u!212 &6748574988680046466
 SpriteRenderer:
   serializedVersion: 2
@@ -2420,7 +2408,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8952834783701951709}
   - component: {fileID: 2598461138749547155}
-  - component: {fileID: 6076020107224946187}
+  - component: {fileID: 8952834783701951710}
   - component: {fileID: 2075821334654110137}
   m_Layer: 0
   m_Name: ENTITY_BORDER
@@ -2463,6 +2451,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3677892986074082310}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8952834783701951710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7294483691700142070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3249937bc92272142890ee3c84edc254, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EntityDestroyer
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

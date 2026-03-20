@@ -4,6 +4,17 @@ public class EntityDestroyer : MonoBehaviour
 {
     void OnTriggerEnter2D(Collider2D collider)
     {
-        Destroy(collider.gameObject);
+        if (collider.gameObject.CompareTag("Player"))
+        {
+            PlayerControl playerControl = collider.GetComponent<PlayerControl>();
+            if (playerControl != null) 
+            {
+                playerControl.playerDeath();
+            }
+        }
+        else
+        {
+            Destroy(collider.gameObject);
+        }
     }
 }
