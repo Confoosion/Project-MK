@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
         resetEnemyKills();
         resetMuffinCount();
 
-        SceneManager.LoadScene("StarterMap");
+        SceneManager.LoadScene("RuinedCityMap");
 
         if(PlayerControl.Singleton)
             PlayerControl.Singleton.movementLocked = false;
@@ -110,7 +110,6 @@ public class GameManager : MonoBehaviour
                 // characterListGM.Add(LandMineCharacter);
                 maps.Remove("LandMineMap");
                 break;
-
         }
 
     }
