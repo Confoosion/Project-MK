@@ -19,6 +19,8 @@ MonoBehaviour:
   attackPower: 20
   attackDuration: 0
   attackCD: 0.2
+  attackSFX: {fileID: 8300000, guid: 503ec10c4b4b8f04bb142daa9241ac37, type: 3}
+  attackVolume: 1
   bulletVelocity: 15
   weaponKnockback: 0.25
   explosionDamage: 0

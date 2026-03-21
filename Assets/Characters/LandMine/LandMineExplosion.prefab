@@ -84,6 +84,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MeleeAttack
   BOUNCE_ON_IT: 0
   bounceForce: 0
+  hitSFX: {fileID: 0}
 --- !u!1 &8629095543996536356
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,30 +16,35 @@ public class MainMenuManager : MonoBehaviour
     [Header("Perks")]
     [SerializeField] private PerkSelecter perkSelecter;
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip UI_SFX;
+
     void Start()
     {
         mainMenuCanvas.SetActive(true);
         perkMapCanvas.SetActive(false);
-
-
     }
 
     public void menuPlayButton()
     {
         mainMenuCanvas.SetActive(false);
         perkMapCanvas.SetActive(true);
+        PlaySFX();
     }
 
     public void menuBackButton()
     {
         mainMenuCanvas.SetActive(true);
         perkMapCanvas.SetActive(false);
+        PlaySFX();
     }
 
     public void menuStartButton()
     {
         // // Update Character List
         // CharacterManager.Singleton.UpdateCharacterList();
+
+        PlaySFX();
 
         // // Equip selected Perk
         if(perkSelecter.GetSelectedPerk() != null)
@@ -55,7 +60,14 @@ public class MainMenuManager : MonoBehaviour
 
     public void GoToShopScene()
     {
+        PlaySFX();
+        
         SceneManager.LoadScene("ShopTest");
+    }
+
+    private void PlaySFX()
+    {
+        SoundManager.Singleton.PlayUIAudio(UI_SFX);
     }
 
 }

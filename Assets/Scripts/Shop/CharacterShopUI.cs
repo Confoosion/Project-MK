@@ -12,6 +12,9 @@ public class CharacterShopUI : MonoBehaviour
     [SerializeField] private Button upgradeButton;
     [SerializeField] private GameObject lockedOverlay;
 
+    [SerializeField] private AudioClip buySuccessful_SFX;
+    [SerializeField] private AudioClip buyFail_SFX;
+
     private CharacterSetSO characterSet;
 
     public void Initialize(CharacterSetSO _set)
@@ -73,8 +76,11 @@ public class CharacterShopUI : MonoBehaviour
 
     private void OnUpgradeClicked()
     {
-        characterSet.BuyItem();
-
+        if(characterSet.BuyItem())
+            SoundManager.Singleton.PlayUIAudio(buySuccessful_SFX);
+        else
+            SoundManager.Singleton.PlayUIAudio(buyFail_SFX);
+            
         UpdateDisplay();
     }
 

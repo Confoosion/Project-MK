@@ -14,6 +14,7 @@ public class ProjectileAttack : MonoBehaviour
     [SerializeField] private bool canRollOnGround;
     [SerializeField] private bool physicsObject;
     [SerializeField] private int bounceAmount;
+    [SerializeField] private AudioClip collision_SFX;
     private int pierceAmount;
     private int pierces;
     public GameObject impactObject;
@@ -74,6 +75,8 @@ public class ProjectileAttack : MonoBehaviour
                 ProjectileDespawn();
             }
         }
+
+        SoundManager.Singleton.PlayAttackAudio(collision_SFX);
     }
 
     void DoBounce()
