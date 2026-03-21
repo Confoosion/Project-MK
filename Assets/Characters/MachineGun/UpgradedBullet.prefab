@@ -111,6 +111,7 @@ MonoBehaviour:
   canRollOnGround: 0
   physicsObject: 0
   bounceAmount: 0
+  collision_SFX: {fileID: 8300000, guid: 90c91fa0549e56847bc6b654ee0bcb6a, type: 3}
   impactObject: {fileID: 4747574840651725223, guid: 0e5a9db7f0acdf446844b400846356a2, type: 3}
 --- !u!50 &3233667594105541968
 Rigidbody2D:
