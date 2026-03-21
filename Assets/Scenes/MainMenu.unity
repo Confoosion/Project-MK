@@ -713,6 +713,7 @@ MonoBehaviour:
   mainMenuCanvas: {fileID: 231899836}
   perkMapCanvas: {fileID: 844679663}
   perkSelecter: {fileID: 1877831877}
+  UI_SFX: {fileID: 8300000, guid: 1c5829e227856bd4db1cfe26a3ada259, type: 3}
 --- !u!1 &158320471
 GameObject:
   m_ObjectHideFlags: 0

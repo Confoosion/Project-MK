@@ -42,6 +42,13 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI upgradeMachineLabel;
     [SerializeField] private TextMeshProUGUI upgradeMachineAmount;
 
+    [Space]
+
+    [Header("UI SFX")]
+    [SerializeField] private AudioClip UI_ButtonSFX;
+    [SerializeField] private AudioClip perkMachineUpgradeSFX;
+    [SerializeField] private AudioClip buyErrorSFX;
+
     void Start()
     {
         int loadedCurrency;
@@ -73,19 +80,25 @@ public class ShopManager : MonoBehaviour
         if(perk != null)
         {
             gachaAnimation.StartSpin(perk, perkMachine.GetAvailablePerks());
+
+            if(!playerPerks.Contains(perk))
+            {
+                playerPerks.Add(perk);
+            }
         }
-        if(!playerPerks.Contains(perk))
-        {
-            playerPerks.Add(perk);
-        }
+        else
+            SoundManager.Singleton.PlayUIAudio(buyErrorSFX);
     }
 
     public void UpgradePerkMachine()
     {
         if(perkMachine.UpgradePerkMachine())
         {
+            SoundManager.Singleton.PlayUIAudio(perkMachineUpgradeSFX);
             UpdatePerkMachineUI();
         }
+        else
+            SoundManager.Singleton.PlayUIAudio(buyErrorSFX);
     }
 
     // ========== CURRENCY ========== 
@@ -228,5 +241,10 @@ public class ShopManager : MonoBehaviour
     {
         SaveShop();
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void PlayButtonPress_SFX()
+    {
+        SoundManager.Singleton.PlayUIAudio(UI_ButtonSFX);
     }
 }

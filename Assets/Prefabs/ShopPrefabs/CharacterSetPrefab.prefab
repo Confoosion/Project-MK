@@ -542,7 +542,8 @@ MonoBehaviour:
   priceText: {fileID: 5023664110536818369}
   upgradeButton: {fileID: 7536304631697073560}
   lockedOverlay: {fileID: 4319358661791866265}
-  buttonPressedSFX: {fileID: 8300000, guid: 9e8f3dd35f0e0e142b422035c486a03f, type: 3}
+  buySuccessful_SFX: {fileID: 8300000, guid: 9e8f3dd35f0e0e142b422035c486a03f, type: 3}
+  buyFail_SFX: {fileID: 8300000, guid: c811b0b5ebb0c204180079304b0f7c66, type: 3}
 --- !u!1 &7815354873923563514
 GameObject:
   m_ObjectHideFlags: 0

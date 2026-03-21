@@ -18,6 +18,7 @@ public class GachaAnimation : MonoBehaviour
 
     [Header("Timing Settings")]
     [SerializeField] private Vector2 spinDuration = new Vector2(2f, 3f);
+    
 
     private List<GameObject> perkSlots = new List<GameObject>();
     private PerkSO winnerPerk;
@@ -38,7 +39,7 @@ public class GachaAnimation : MonoBehaviour
     {
         isAnimating = true;
         SoundManager.Singleton.PlayUIAudio(gachaSpinSFX);
-        
+
         SetupPerkStrip(availablePerks);
 
         float startY = 0;

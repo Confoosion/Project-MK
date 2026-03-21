@@ -838,6 +838,18 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2035830125}
         m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
+        m_MethodName: PlayButtonPress_SFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2035830125}
+        m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
         m_MethodName: GoToMainMenuScene
         m_Mode: 1
         m_Arguments:
@@ -3262,6 +3274,18 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2035830125}
         m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
+        m_MethodName: PlayButtonPress_SFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2035830125}
+        m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
         m_MethodName: SwitchPage
         m_Mode: 3
         m_Arguments:
@@ -3484,6 +3508,9 @@ MonoBehaviour:
   perkMachineTierText: {fileID: 1117754621}
   upgradeMachineLabel: {fileID: 106952079}
   upgradeMachineAmount: {fileID: 146551504}
+  UI_ButtonSFX: {fileID: 8300000, guid: 1c5829e227856bd4db1cfe26a3ada259, type: 3}
+  perkMachineUpgradeSFX: {fileID: 8300000, guid: 1a094bad3f38ea344919ef067222a5ca, type: 3}
+  buyErrorSFX: {fileID: 8300000, guid: c811b0b5ebb0c204180079304b0f7c66, type: 3}
 --- !u!4 &2035830126
 Transform:
   m_ObjectHideFlags: 0
