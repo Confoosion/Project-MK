@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Xml.Serialization;
-using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,28 +15,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject endScreen;
     public int muffinsNeededToMoveOn = 5;
 
-    // public List<CharacterSO> characterListGM;
-
-    // public static int mapNumber;
-    // public static PerkSO perk;
     private EndScreenScript endScreenScript;
 
-    // [Header("Character SO")]
-    // [SerializeField] public CharacterSO BlackHoleCharacter; //1
-    // [SerializeField] public CharacterSO BoomerangCharacter; //2
-    // [SerializeField] public CharacterSO BowlingBallCharacter; //3
-    // [SerializeField] public CharacterSO BurstProjectileCharacter; //4
-    // [SerializeField] public CharacterSO ChargerCharacter; //5
-    // [SerializeField] public CharacterSO FlamethrowerCharacter; //6
-    // [SerializeField] public CharacterSO FreezeRayCharacter; //7
-    // [SerializeField] public CharacterSO GrenadeCharacter; //8
-    // [SerializeField] public CharacterSO GroundPoundCharacter; //9
-    // [SerializeField] public CharacterSO LandMineCharacter; //10
-    // [SerializeField] public CharacterSO LaserGunCharacter; //11
-    // [SerializeField] public CharacterSO NukeCharacter; //12
-    // [SerializeField] public CharacterSO ShotgunCharacter; //13
-
-    private List<String> maps = new List<string> { "BoomerangMap", "BombMap", "LandMineMap" };
+    // private List<String> maps = new List<string> { "BoomerangMap", "BombMap", "LandMineMap" };
+    private int mapCount;
+    private List<int> visitedMapIndices = new List<int>();
 
     // variables for the whole game. End of game stats
     private int muffinSum = 0;
@@ -60,6 +41,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        int mapCount = SceneManager.sceneCountInBuildSettings - 2; // subtract 2 removes MainMenu and Shop
         endScreenScript = gameObject.GetComponent<EndScreenScript>();
     }
 
@@ -77,6 +59,7 @@ public class GameManager : MonoBehaviour
 
         resetEnemyKills();
         resetMuffinCount();
+        resetMapPool();
 
         SceneManager.LoadScene("RuinedCityMap");
 
@@ -86,32 +69,11 @@ public class GameManager : MonoBehaviour
 
     public void NextLevel()
     {
-        int getNewMap = GetRandomNumber(0, maps.Count);
-        string mapString = maps[getNewMap];
+        int newMapIndex = GetRandomNumber(0, mapCount) + 2; // skip MainMenu and Shop
+        visitedMapIndices.Add(newMapIndex);
+        SceneManager.LoadScene(newMapIndex);
         
         muffinsNeededToMoveOn += muffinsNeededToMoveOn;
-
-        switch (mapString)
-        {
-            case "BoomerangMap":
-                SceneManager.LoadScene("BoomerangMap");
-                // characterListGM.Add(BoomerangCharacter);
-                maps.Remove("BoomerangMap");
-                break;
-
-            case "BombMap":
-                SceneManager.LoadScene("BombMap");
-                // characterListGM.Add(GrenadeCharacter);
-                maps.Remove("BombMap");
-                break;
-
-            case "LandMineMap":
-                SceneManager.LoadScene("LandMineMap");
-                // characterListGM.Add(LandMineCharacter);
-                maps.Remove("LandMineMap");
-                break;
-        }
-
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -141,6 +103,11 @@ public class GameManager : MonoBehaviour
         GameObject[] spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
 
         return spawnPoints.Length > 0 ? spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Length)].transform : null;
+    }
+
+    private void resetMapPool()
+    {
+        visitedMapIndices.Clear();
     }
 
     //end screen stats stuff

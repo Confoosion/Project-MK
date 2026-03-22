@@ -5063,7 +5063,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   playerObject: {fileID: 3951368733954264982, guid: 5e08c94a487d1284d9609b2889ce4b79, type: 3}
   endScreen: {fileID: 1582270464}
-  muffinsNeededToMoveOn: 5
+  muffinsNeededToMoveOn: 2
 --- !u!4 &1861990213
 Transform:
   m_ObjectHideFlags: 0
