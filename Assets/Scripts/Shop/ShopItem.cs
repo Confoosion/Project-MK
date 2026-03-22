@@ -6,9 +6,9 @@ public class ShopItem : ScriptableObject
     public Sprite itemIcon;
     public int price;
 
-    public virtual void BuyItem()
+    public virtual bool BuyItem()
     {
         // Buy item and deduct price from wherever currency is being stored
-        return;
+        return(false);
     }
 }

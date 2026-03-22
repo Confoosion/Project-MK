@@ -10,6 +10,7 @@ public class MeleeAttack : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     [SerializeField] private bool BOUNCE_ON_IT;
     [SerializeField] private float bounceForce;
+    [SerializeField] private AudioClip hitSFX;
 
     public void SetData(float dmg, float atkTime)
     {
@@ -38,6 +39,8 @@ public class MeleeAttack : MonoBehaviour
         {
             collider.gameObject.GetComponent<EnemyController>().enemyTakeDamage(damage);
             // Debug.Log("Hit enemy!");
+
+            SoundManager.Singleton.PlayAttackAudio(hitSFX);
 
             if (BOUNCE_ON_IT)
             {   // Bounces on enemies, so we will destroy this object and force the player up

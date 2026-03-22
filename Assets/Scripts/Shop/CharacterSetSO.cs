@@ -14,14 +14,14 @@ public class CharacterSetSO : ShopItem
     public CharacterUpgrade[] upgrades = new CharacterUpgrade[3];
     // public int currentLevel = 1;
 
-    public override void BuyItem()
+    public override bool BuyItem()
     {
         CharacterSetData data = ShopSaveSystem.GetCharacterData(name);
 
         if(data == null || data.currentLevel >= upgrades.Length)
         {
             Debug.Log("Max level");
-            return;
+            return(false);
         }
 
         CharacterUpgrade currentUpgrade = upgrades[data.currentLevel - 1];
@@ -32,7 +32,7 @@ public class CharacterSetSO : ShopItem
         if(ShopManager.Singleton.GetCharacterCurrency() < upgradePrice)
         {
             Debug.Log("Too broke to buy");
-            return;
+            return(false);
         }
 
         ShopManager.Singleton.AddCharacterCurrency(-upgradePrice);
@@ -41,6 +41,7 @@ public class CharacterSetSO : ShopItem
         ShopManager.Singleton.SaveShop();
 
         Debug.Log(name + " upgraded to level " + (data.currentLevel));
+        return(true);
     }
 
     public int GetCurrentLevel()

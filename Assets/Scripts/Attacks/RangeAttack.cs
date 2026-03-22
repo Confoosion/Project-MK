@@ -8,6 +8,7 @@ public class RangeAttack : MonoBehaviour
     public GameObject impactObject;
     private float impactDamage;
     private float impactDuration;
+    public AudioClip impactSFX;
 
     public void SetData(float dmg, bool removeFromGround)
     {
@@ -40,6 +41,7 @@ public class RangeAttack : MonoBehaviour
     private void ProjectileDespawn()
     {
         //Debug.Log("Collided");
+        SoundManager.Singleton.PlayAttackAudio(impactSFX);
         SpawnImpact();
         Destroy(this.gameObject);
     }

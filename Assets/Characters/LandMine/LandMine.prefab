@@ -227,3 +227,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RangeAttack
   impactObject: {fileID: 0}
+  impactSFX: {fileID: 8300000, guid: 90c91fa0549e56847bc6b654ee0bcb6a, type: 3}

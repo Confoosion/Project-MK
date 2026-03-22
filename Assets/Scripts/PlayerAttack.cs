@@ -62,6 +62,7 @@ public class PlayerAttack : MonoBehaviour
             character.UseWeapon(transform, this);
             canAttack = false;
             StartCoroutine(AttackCooldown(attackCD));
+            SoundManager.Singleton.PlayCharacterAttackAudio(character);
         }
     }
 

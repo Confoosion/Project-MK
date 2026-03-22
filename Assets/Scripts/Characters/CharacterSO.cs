@@ -13,6 +13,10 @@ public abstract class CharacterSO : ScriptableObject
     public float attackDuration;
     public float attackCD;
 
+    [Header("Sounds")]
+    public AudioClip attackSFX;
+    public float attackVolume = 1f;
+
     public void EquipCharacter()
     {
         if (characterModel == null)

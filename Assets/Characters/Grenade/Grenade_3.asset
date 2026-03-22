@@ -19,6 +19,8 @@ MonoBehaviour:
   attackPower: 20
   attackDuration: 0
   attackCD: 1
+  attackSFX: {fileID: 8300000, guid: b3bc2225d3cbb8641806e32c3fe29382, type: 3}
+  attackVolume: 1
   projectileForce: 10
   impactDamage: 50
   impactDuration: 1
