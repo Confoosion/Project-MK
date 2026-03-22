@@ -93,6 +93,8 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  jumpSFX: {fileID: 0}
+  jumpVolume: 0
   godMode: 0
 --- !u!114 &4395045806453624289
 MonoBehaviour:
@@ -200,7 +202,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1925586401773306163
 Transform:
   m_ObjectHideFlags: 0

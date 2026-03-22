@@ -1,3 +1,4 @@
+using NUnit.Framework.Interfaces;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,7 +18,6 @@ public class GameManager : MonoBehaviour
 
     private EndScreenScript endScreenScript;
 
-    // private List<String> maps = new List<string> { "BoomerangMap", "BombMap", "LandMineMap" };
     private int mapCount;
     private List<int> visitedMapIndices = new List<int>();
 
@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        int mapCount = SceneManager.sceneCountInBuildSettings - 2; // subtract 2 removes MainMenu and Shop
+        mapCount = SceneManager.sceneCountInBuildSettings - 3; // subtract 2 removes MainMenu and Shop
         endScreenScript = gameObject.GetComponent<EndScreenScript>();
     }
 
@@ -69,11 +69,20 @@ public class GameManager : MonoBehaviour
 
     public void NextLevel()
     {
-        int newMapIndex = GetRandomNumber(0, mapCount) + 2; // skip MainMenu and Shop
-        visitedMapIndices.Add(newMapIndex);
-        SceneManager.LoadScene(newMapIndex);
+        int newMapIndex = GetRandomNumber(0, mapCount) + 3; // skip MainMenu and Shop
         
-        muffinsNeededToMoveOn += muffinsNeededToMoveOn;
+        if (!visitedMapIndices.Contains(newMapIndex))
+        {
+            visitedMapIndices.Add(newMapIndex);
+
+            SceneManager.LoadScene(newMapIndex);
+
+            muffinsNeededToMoveOn += muffinsNeededToMoveOn;
+        }
+        else
+        {
+            NextLevel();
+        }
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)

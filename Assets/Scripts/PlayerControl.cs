@@ -40,6 +40,8 @@ public class PlayerControl : MonoBehaviour
 
     public static PlayerControl Singleton;
 
+    private int godFactor = 10;
+
     private void Awake()
     {
         if (Singleton == null)
@@ -72,6 +74,18 @@ public class PlayerControl : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.I))
         {
             godMode = !godMode;
+            if (godMode)
+            {
+                MAXSPEED += godFactor;
+                speed += godFactor;
+                jumpPower += godFactor;
+            }
+            else
+            {
+                MAXSPEED -= godFactor;
+                speed -= godFactor;
+                jumpPower -= godFactor;
+            }
         }
 
         // Movement
