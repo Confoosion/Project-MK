@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: de2d82692472fde46b2f97cad8f27378
+guid: 5522b72571b47294abb8ecc0264df413
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8638069784373140512
-    second: Money Bags Temp 100__0
+      213: 1365699114581950294
+    second: Money Bags Temp 100% (1)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -48,7 +48,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 1
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 32
@@ -96,29 +96,16 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WindowsStoreApps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Money Bags Temp 100__0
+      name: Money Bags Temp 100% (1)_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 14
         y: 0
-        width: 49
+        width: 35
         height: 63
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -128,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0e3676d2c496f1880800000000000000
-      internalID: -8638069784373140512
+      spriteID: 65ff8b2eb10f3f210800000000000000
+      internalID: 1365699114581950294
       vertices: []
       indices: 
       edges: []
@@ -148,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Money Bags Temp 100__0: -8638069784373140512
+      Money Bags Temp 100% (1)_0: 1365699114581950294
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

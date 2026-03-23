@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BowlingBall_1
   m_EditorClassIdentifier: Assembly-CSharp::BowlingBallCharacter
   characterName: Bowler Bob
-  characterModel: {fileID: 21300000, guid: de2d82692472fde46b2f97cad8f27378, type: 3}
+  characterModel: {fileID: 21300000, guid: 5522b72571b47294abb8ecc0264df413, type: 3}
   attackObject: {fileID: 5376833307798343989, guid: a1d03efe9955f8742a4ed5a51c6788cc, type: 3}
   level: 1
   attackPower: 50

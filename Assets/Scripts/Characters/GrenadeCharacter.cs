@@ -18,7 +18,9 @@ public class GrenadeCharacter : CharacterSO
 
         if(burstCount <= 1)
         {
-            GameObject atk = Instantiate(attackObject, origin.position + new Vector3(0f, 0.25f, 0f), Quaternion.Euler(new Vector3(0f, 0f, (direction == -1) ? 180f : 0f)));
+            GameObject atk = Instantiate(attackObject, origin.position + new Vector3(0f, 0.25f, 0f), Quaternion.identity);
+            Transform atkTransform = atk.transform;
+            atkTransform.localScale = new Vector3(atkTransform.localScale.x * -direction, atkTransform.localScale.y, atkTransform.localScale.z);
 
             atk.GetComponent<RangeAttack>().SetData(attackPower, destroyOnTerrain);
             atk.GetComponent<RangeAttack>().SetImpactData(impactDamage, impactDuration);
