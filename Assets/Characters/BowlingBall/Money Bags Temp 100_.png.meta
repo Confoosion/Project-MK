@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2788a3c44cfaeee4386c4a54fe6f4ece
+guid: de2d82692472fde46b2f97cad8f27378
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5718304784226621280
-    second: boomerang_0
+      213: -8638069784373140512
+    second: Money Bags Temp 100__0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -48,10 +48,10 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 1
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -101,7 +101,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: boomerang_0
+      name: Money Bags Temp 100__0
       rect:
         serializedVersion: 2
-        x: 21
-        y: 11
-        width: 26
-        height: 44
+        x: 0
+        y: 0
+        width: 49
+        height: 63
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0679e3587ef7b5f40800000000000000
-      internalID: 5718304784226621280
+      spriteID: 0e3676d2c496f1880800000000000000
+      internalID: -8638069784373140512
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      boomerang_0: 5718304784226621280
+      Money Bags Temp 100__0: -8638069784373140512
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
