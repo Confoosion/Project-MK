@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class ShopManager : MonoBehaviour
 {
@@ -30,6 +31,8 @@ public class ShopManager : MonoBehaviour
     [Header("Perks")]
     [SerializeField] private PerkMachineSO perkMachine;
     [SerializeField] private GachaAnimation gachaAnimation;
+
+    [SerializeField] UnityEvent perkMachineEvent;
     [SerializeField] private List<PerkSO> playerPerks;
 
     [Space]
@@ -38,9 +41,10 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private GameObject[] shopPages;
     private int currentPageIndex;
     [SerializeField] private TextMeshProUGUI switchPageText;
+    [SerializeField] private TextMeshProUGUI perkMachineTitleText;
     [SerializeField] private TextMeshProUGUI perkMachineTierText;
-    [SerializeField] private TextMeshProUGUI upgradeMachineLabel;
-    [SerializeField] private TextMeshProUGUI upgradeMachineAmount;
+    [SerializeField] private TextMeshProUGUI perkMachinePriceText;
+    // [SerializeField] private GameObject upgradePerkMachineButton;
 
     [Space]
 
@@ -60,7 +64,8 @@ public class ShopManager : MonoBehaviour
         UpdateCurrencyDisplay();
         PopulateCharacterShop();
 
-        UpdatePerkMachineUI();
+        SetupPerkMachineUI();
+        // UpdatePerkMachineUI();
     }
 
     // ========== CHARACTERS ==========
@@ -74,7 +79,7 @@ public class ShopManager : MonoBehaviour
     }
 
     // ========== PERKS ==========
-    public void PullPerk()
+    private void PullPerk()
     {
         PerkSO perk = PerkGachaManager.Singleton.RollGacha();
         if(perk != null)
@@ -90,15 +95,50 @@ public class ShopManager : MonoBehaviour
             SoundManager.Singleton.PlayUIAudio(buyErrorSFX);
     }
 
-    public void UpgradePerkMachine()
+    private void UpgradePerkMachine()
     {
         if(perkMachine.UpgradePerkMachine())
         {
             SoundManager.Singleton.PlayUIAudio(perkMachineUpgradeSFX);
-            UpdatePerkMachineUI();
+            UpdateUpgradePerkMachineUI();
         }
         else
             SoundManager.Singleton.PlayUIAudio(buyErrorSFX);
+    }
+
+    public void AddEvent_PullPerk()
+    {
+        if(perkMachineEvent.GetPersistentEventCount() > 0)
+        {
+            perkMachineEvent.RemoveAllListeners();
+        }
+    
+        perkMachineEvent.AddListener(PullPerk);
+
+        // Update UI
+        perkMachineTitleText.SetText("Pull Perk");
+        perkMachinePriceText.SetText(PerkGachaManager.Singleton.GetGachaPrice().ToString() + "C");
+    }
+
+    public void AddEvent_UpgradePerkMachine()
+    {
+        if(perkMachineEvent.GetPersistentEventCount() > 0)
+        {
+            perkMachineEvent.RemoveAllListeners();
+        }
+
+        perkMachineEvent.AddListener(UpgradePerkMachine);
+
+        // Update UI
+        UpdateUpgradePerkMachineUI();
+    }
+
+    public void LeverPulled()
+    {
+        if(perkMachineEvent.GetPersistentEventCount() > 0)
+        {
+            perkMachineEvent.Invoke();
+        }
     }
 
     // ========== CURRENCY ========== 
@@ -176,7 +216,7 @@ public class ShopManager : MonoBehaviour
             perkMachineData.pityCounter = 0;
         }
 
-        UpdatePerkMachineUI();
+        SetupPerkMachineUI();
 
         // Reset Currency
         characterCurrency = 0;
@@ -216,7 +256,20 @@ public class ShopManager : MonoBehaviour
         switchPageText.SetText(pageText + " Page");
     }
 
-    public void UpdatePerkMachineUI()
+    private void SetupPerkMachineUI()
+    {
+        // Set up Title text
+        perkMachineTitleText.SetText("Perk Machine");
+
+        // Set up Tier text
+        int currTier = perkMachine.GetCurrentTier();
+        perkMachineTierText.SetText("Tier " + currTier.ToString());
+
+        // Set up Price text
+        perkMachineTitleText.SetText("");
+    } 
+
+    private void UpdateUpgradePerkMachineUI()
     {
         int currTier = perkMachine.GetCurrentTier();
         perkMachineTierText.SetText("Tier " + currTier.ToString());
@@ -226,14 +279,14 @@ public class ShopManager : MonoBehaviour
         if(currTier + 1 <= perkMachine.tiers.Length)
         {
             nextTierSettings = perkMachine.tiers[currTier];
-
-            upgradeMachineLabel.SetText("Upgrade to Tier " + nextTierSettings.tierLevel.ToString());
-            upgradeMachineAmount.SetText("[" + nextTierSettings.upgradePrice + " Currency]");
+            
+            perkMachineTitleText.SetText("Upgrade Machine");
+            perkMachinePriceText.SetText(nextTierSettings.upgradePrice.ToString() + "C");
         }
         else
         {
-            upgradeMachineLabel.SetText("MAX TIER REACHED");
-            upgradeMachineAmount.SetText("");
+            perkMachineTitleText.SetText("MAX TIER REACHED");
+            perkMachinePriceText.SetText("");
         }
     }
 

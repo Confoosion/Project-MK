@@ -135,4 +135,9 @@ public class PerkGachaManager : MonoBehaviour
     {
         return(perkMachine);
     }
+
+    public int GetGachaPrice()
+    {
+        return(GACHA_PRICE);
+    }
 }
