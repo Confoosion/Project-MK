@@ -180,6 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   enemyType: {fileID: 11400000, guid: 9262e9d0f4d52b14197233138a217651, type: 2}
+  deathParticle: {fileID: 1841597241590976148, guid: 3ca5864a8d2772d4498413585a430ed9, type: 3}
   canMove: 1
   wallLayer:
     serializedVersion: 2
