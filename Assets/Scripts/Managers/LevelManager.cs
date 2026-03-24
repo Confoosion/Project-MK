@@ -10,7 +10,7 @@ public class LevelManager : MonoBehaviour
 
     private int muffinCount;
 
-    public TMP_Text muffinCountText;
+    public Slider muffinProgressBar;
 
     public int difficulty = 1;
 
@@ -25,6 +25,7 @@ public class LevelManager : MonoBehaviour
     {
         resetMuffinCount();
         resetDifficulty();
+        updateProgressBar();
 
         MuffinSpawner.Singleton.SpawnMuffin();
     }
@@ -38,14 +39,12 @@ public class LevelManager : MonoBehaviour
     public void addMuffin()
     {
         muffinCount++;
+        updateProgressBar();
         GameManager.Singleton.addMuffinCount();
-        muffinCountText.text = "Muffin: " + muffinCount;
-
 
         if (GameManager.Singleton.muffinsNeededToMoveOn == muffinCount)
         {
-            resetDifficulty();
-            resetMuffinCount();
+
             GameManager.Singleton.NextLevel();
 
         }
@@ -64,5 +63,11 @@ public class LevelManager : MonoBehaviour
     public void resetMuffinCount()
     {
         muffinCount = 0;
+    }
+
+    private void updateProgressBar()
+    {
+        float percentageComplete = (float)muffinCount / (float)GameManager.Singleton.muffinsNeededToMoveOn;
+        muffinProgressBar.value = percentageComplete;
     }
 }
