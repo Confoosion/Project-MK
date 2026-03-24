@@ -17,7 +17,7 @@ public class GachaAnimation : MonoBehaviour
     [SerializeField] private float slotOffset;
 
     [Header("Timing Settings")]
-    [SerializeField] private Vector2 spinDuration = new Vector2(2f, 3f);
+    [SerializeField] private float spinDuration = 4.25f;
     
 
     private List<GameObject> perkSlots = new List<GameObject>();
@@ -45,12 +45,13 @@ public class GachaAnimation : MonoBehaviour
         float startY = 0;
         itemContainer.anchoredPosition = new Vector2(0, -startY);
 
-        float targetY = slotHeight * winnerSlotIndex + slotOffset + Random.Range(-slotHeight * 0.4f, slotHeight * 0.4f);
+        float targetY = slotHeight * winnerSlotIndex + slotOffset;
 
         yield return StartCoroutine(AnimateScroll(itemContainer.anchoredPosition.y,
                                                   targetY,
-                                                  Random.Range(spinDuration.x, spinDuration.y)));
+                                                  spinDuration));
         
+        ShopManager.Singleton.ShowPerkReceivedUI(winnerPerk);
         isAnimating = false;
     }
 

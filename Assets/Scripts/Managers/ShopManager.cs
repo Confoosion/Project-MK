@@ -31,8 +31,11 @@ public class ShopManager : MonoBehaviour
     [Header("Perks")]
     [SerializeField] private PerkMachineSO perkMachine;
     [SerializeField] private GachaAnimation gachaAnimation;
+    [SerializeField] private PerkMachineLever perkMachineLever;
+    [SerializeField] private AvailablePerksUI availablePerksUI;
 
-    [SerializeField] UnityEvent perkMachineEvent;
+    UnityEvent perkMachineEvent = new UnityEvent();
+    private bool hasListener = false;
     [SerializeField] private List<PerkSO> playerPerks;
 
     [Space]
@@ -44,6 +47,9 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI perkMachineTitleText;
     [SerializeField] private TextMeshProUGUI perkMachineTierText;
     [SerializeField] private TextMeshProUGUI perkMachinePriceText;
+    [SerializeField] private GameObject perkReceivedPopup;
+    [SerializeField] private Image perkReceivedImage;
+    [SerializeField] private TextMeshProUGUI perkReceivedName;
     // [SerializeField] private GameObject upgradePerkMachineButton;
 
     [Space]
@@ -79,7 +85,7 @@ public class ShopManager : MonoBehaviour
     }
 
     // ========== PERKS ==========
-    private void PullPerk()
+    public void PullPerk()
     {
         PerkSO perk = PerkGachaManager.Singleton.RollGacha();
         if(perk != null)
@@ -92,39 +98,46 @@ public class ShopManager : MonoBehaviour
             }
         }
         else
+        {
+            perkMachineLever.UpdateLever(false);
             SoundManager.Singleton.PlayUIAudio(buyErrorSFX);
+        }
     }
 
-    private void UpgradePerkMachine()
+    public void UpgradePerkMachine()
     {
         if(perkMachine.UpgradePerkMachine())
         {
             SoundManager.Singleton.PlayUIAudio(perkMachineUpgradeSFX);
             UpdateUpgradePerkMachineUI();
+            availablePerksUI.SetAvailablePerks(perkMachine.GetAvailablePerks());
         }
         else
             SoundManager.Singleton.PlayUIAudio(buyErrorSFX);
+        perkMachineLever.UpdateLever(false);
     }
 
     public void AddEvent_PullPerk()
     {
-        if(perkMachineEvent.GetPersistentEventCount() > 0)
+        if(hasListener)
         {
             perkMachineEvent.RemoveAllListeners();
         }
     
         perkMachineEvent.AddListener(PullPerk);
+        hasListener = true;
 
         // Update UI
         perkMachineTitleText.SetText("Pull Perk");
-        perkMachinePriceText.SetText(PerkGachaManager.Singleton.GetGachaPrice().ToString() + "C");
+        perkMachinePriceText.SetText(PerkGachaManager.Singleton.GetGachaPrice().ToString() + "c");
     }
 
     public void AddEvent_UpgradePerkMachine()
     {
-        if(perkMachineEvent.GetPersistentEventCount() > 0)
+        if(hasListener)
         {
             perkMachineEvent.RemoveAllListeners();
+            hasListener = true;
         }
 
         perkMachineEvent.AddListener(UpgradePerkMachine);
@@ -135,9 +148,14 @@ public class ShopManager : MonoBehaviour
 
     public void LeverPulled()
     {
-        if(perkMachineEvent.GetPersistentEventCount() > 0)
+        if(hasListener)
         {
             perkMachineEvent.Invoke();
+        }
+        else
+        {
+            perkMachineLever.UpdateLever(false);
+            SoundManager.Singleton.PlayUIAudio(buyErrorSFX);
         }
     }
 
@@ -254,10 +272,19 @@ public class ShopManager : MonoBehaviour
         int underscore = shopPages[currentPageIndex].name.IndexOf("_");
         string pageText = shopPages[currentPageIndex].name.Substring(0, underscore);
         switchPageText.SetText(pageText + " Page");
+
+        SetupPerkMachineUI();
     }
 
     private void SetupPerkMachineUI()
     {
+        // Hide Perk Popup
+        HidePerkReceivedUI();
+
+        // Remove any listeners in the UnityEvent
+        perkMachineEvent.RemoveAllListeners();
+        hasListener = false;
+
         // Set up Title text
         perkMachineTitleText.SetText("Perk Machine");
 
@@ -266,7 +293,10 @@ public class ShopManager : MonoBehaviour
         perkMachineTierText.SetText("Tier " + currTier.ToString());
 
         // Set up Price text
-        perkMachineTitleText.SetText("");
+        perkMachinePriceText.SetText("");
+
+        // Set up Available Perks list
+        availablePerksUI.SetAvailablePerks(perkMachine.GetAvailablePerks());
     } 
 
     private void UpdateUpgradePerkMachineUI()
@@ -281,13 +311,30 @@ public class ShopManager : MonoBehaviour
             nextTierSettings = perkMachine.tiers[currTier];
             
             perkMachineTitleText.SetText("Upgrade Machine");
-            perkMachinePriceText.SetText(nextTierSettings.upgradePrice.ToString() + "C");
+            perkMachinePriceText.SetText(nextTierSettings.upgradePrice.ToString() + "c");
         }
         else
         {
             perkMachineTitleText.SetText("MAX TIER REACHED");
             perkMachinePriceText.SetText("");
         }
+    }
+
+    public void ShowPerkReceivedUI(PerkSO perk)
+    {
+        perkReceivedPopup.SetActive(true);
+
+        if(perk != null)
+        {
+            perkReceivedImage.sprite = perk.icon;
+            perkReceivedName.SetText(perk.perkName);
+        }
+    }
+
+    public void HidePerkReceivedUI()
+    {
+        perkReceivedPopup.SetActive(false);
+        perkMachineLever.UpdateLever(false);
     }
 
     public void GoToMainMenuScene()
