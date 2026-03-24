@@ -4,7 +4,8 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField] public EnemySO enemyType;
+    public EnemySO enemyType;
+    [SerializeField] private GameObject deathParticle;
 
     protected float speed;
     private float health;
@@ -72,6 +73,7 @@ public class EnemyController : MonoBehaviour
 
     private void enemyDeath()
     {
+        Instantiate(deathParticle, transform.position, Quaternion.identity);
         Destroy(this.gameObject);
     }
 
