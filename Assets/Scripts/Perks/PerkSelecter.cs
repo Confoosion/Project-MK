@@ -36,6 +36,8 @@ public class PerkSelecter : MonoBehaviour
         {
             All_Perks.Add(perk);
         }
+
+        perkIcon.gameObject.SetActive(false);
     }
 
     public void SwitchPerk(int direction)
@@ -65,12 +67,17 @@ public class PerkSelecter : MonoBehaviour
         if(perk == null)
         {
             perkLabel.SetText("None");
+            perkIcon.gameObject.SetActive(false);
+
             perkOwnedTextObject.SetActive(false);
         }
         else
         {
             perkLabel.SetText(perk.perkName);
-            
+
+            perkIcon.gameObject.SetActive(true);
+            perkIcon.sprite = perk.icon;
+
             perkOwnedTextObject.SetActive(!ShopSaveSystem.IsPerkUnlocked(perk.name));
         }
     }

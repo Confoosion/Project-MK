@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Singleton { get; private set; }
 
     [Header("Player")]
+    private bool isAlive = true;
     [SerializeField] public GameObject playerObject;
     public GameObject spawnedPlayer {get; private set;}
 
@@ -64,7 +65,10 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("RuinedCityMap");
 
         if(PlayerControl.Singleton)
+        {
             PlayerControl.Singleton.movementLocked = false;
+            isAlive = true;
+        }
     }
 
     public void NextLevel()
@@ -186,6 +190,7 @@ public class GameManager : MonoBehaviour
 
     public void enableEndScreen()
     {
+        isAlive = false;
         endScreen.SetActive(true);
         endScreenScript.updateText();
 
@@ -202,6 +207,9 @@ public class GameManager : MonoBehaviour
         return UnityEngine.Random.Range(min, max);
     }
 
-
+    public bool IsPlayerAlive()
+    {
+        return(isAlive);
+    }
 
 }

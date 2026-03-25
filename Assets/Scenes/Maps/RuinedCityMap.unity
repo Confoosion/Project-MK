@@ -130,17 +130,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
---- !u!114 &82327693 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7305073652257947544, guid: 4a4275425d78446ab9bc8d26c6df4c5a, type: 3}
-  m_PrefabInstance: {fileID: 1369590914435658942}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &265821429
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,7 +329,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b02615a7065c745758b55eefc9e1d0a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelManager
-  muffinCountText: {fileID: 82327693}
   muffinProgressBar: {fileID: 73844862}
   difficulty: 1
 --- !u!114 &380219113
@@ -413,7 +401,7 @@ Transform:
   m_GameObject: {fileID: 537827730}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17.19, y: 1.24, z: 0}
+  m_LocalPosition: {x: 17.19, y: 1.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -461,7 +449,7 @@ Transform:
   m_GameObject: {fileID: 573600602}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.3942, y: -11.58, z: 0}
+  m_LocalPosition: {x: 12.3942, y: -11.6, z: 0}
   m_LocalScale: {x: 13.5954275, y: 0.7230742, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -988,7 +976,7 @@ Transform:
   m_GameObject: {fileID: 873641393}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -17.69, y: 1.4, z: 0}
+  m_LocalPosition: {x: -17.69, y: 1.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1007,7 +995,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnerController
   spawnList: []
-  spawnDirection: 0
+  spawnDirection: 1
 --- !u!1 &884793303
 GameObject:
   m_ObjectHideFlags: 0
@@ -1768,7 +1756,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 951
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1823,7 +1811,7 @@ Transform:
   m_GameObject: {fileID: 1837256777}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.13, y: -11.61, z: 0}
+  m_LocalPosition: {x: -12.13, y: -11.6, z: 0}
   m_LocalScale: {x: 14.282615, y: 0.6709048, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1981,7 +1969,7 @@ Transform:
   m_GameObject: {fileID: 2093181887}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.92, y: -2.76, z: 0}
+  m_LocalPosition: {x: -12.92, y: -2.66, z: 0}
   m_LocalScale: {x: 12.797208, y: 0.7230742, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2574,7 +2562,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2726956261852056172}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PLATFORMS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2702,7 +2690,7 @@ Transform:
   m_GameObject: {fileID: 7294483691700142070}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.93, y: -13.52, z: 0}
+  m_LocalPosition: {x: 0, y: -15.27, z: 0}
   m_LocalScale: {x: 34.7, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

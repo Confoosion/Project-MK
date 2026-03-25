@@ -44,7 +44,7 @@ public class BasicEnemyMovement : EnemyController
 
     private void UpdateSpriteDirection()
     {
-        transform.localScale = new Vector3(-direction, transform.localScale.y, transform.localScale.z);
+        transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * -direction, transform.localScale.y, transform.localScale.z);
     }
 }
 

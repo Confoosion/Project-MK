@@ -87,18 +87,11 @@ public class SpawnerManager : MonoBehaviour
             }
         }
 
-
-
-
-        //update information
+        // update information
         spawnersInWorld[spawnerIndex].GetComponent<SpawnerController>().StartSpawning();
-
-
-
 
         updateSpawnerIndex();
         waveNumber++;
-
     }
 
     private void updateSpawnerIndex()

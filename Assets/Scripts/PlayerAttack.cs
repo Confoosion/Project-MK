@@ -37,7 +37,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1") && GameManager.Singleton.IsPlayerAlive())
         {
             Attack();
         }
