@@ -11,6 +11,7 @@ public class PlayerAttack : MonoBehaviour
 
     private bool canAttack = true;
     private int nukeUses;
+    private Coroutine cooldownRoutine;
 
     public static PlayerAttack Singleton;
 
@@ -59,9 +60,9 @@ public class PlayerAttack : MonoBehaviour
     {
         if (canAttack)
         {
-            character.UseWeapon(transform, this);
             canAttack = false;
-            StartCoroutine(AttackCooldown(attackCD));
+            character.UseWeapon(transform, this);
+            cooldownRoutine = StartCoroutine(AttackCooldown(attackCD));
             SoundManager.Singleton.PlayCharacterAttackAudio(character);
         }
     }
@@ -72,8 +73,10 @@ public class PlayerAttack : MonoBehaviour
         canAttack = true;
     }
 
-    public void resetAttackCooldown()
+    public void ResetAttackCooldown()
     {
+        if(cooldownRoutine != null)
+            StopCoroutine(cooldownRoutine);
         canAttack = true;
     }
 

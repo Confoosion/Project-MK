@@ -279,7 +279,7 @@ GameObject:
   - component: {fileID: 103689259}
   - component: {fileID: 103689258}
   m_Layer: 6
-  m_Name: Ground (10)
+  m_Name: Table
   m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -544,8 +544,8 @@ GameObject:
   - component: {fileID: 378752649}
   - component: {fileID: 378752648}
   - component: {fileID: 378752647}
-  m_Layer: 0
-  m_Name: 9_of_diamonds (1)
+  m_Layer: 10
+  m_Name: 9_of_diamonds
   m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -564,7 +564,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2126426360}
+  m_Father: {fileID: 2726956261852056172}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &378752646
 SpriteRenderer:
@@ -744,7 +744,6 @@ GameObject:
   m_Component:
   - component: {fileID: 380219107}
   - component: {fileID: 380219110}
-  - component: {fileID: 380219111}
   - component: {fileID: 380219112}
   - component: {fileID: 380219113}
   m_Layer: 0
@@ -793,28 +792,6 @@ MonoBehaviour:
   waveNumber: 0
   baseWaveInterval: 5
   stopGame: 0
---- !u!114 &380219111
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 380219106}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ddbe1c3b055fd94aa58e1c573b0bd7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MuffinSpawner
-  muffin: {fileID: 3183216167711710016, guid: 12b35574bf851e24085d31f255660c52, type: 3}
-  spawnOffset: 1.5
-  spawnHeight: 5
-  platforms:
-  - {fileID: 3786665852562574343}
-  - {fileID: 1243343315}
-  - {fileID: 1335520933}
-  - {fileID: 103689257}
-  - {fileID: 378752645}
-  - {fileID: 594439550}
 --- !u!114 &380219112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -920,7 +897,7 @@ GameObject:
   - component: {fileID: 594439553}
   - component: {fileID: 594439552}
   - component: {fileID: 594439555}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 2_of_hearts
   m_TagString: Terrain
   m_Icon: {fileID: 0}
@@ -940,7 +917,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2126426360}
+  m_Father: {fileID: 2726956261852056172}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &594439551
 SpriteRenderer:
@@ -1863,7 +1840,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 951
+    m_Bits: 1975
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1967,7 +1944,7 @@ GameObject:
   - component: {fileID: 1243343317}
   - component: {fileID: 1243343316}
   m_Layer: 6
-  m_Name: Ground (8)
+  m_Name: TopWand
   m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2125,7 +2102,7 @@ GameObject:
   - component: {fileID: 1335520935}
   - component: {fileID: 1335520934}
   m_Layer: 6
-  m_Name: Ground (9)
+  m_Name: Ladder
   m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2561,9 +2538,9 @@ GameObject:
   - component: {fileID: 2042178303}
   - component: {fileID: 2042178305}
   - component: {fileID: 2042178307}
-  m_Layer: 0
-  m_Name: ladder
-  m_TagString: Untagged
+  m_Layer: 8
+  m_Name: MovingLadder
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2581,7 +2558,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2126426360}
+  m_Father: {fileID: 3677892986074082310}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &2042178303
 BoxCollider2D:
@@ -2744,47 +2721,13 @@ PlatformEffector2D:
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_RotationalOffset: 0
+  m_RotationalOffset: 180
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
   m_SurfaceArc: 180
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
---- !u!1 &2126426359
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2126426360}
-  m_Layer: 0
-  m_Name: MOVING_PLATFORMS
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2126426360
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2126426359}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 378752645}
-  - {fileID: 594439550}
-  - {fileID: 2042178302}
-  m_Father: {fileID: 3677892986074082310}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2136965807
 GameObject:
   m_ObjectHideFlags: 0
@@ -3124,6 +3067,8 @@ Transform:
   - {fileID: 1243343315}
   - {fileID: 1335520933}
   - {fileID: 103689257}
+  - {fileID: 378752645}
+  - {fileID: 594439550}
   m_Father: {fileID: 3677892986074082310}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3060510960659949628
@@ -3139,7 +3084,7 @@ GameObject:
   - component: {fileID: 366755016460832615}
   - component: {fileID: 4867845180336944960}
   m_Layer: 6
-  m_Name: Ground (7)
+  m_Name: BottomWand
   m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3179,7 +3124,7 @@ Transform:
   - {fileID: 1596196643}
   - {fileID: 8952834783701951709}
   - {fileID: 858935518}
-  - {fileID: 2126426360}
+  - {fileID: 2042178302}
   - {fileID: 1634023503}
   - {fileID: 1053363371}
   m_Father: {fileID: 0}
@@ -3339,6 +3284,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2726956261852056172}
+  - component: {fileID: 5957415397880342898}
   m_Layer: 6
   m_Name: PLATFORMS
   m_TagString: Untagged
@@ -3346,6 +3292,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5957415397880342898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5957415397880342897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ddbe1c3b055fd94aa58e1c573b0bd7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MuffinSpawner
+  muffin: {fileID: 3183216167711710016, guid: 12b35574bf851e24085d31f255660c52, type: 3}
+  spawnOffset: 1.5
+  spawnHeight: 5
+  platforms: []
 --- !u!114 &6076020107224946187
 MonoBehaviour:
   m_ObjectHideFlags: 0

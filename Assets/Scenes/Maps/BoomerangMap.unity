@@ -129,7 +129,6 @@ GameObject:
   m_Component:
   - component: {fileID: 380219107}
   - component: {fileID: 380219110}
-  - component: {fileID: 380219111}
   - component: {fileID: 380219112}
   - component: {fileID: 380219113}
   m_Layer: 0
@@ -178,24 +177,6 @@ MonoBehaviour:
   waveNumber: 0
   baseWaveInterval: 5
   stopGame: 0
---- !u!114 &380219111
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 380219106}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ddbe1c3b055fd94aa58e1c573b0bd7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MuffinSpawner
-  muffin: {fileID: 3183216167711710016, guid: 12b35574bf851e24085d31f255660c52, type: 3}
-  spawnOffset: 1.5
-  spawnHeight: 5
-  platforms:
-  - {fileID: 3786665852562574343}
-  - {fileID: 1093864001}
 --- !u!114 &380219112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -473,7 +454,7 @@ GameObject:
   - component: {fileID: 708280153}
   - component: {fileID: 708280154}
   m_Layer: 0
-  m_Name: leftSpawner
+  m_Name: LeftSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -488,7 +469,7 @@ Transform:
   m_GameObject: {fileID: 708280152}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20.4, y: -2.79, z: 0}
+  m_LocalPosition: {x: -19.5, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -519,7 +500,7 @@ GameObject:
   - component: {fileID: 873641394}
   - component: {fileID: 873641395}
   m_Layer: 0
-  m_Name: RightSpawner (1)
+  m_Name: RightSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -534,7 +515,7 @@ Transform:
   m_GameObject: {fileID: 873641393}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 20.56, y: -2.94, z: 0}
+  m_LocalPosition: {x: 19, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -683,7 +664,7 @@ GameObject:
   - component: {fileID: 1093864003}
   - component: {fileID: 1093864002}
   m_Layer: 6
-  m_Name: Right_Ground
+  m_Name: LeftGround
   m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1778,7 +1759,7 @@ GameObject:
   - component: {fileID: 366755016460832615}
   - component: {fileID: 4867845180336944960}
   m_Layer: 6
-  m_Name: Left_Ground
+  m_Name: RightGround
   m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1975,6 +1956,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2726956261852056172}
+  - component: {fileID: 5957415397880342898}
   m_Layer: 6
   m_Name: PLATFORMS
   m_TagString: Untagged
@@ -1982,6 +1964,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5957415397880342898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5957415397880342897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ddbe1c3b055fd94aa58e1c573b0bd7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MuffinSpawner
+  muffin: {fileID: 3183216167711710016, guid: 12b35574bf851e24085d31f255660c52, type: 3}
+  spawnOffset: 1.5
+  spawnHeight: 5
 --- !u!114 &6076020107224946187
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -30,19 +30,13 @@ public class LevelManager : MonoBehaviour
         MuffinSpawner.Singleton.SpawnMuffin();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void addMuffin()
     {
         muffinCount++;
         updateProgressBar();
         GameManager.Singleton.addMuffinCount();
 
-        if (GameManager.Singleton.muffinsNeededToMoveOn == muffinCount)
+        if (GameManager.Singleton.GetCurrentMuffinsNeeded() == muffinCount)
         {
 
             GameManager.Singleton.NextLevel();
@@ -67,7 +61,7 @@ public class LevelManager : MonoBehaviour
 
     private void updateProgressBar()
     {
-        float percentageComplete = (float)muffinCount / (float)GameManager.Singleton.muffinsNeededToMoveOn;
+        float percentageComplete = (float)muffinCount / (float)GameManager.Singleton.GetCurrentMuffinsNeeded();
         muffinProgressBar.value = percentageComplete;
     }
 }

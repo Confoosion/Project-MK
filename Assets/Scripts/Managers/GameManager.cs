@@ -15,7 +15,10 @@ public class GameManager : MonoBehaviour
     public GameObject spawnedPlayer {get; private set;}
 
     [SerializeField] private GameObject endScreen;
-    public int muffinsNeededToMoveOn = 5;
+    [SerializeField] private int START_MUFFINS_NEEDED = 5;
+
+    [Space]
+    [SerializeField] private int muffinsNeededToMoveOn = 5;
 
     private EndScreenScript endScreenScript;
 
@@ -61,6 +64,8 @@ public class GameManager : MonoBehaviour
         resetEnemyKills();
         resetMuffinCount();
         resetMapPool();
+
+        muffinsNeededToMoveOn = START_MUFFINS_NEEDED;
 
         SceneManager.LoadScene("RuinedCityMap");
 
@@ -121,6 +126,11 @@ public class GameManager : MonoBehaviour
     private void resetMapPool()
     {
         visitedMapIndices.Clear();
+    }
+
+    public int GetCurrentMuffinsNeeded()
+    {
+        return(muffinsNeededToMoveOn);
     }
 
     //end screen stats stuff
