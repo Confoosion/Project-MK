@@ -245,4 +245,8 @@ public class GameManager : MonoBehaviour
         return(isAlive);
     }
 
+    public int GetNumberOfMapsVisited()
+    {
+        return visitedMapIndices.Count;
+    }
 }
