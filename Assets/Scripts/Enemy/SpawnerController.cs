@@ -12,6 +12,13 @@ public class SpawnerController : MonoBehaviour
     // [SerializeField] private SpawnDirection middleSpawner; //When true, enemies should move to the left, when false enemies should move to the right
 
     // private int spawnIndex = 0;
+    private float portalAnimationSpeed = 0.1f;
+    private Vector3 spawnerScale = new Vector3(1f, 1f, 1f);
+
+    void Start()
+    {
+        transform.localScale = Vector3.zero;
+    }
 
     public void StartSpawning()
     {
@@ -20,6 +27,8 @@ public class SpawnerController : MonoBehaviour
 
     IEnumerator SpawnEnemy()
     {
+        yield return ShowPortal(true);
+
         while (spawnList.Count > 0)
         {
             if(spawnDirection == SpawnDirection.Random)
@@ -33,6 +42,8 @@ public class SpawnerController : MonoBehaviour
             
             yield return new WaitForSeconds(0.7f);
         }
+
+        yield return ShowPortal(false);
     }
 
     private void SpawnEnemiesIntoWorld(int dir = 0)
@@ -49,5 +60,34 @@ public class SpawnerController : MonoBehaviour
         //SpawnerManager.Singleton.allEnemiesInWorld.Add(spawnList[spawnIndex]); //add to big enemy list
 
         spawnList.RemoveAt(0);
+    }
+
+    IEnumerator ShowPortal(bool open)
+    {
+        float currScale = transform.localScale.x;
+        if(open && transform.localScale == Vector3.zero)
+        {
+            while(transform.localScale.x < spawnerScale.x)
+            {
+                currScale += Time.deltaTime;
+                transform.localScale = new Vector3(currScale, currScale, currScale);
+
+                yield return new WaitForSeconds(Time.deltaTime * portalAnimationSpeed);
+            }
+
+            transform.localScale = spawnerScale;
+        }
+        else
+        {
+            while(transform.localScale.x > 0f)
+            {
+                currScale -= Time.deltaTime;
+                transform.localScale = new Vector3(currScale, currScale, currScale);
+
+                yield return new WaitForSeconds(Time.deltaTime * portalAnimationSpeed);
+            }
+
+            transform.localScale = Vector3.zero;
+        }
     }
 }
