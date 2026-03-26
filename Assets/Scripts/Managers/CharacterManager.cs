@@ -51,7 +51,7 @@ public class CharacterManager : MonoBehaviour
     {
         if (specificCharacter != null)
         {
-            if (currentCharacter)
+            if (currentCharacter && !characterList.Contains(currentCharacter))
             {
                 characterList.Add(currentCharacter);
             }
@@ -60,12 +60,16 @@ public class CharacterManager : MonoBehaviour
         }
         else
         {
-            CharacterSO newCharacter = characterList[Random.Range(0, characterList.Count)];
+            if(!characterList.Contains(currentCharacter))
+                characterList.Add(currentCharacter);
 
-            characterList.Add(currentCharacter);
+            int newChar_Index = Random.Range(0, characterList.Count);
+            CharacterSO newCharacter = characterList[newChar_Index];
+            characterList.RemoveAt(newChar_Index);
+
             currentCharacter = newCharacter;
-            characterList.Remove(newCharacter);
         }
+
         if (PlayerAttack.Singleton) 
             PlayerAttack.Singleton.SetCharacter(currentCharacter);
     }

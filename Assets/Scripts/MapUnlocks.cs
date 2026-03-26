@@ -5,10 +5,13 @@ public class MapUnlocks : MonoBehaviour
 {
     [SerializeField] private int currencyGained;
     [SerializeField] private CharacterSetSO[] characterUnlocks;
-    [SerializeField] private int numMapsVisited;
+    [SerializeField] private CharacterSetSO forcedPlayerCharacter;
+    // [SerializeField] private int numMapsVisited;
 
     void Awake()
     {
+        bool justUnlocked = false;
+
         if(characterUnlocks != null)
         {
             foreach(CharacterSetSO character in characterUnlocks)
@@ -23,14 +26,21 @@ public class MapUnlocks : MonoBehaviour
                 // Unlocking
                 Debug.Log("Unlocking " + character.name);
                 ShopSaveSystem.UnlockCharacter(character.name);
+                justUnlocked = true;
 
                 // Adding to List
                 CharacterManager.Singleton.AddCharacterToList(character.GetCurrentUpgrade().character);
             }
         }
 
-        numMapsVisited = GameManager.Singleton.GetNumberOfMapsVisited();
-        currencyGained *= numMapsVisited;
+        // Only becomes forcedPlayerCharacter if it was just unlocked
+        if(forcedPlayerCharacter != null && justUnlocked)
+        {
+            CharacterManager.Singleton.BecomeNewCharacter(forcedPlayerCharacter.GetCurrentUpgrade().character);
+        }
+
+        int numMapsVisited = GameManager.Singleton.GetNumberOfMapsVisited();
+        currencyGained += numMapsVisited;
         ShopSaveSystem.AddCurrency(currencyGained);
     }
 

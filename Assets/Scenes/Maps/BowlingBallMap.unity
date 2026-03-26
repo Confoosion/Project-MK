@@ -4204,6 +4204,7 @@ MonoBehaviour:
   currencyGained: 1
   characterUnlocks:
   - {fileID: 11400000, guid: 9a6e9f81f8c7e664ea586ede5d04f2db, type: 2}
+  forcedPlayerCharacter: {fileID: 11400000, guid: 9a6e9f81f8c7e664ea586ede5d04f2db, type: 2}
 --- !u!4 &3786665852562574343
 Transform:
   m_ObjectHideFlags: 0

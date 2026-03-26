@@ -1712,7 +1712,7 @@ Transform:
   m_GameObject: {fileID: 1728541164}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.2797399, y: 1.2273424, z: -28.693693}
+  m_LocalPosition: {x: 2.2819219, y: 1.2273424, z: -28.693693}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2448,6 +2448,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MapUnlocks
   currencyGained: 0
   characterUnlocks: []
+  forcedPlayerCharacter: {fileID: 11400000, guid: 2db5ac84bd6faec4e8fe8ac4a4904b12, type: 2}
 --- !u!212 &5113791803273358917
 SpriteRenderer:
   serializedVersion: 2
