@@ -5962,6 +5962,7 @@ GameObject:
   - component: {fileID: 1861990213}
   - component: {fileID: 1861990212}
   - component: {fileID: 1861990214}
+  - component: {fileID: 1861990215}
   m_Layer: 0
   m_Name: GameManagerONLY
   m_TagString: Untagged
@@ -6016,9 +6017,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47b42f9cf6b424c368fd4d83e0f700cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EndScreenScript
-  muffinsCollectedText: {fileID: 0}
-  enemiesKilledText: {fileID: 0}
-  moreEnemyStatsText: {fileID: 0}
+  muffinsCollectedText: {fileID: 1646587944}
+  enemiesKilledText: {fileID: 116361299}
+  moreEnemyStatsText: {fileID: 753067474}
+--- !u!114 &1861990215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861990211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47b42f9cf6b424c368fd4d83e0f700cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EndScreenScript
+  muffinsCollectedText: {fileID: 740324284}
+  enemiesKilledText: {fileID: 1991496942}
+  moreEnemyStatsText: {fileID: 1483300614}
 --- !u!1 &1877831875
 GameObject:
   m_ObjectHideFlags: 0
