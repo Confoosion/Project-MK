@@ -42,7 +42,8 @@ public class EndScreenScript : MonoBehaviour
     public void mainMenuButton()
     {
         SceneManager.LoadScene("MainMenu");
-        GameManager.Singleton.DisableEndScreen();
+        GameManager.Singleton.disableEndScreen();
+        GameManager.Singleton.disableDeathScreen();
 
         GameManager.Singleton.resetEnemyKills();
         GameManager.Singleton.resetMuffinCount();
@@ -63,7 +64,7 @@ public class EndScreenScript : MonoBehaviour
 
     public void updateText()
     {
-        muffinsCollectedText.text = "Muffins Collected: " + GameManager.Singleton.getMuffinSum();
+        muffinsCollectedText.text = "Potions Collected: " + GameManager.Singleton.getMuffinSum();
         enemiesKilledText.text = "Enemies Killed: " + (GameManager.Singleton.getBasicEnemiesKilled() + GameManager.Singleton.getHeavyEnemiesKilled() + GameManager.Singleton.getAngryBasicEnemiesKilled() + GameManager.Singleton.getAngryHeavyEnemiesKilled());
         moreEnemyStatsText.text = "Basic Enemy Deaths: " + GameManager.Singleton.getBasicEnemiesKilled() + "\n" + "Heavy Enemy Deaths: " + GameManager.Singleton.getHeavyEnemiesKilled() + "\nAngry Basic Enemy Deaths: " + GameManager.Singleton.getAngryBasicEnemiesKilled() + "\nAngry Heavy Enemy Deaths: " + GameManager.Singleton.getAngryHeavyEnemiesKilled();
     }

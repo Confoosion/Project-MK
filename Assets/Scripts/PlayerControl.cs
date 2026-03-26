@@ -230,7 +230,7 @@ public class PlayerControl : MonoBehaviour
 
             // death animation
             // Open end UI screen 
-            GameManager.Singleton.enableEndScreen();
+            GameManager.Singleton.enableDeathScreen();
             SpawnerManager.Singleton.stopGame = true;
         }
     }
