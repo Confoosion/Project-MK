@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f90c4fe8eb115b43a6773c97495508c, type: 3}
   m_Name: BowlingBall_2
   m_EditorClassIdentifier: Assembly-CSharp::BowlingBallCharacter
-  characterName: Bowler Bob
+  characterName: Bob
   characterModel: {fileID: 21300000, guid: 5522b72571b47294abb8ecc0264df413, type: 3}
   attackObject: {fileID: 5376833307798343989, guid: e7b0524fecd7b30428b05dbcf74e62a1, type: 3}
   level: 2

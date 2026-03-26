@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f29125791da8e6a4c9b543489edcc50d, type: 3}
   m_Name: BowlingBallSet
   m_EditorClassIdentifier: Assembly-CSharp::CharacterSetSO
-  itemName: Bowling Ball
+  itemName: Mr. Money Bags
   itemIcon: {fileID: 0}
   price: 0
   upgrades:
   - character: {fileID: 11400000, guid: cf6b7ffe1b7f1594291ac5142ddf5a31, type: 2}
-    characterIcon: {fileID: 0}
+    characterIcon: {fileID: 21300000, guid: 5522b72571b47294abb8ecc0264df413, type: 3}
     upgradePrice: 1
   - character: {fileID: 11400000, guid: fcd58d4baba6a43fbb6fa39faf0a449e, type: 2}
-    characterIcon: {fileID: 0}
+    characterIcon: {fileID: 21300000, guid: 5522b72571b47294abb8ecc0264df413, type: 3}
     upgradePrice: 2
   - character: {fileID: 11400000, guid: 408f6c270bc4f46438107cccbe8a7e7e, type: 2}
-    characterIcon: {fileID: 0}
+    characterIcon: {fileID: 21300000, guid: 5522b72571b47294abb8ecc0264df413, type: 3}
     upgradePrice: 100

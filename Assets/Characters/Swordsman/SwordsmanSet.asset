@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f29125791da8e6a4c9b543489edcc50d, type: 3}
   m_Name: SwordsmanSet
   m_EditorClassIdentifier: Assembly-CSharp::CharacterSetSO
-  itemName: Sword Guy!
+  itemName: Swordsman
   itemIcon: {fileID: 0}
   price: 1
   upgrades:
   - character: {fileID: 11400000, guid: 3346f4ca78f9d0d499f7a78c231d56a3, type: 2}
-    characterIcon: {fileID: 0}
+    characterIcon: {fileID: 21300000, guid: 09db63027bb8cbf4ea9ea29930aee163, type: 3}
     upgradePrice: 1
   - character: {fileID: 11400000, guid: 5fb71bb9db3d74ed6ab9b0d1f58f9770, type: 2}
-    characterIcon: {fileID: 0}
+    characterIcon: {fileID: 21300000, guid: 09db63027bb8cbf4ea9ea29930aee163, type: 3}
     upgradePrice: 2
   - character: {fileID: 11400000, guid: 76bfdc0b8503b486ea3b793f5e9e9357, type: 2}
-    characterIcon: {fileID: 0}
+    characterIcon: {fileID: 21300000, guid: 09db63027bb8cbf4ea9ea29930aee163, type: 3}
     upgradePrice: 100

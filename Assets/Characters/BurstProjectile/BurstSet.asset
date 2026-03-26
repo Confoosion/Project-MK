@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f29125791da8e6a4c9b543489edcc50d, type: 3}
   m_Name: BurstSet
   m_EditorClassIdentifier: Assembly-CSharp::CharacterSetSO
-  itemName: Burst Proj
+  itemName: Magician
   itemIcon: {fileID: 0}
   price: 0
   upgrades:
   - character: {fileID: 11400000, guid: 8bb644dac521795409b4f82545eabc0b, type: 2}
-    characterIcon: {fileID: 0}
+    characterIcon: {fileID: 21300000, guid: d4f6129e3000ba142853da4833dc5284, type: 3}
     upgradePrice: 1
   - character: {fileID: 11400000, guid: 21cf241099e884a6381f2aa46f505ce9, type: 2}
-    characterIcon: {fileID: 0}
+    characterIcon: {fileID: 21300000, guid: d4f6129e3000ba142853da4833dc5284, type: 3}
     upgradePrice: 2
   - character: {fileID: 11400000, guid: 6b9d6adb39de54738899841b20929b0a, type: 2}
-    characterIcon: {fileID: 0}
+    characterIcon: {fileID: 21300000, guid: d4f6129e3000ba142853da4833dc5284, type: 3}
     upgradePrice: 100

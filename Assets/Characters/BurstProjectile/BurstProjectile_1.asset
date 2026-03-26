@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: befe5ffa8a3f4a04495cfaebb7ead212, type: 3}
   m_Name: BurstProjectile_1
   m_EditorClassIdentifier: Assembly-CSharp::BurstProjectileCharacter
-  characterName: Burst Boy
+  characterName: Magic Boy
   characterModel: {fileID: 21300000, guid: d4f6129e3000ba142853da4833dc5284, type: 3}
   attackObject: {fileID: 5944338248667561430, guid: 8327a2196fa91a34b82db0f55b2e8c01, type: 3}
   level: 1

@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f29125791da8e6a4c9b543489edcc50d, type: 3}
   m_Name: MachineGunSet
   m_EditorClassIdentifier: Assembly-CSharp::CharacterSetSO
-  itemName: Gunner
+  itemName: Gunner Guy
   itemIcon: {fileID: 0}
   price: 0
   upgrades:
   - character: {fileID: 11400000, guid: b208be4a04eec8746bc939eb7c58e924, type: 2}
-    characterIcon: {fileID: 0}
+    characterIcon: {fileID: 21300000, guid: 262bedaac7e0e6b4584acb4f1867d32b, type: 3}
     upgradePrice: 1
   - character: {fileID: 11400000, guid: 5619911b2f9324b5894db2724ee8f600, type: 2}
-    characterIcon: {fileID: 0}
+    characterIcon: {fileID: 21300000, guid: 262bedaac7e0e6b4584acb4f1867d32b, type: 3}
     upgradePrice: 2
   - character: {fileID: 11400000, guid: 5bc9b2bd2300f4a5e860843001f6f2a0, type: 2}
-    characterIcon: {fileID: 0}
+    characterIcon: {fileID: 21300000, guid: 262bedaac7e0e6b4584acb4f1867d32b, type: 3}
     upgradePrice: 100

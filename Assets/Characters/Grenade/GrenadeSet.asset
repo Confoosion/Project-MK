@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f29125791da8e6a4c9b543489edcc50d, type: 3}
   m_Name: GrenadeSet
   m_EditorClassIdentifier: Assembly-CSharp::CharacterSetSO
-  itemName: Grenade
+  itemName: Farmer Gary
   itemIcon: {fileID: 0}
   price: 0
   upgrades:
   - character: {fileID: 11400000, guid: 4c739e46b180ffa439537b60a8f2efdc, type: 2}
-    characterIcon: {fileID: 0}
+    characterIcon: {fileID: 21300000, guid: 9ca4adc5f338fc547b7ddbf27197ecd8, type: 3}
     upgradePrice: 1
   - character: {fileID: 11400000, guid: 3d27fe6b8972a453f82b84ce01e15b89, type: 2}
-    characterIcon: {fileID: 0}
+    characterIcon: {fileID: 21300000, guid: 9ca4adc5f338fc547b7ddbf27197ecd8, type: 3}
     upgradePrice: 2
   - character: {fileID: 11400000, guid: 10c358ae309fe4ae4ab8586a0244cebc, type: 2}
-    characterIcon: {fileID: 0}
+    characterIcon: {fileID: 21300000, guid: 9ca4adc5f338fc547b7ddbf27197ecd8, type: 3}
     upgradePrice: 100

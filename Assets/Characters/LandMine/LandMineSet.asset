@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f29125791da8e6a4c9b543489edcc50d, type: 3}
   m_Name: LandMineSet
   m_EditorClassIdentifier: Assembly-CSharp::CharacterSetSO
-  itemName: Land Mine
+  itemName: Sally
   itemIcon: {fileID: 0}
   price: 0
   upgrades:
   - character: {fileID: 11400000, guid: 1ff278db77721e14995af4221dc744d7, type: 2}
-    characterIcon: {fileID: 0}
+    characterIcon: {fileID: 21300000, guid: d379993640e81b04aa18968e64a8311c, type: 3}
     upgradePrice: 1
   - character: {fileID: 11400000, guid: 89a37dad5845243f7911df194ca3f003, type: 2}
-    characterIcon: {fileID: 0}
+    characterIcon: {fileID: 21300000, guid: d379993640e81b04aa18968e64a8311c, type: 3}
     upgradePrice: 2
   - character: {fileID: 11400000, guid: deaa1d0b792064b23ac600853020a905, type: 2}
-    characterIcon: {fileID: 0}
+    characterIcon: {fileID: 21300000, guid: d379993640e81b04aa18968e64a8311c, type: 3}
     upgradePrice: 100

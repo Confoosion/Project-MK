@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f29125791da8e6a4c9b543489edcc50d, type: 3}
   m_Name: BoomerangSet
   m_EditorClassIdentifier: Assembly-CSharp::CharacterSetSO
-  itemName: Boomerang
+  itemName: Boomer Ang
   itemIcon: {fileID: 0}
   price: 0
   upgrades:
   - character: {fileID: 11400000, guid: 7977f2754c7769146a5e2d35815a5524, type: 2}
-    characterIcon: {fileID: 0}
+    characterIcon: {fileID: 21300000, guid: 509f58d5817406a48b40f6524b65d94c, type: 3}
     upgradePrice: 1
   - character: {fileID: 11400000, guid: 24213689efa384be39556c3e4ad8a44c, type: 2}
-    characterIcon: {fileID: 0}
+    characterIcon: {fileID: 21300000, guid: 509f58d5817406a48b40f6524b65d94c, type: 3}
     upgradePrice: 2
   - character: {fileID: 11400000, guid: c463adff73e2f41159f86fddea131d96, type: 2}
-    characterIcon: {fileID: 0}
+    characterIcon: {fileID: 21300000, guid: 509f58d5817406a48b40f6524b65d94c, type: 3}
     upgradePrice: 100

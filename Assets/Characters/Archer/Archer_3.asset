@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b5ffc50a35d8044287498394cfcfd0e, type: 3}
   m_Name: Archer_3
   m_EditorClassIdentifier: Assembly-CSharp::ArcherCharacter
-  characterName: Archer
+  characterName: Arthur
   characterModel: {fileID: 21300000, guid: 1019713d6a7f3b24cabc5ded04f500e2, type: 3}
   attackObject: {fileID: 1259166576830395927, guid: 609b1329c4c267f4d906b2986508dc5b, type: 3}
   level: 3

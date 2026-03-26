@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f29125791da8e6a4c9b543489edcc50d, type: 3}
   m_Name: ArcherSet
   m_EditorClassIdentifier: Assembly-CSharp::CharacterSetSO
-  itemName: Archer
+  itemName: Civilian
   itemIcon: {fileID: 0}
   price: 2
   upgrades:
   - character: {fileID: 11400000, guid: 81f2d901ee694f748991b721b07f7202, type: 2}
-    characterIcon: {fileID: 0}
+    characterIcon: {fileID: 21300000, guid: 1019713d6a7f3b24cabc5ded04f500e2, type: 3}
     upgradePrice: 1
   - character: {fileID: 11400000, guid: 7ade4631544e04b4fac55e843d978629, type: 2}
-    characterIcon: {fileID: 0}
+    characterIcon: {fileID: 21300000, guid: 1019713d6a7f3b24cabc5ded04f500e2, type: 3}
     upgradePrice: 2
   - character: {fileID: 11400000, guid: 44c5345bd3775493bbabea5a4f157cb1, type: 2}
-    characterIcon: {fileID: 0}
+    characterIcon: {fileID: 21300000, guid: 1019713d6a7f3b24cabc5ded04f500e2, type: 3}
     upgradePrice: 100

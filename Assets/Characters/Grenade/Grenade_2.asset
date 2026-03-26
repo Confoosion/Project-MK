@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a5124e32c069384a83b95478b70323f, type: 3}
   m_Name: Grenade_2
   m_EditorClassIdentifier: Assembly-CSharp::GrenadeCharacter
-  characterName: Grenade Gary
+  characterName: Gary
   characterModel: {fileID: 21300000, guid: 9ca4adc5f338fc547b7ddbf27197ecd8, type: 3}
   attackObject: {fileID: 6843444029887957941, guid: c5abd31384c56134a860df440affc955, type: 3}
   level: 2
