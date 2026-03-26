@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     private EndScreenScript endScreenScript;
 
     private int mapCount;
-    [SerializeField] private List<int> visitedMapIndices = new List<int>();
+    private List<int> visitedMapIndices = new List<int>();
 
     // variables for the whole game. End of game stats
     private int muffinSum = 0;
@@ -83,8 +83,10 @@ public class GameManager : MonoBehaviour
         if (visitedMapIndices.Count == mapCount)
         {
             PlayerControl.Singleton.movementLocked = true;
-            enableDeathScreen();
+            enableEndScreen();
             SpawnerManager.Singleton.stopGame = true;
+
+            return;
         }
 
         int newMapIndex = GetRandomNumber(0, mapCount) + 3; // skip MainMenu, Shop, and Ruined City
@@ -207,15 +209,15 @@ public class GameManager : MonoBehaviour
 
     public void enableEndScreen()
     {
-        isAlive = false;
         endScreen.SetActive(true);
         endScreenScript.updateText();
-
+        endScreenScript.updateText2();
     }
     public void disableEndScreen()
     {
         endScreen.SetActive(false);
         endScreenScript.updateText();
+        endScreenScript.updateText2();
     }
 
     public void enableDeathScreen()
@@ -223,12 +225,14 @@ public class GameManager : MonoBehaviour
         isAlive = false;
         deathScreen.SetActive(true);
         endScreenScript.updateText();
+        endScreenScript.updateText2();
     }
 
     public void disableDeathScreen()
     {
         deathScreen.SetActive(false);
         endScreenScript.updateText();
+        endScreenScript.updateText2();
     }
 
     private int GetRandomNumber(int min, int max) //max exclusive
