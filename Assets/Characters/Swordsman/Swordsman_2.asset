@@ -18,6 +18,6 @@ MonoBehaviour:
   level: 2
   attackPower: 75
   attackDuration: 0.25
-  attackCD: 0.25
+  attackCD: 0.8
   attackSFX: {fileID: 8300000, guid: c2b58897562e93b43a3676ae2f10a993, type: 3}
   attackVolume: 1

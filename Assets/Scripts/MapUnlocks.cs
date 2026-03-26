@@ -5,6 +5,7 @@ public class MapUnlocks : MonoBehaviour
 {
     [SerializeField] private int currencyGained;
     [SerializeField] private CharacterSetSO[] characterUnlocks;
+    [SerializeField] private int numMapsVisited;
 
     void Awake()
     {
@@ -28,6 +29,8 @@ public class MapUnlocks : MonoBehaviour
             }
         }
 
+        numMapsVisited = GameManager.Singleton.GetNumberOfMapsVisited();
+        currencyGained *= numMapsVisited;
         ShopSaveSystem.AddCurrency(currencyGained);
     }
 
