@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public GameObject playerObject;
     public GameObject spawnedPlayer {get; private set;}
 
+    [SerializeField] private GameObject deathScreen;
     [SerializeField] private GameObject endScreen;
     [SerializeField] private int START_MUFFINS_NEEDED = 5;
 
@@ -45,7 +46,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        mapCount = SceneManager.sceneCountInBuildSettings - 3; // subtract 2 removes MainMenu and Shop
+        mapCount = SceneManager.sceneCountInBuildSettings - 3; // subtract 3 removes MainMenu, Shop, and RuinedCity 
         endScreenScript = gameObject.GetComponent<EndScreenScript>();
     }
 
@@ -59,7 +60,8 @@ public class GameManager : MonoBehaviour
     {
         CharacterManager.Singleton.UpdateCharacterList();
 
-        DisableEndScreen();
+        disableEndScreen();
+        disableDeathScreen();
 
         resetEnemyKills();
         resetMuffinCount();
@@ -78,20 +80,27 @@ public class GameManager : MonoBehaviour
 
     public void NextLevel()
     {
-        int newMapIndex = GetRandomNumber(0, mapCount) + 3; // skip MainMenu and Shop
+        if (visitedMapIndices.Count == mapCount)
+        {
+            PlayerControl.Singleton.movementLocked = true;
+            enableEndScreen();
+            SpawnerManager.Singleton.stopGame = true;
+
+            return;
+        }
+
+        int newMapIndex = GetRandomNumber(0, mapCount) + 3; // skip MainMenu, Shop, and Ruined City
         
-        if (!visitedMapIndices.Contains(newMapIndex))
+        while (visitedMapIndices.Contains(newMapIndex)) // find map not visited yet
         {
-            visitedMapIndices.Add(newMapIndex);
-
-            SceneManager.LoadScene(newMapIndex);
-
-            muffinsNeededToMoveOn += muffinsNeededToMoveOn;
+            newMapIndex = GetRandomNumber(0, mapCount) + 3;
         }
-        else
-        {
-            NextLevel();
-        }
+
+        visitedMapIndices.Add(newMapIndex);
+
+        SceneManager.LoadScene(newMapIndex);
+
+        muffinsNeededToMoveOn += muffinsNeededToMoveOn;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -200,17 +209,31 @@ public class GameManager : MonoBehaviour
 
     public void enableEndScreen()
     {
-        isAlive = false;
         endScreen.SetActive(true);
         endScreenScript.updateText();
-
+        endScreenScript.updateText2();
     }
-    public void DisableEndScreen()
+    public void disableEndScreen()
     {
         endScreen.SetActive(false);
         endScreenScript.updateText();
+        endScreenScript.updateText2();
     }
 
+    public void enableDeathScreen()
+    {
+        isAlive = false;
+        deathScreen.SetActive(true);
+        endScreenScript.updateText();
+        endScreenScript.updateText2();
+    }
+
+    public void disableDeathScreen()
+    {
+        deathScreen.SetActive(false);
+        endScreenScript.updateText();
+        endScreenScript.updateText2();
+    }
 
     private int GetRandomNumber(int min, int max) //max exclusive
     {
