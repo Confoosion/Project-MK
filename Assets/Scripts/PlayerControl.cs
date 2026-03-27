@@ -240,6 +240,7 @@ public class PlayerControl : MonoBehaviour
         {
             // Debug.Log("Player died");
             movementLocked = true;
+            Destroy(GameManager.Singleton.spawnedPlayer);
 
             // death animation
             // Open end UI screen 
