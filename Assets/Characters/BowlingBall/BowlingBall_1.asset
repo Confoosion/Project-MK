@@ -22,5 +22,5 @@ MonoBehaviour:
   attackSFX: {fileID: 0}
   attackVolume: 1
   rollingSpeed: 8
-  pierceAmount: 100
+  pierceAmount: 5
   bounceAmount: 100

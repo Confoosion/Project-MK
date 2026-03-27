@@ -16,7 +16,7 @@ MonoBehaviour:
   characterModel: {fileID: 21300000, guid: 5522b72571b47294abb8ecc0264df413, type: 3}
   attackObject: {fileID: 5376833307798343989, guid: 43df7767106aeb742a9d5be84134c90d, type: 3}
   level: 3
-  attackPower: 50
+  attackPower: 100
   attackDuration: 0
   attackCD: 1
   attackSFX: {fileID: 0}

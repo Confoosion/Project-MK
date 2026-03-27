@@ -43,7 +43,6 @@ public class EnemyController : MonoBehaviour
 
     public void enemyTakeDamage(float damage)
     {
-        Debug.Log(health);
         float extraDamage = 0f;
 
         // Check for damage perk
@@ -52,7 +51,6 @@ public class EnemyController : MonoBehaviour
             extraDamage += dmgPerk.value;
 
         health -= (damage + extraDamage);
-        Debug.Log(health);
         if (health <= 0)
         {
             enemyDeath();
