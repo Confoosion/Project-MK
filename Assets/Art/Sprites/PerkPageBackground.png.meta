@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 26711f5495512744d8bdc4b62438e455
+guid: 4cf6fd36e4b1ae04fb4471d36c9acec5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3296121567986556184
-    second: shopping_0
+      213: -3912449541952839875
+    second: perkmachinebackground_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: shopping_0
+      name: perkmachinebackground_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8e268a3c5e2d142d0800000000000000
-      internalID: -3296121567986556184
+      spriteID: d3fd242eedf24b9c0800000000000000
+      internalID: -3912449541952839875
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      shopping_0: -3296121567986556184
+      perkmachinebackground_0: -3912449541952839875
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

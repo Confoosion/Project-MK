@@ -269,9 +269,13 @@ public class ShopManager : MonoBehaviour
             shopPages[currentPageIndex].SetActive(true);
         }
 
-        int underscore = shopPages[currentPageIndex].name.IndexOf("_");
-        string pageText = shopPages[currentPageIndex].name.Substring(0, underscore);
-        switchPageText.SetText(pageText + " Page");
+        int otherPageIndex = currentPageIndex + 1;
+        if(otherPageIndex > shopPages.Length - 1)
+            otherPageIndex = 0;
+
+        int underscore = shopPages[otherPageIndex].name.IndexOf("_");
+        string pageText = shopPages[otherPageIndex].name.Substring(0, underscore);
+        switchPageText.SetText(pageText + " Page ->");
 
         SetupPerkMachineUI();
     }
