@@ -12,8 +12,7 @@ public class EnemyController : MonoBehaviour
 
     private void Start()
     {
-        health = enemyType.health;
-        SpawnerManager.Singleton.allEnemiesInWorld.Add(this.gameObject);
+        SpawnerManager.Singleton.allEnemiesInWorld.Add(gameObject);
     }
 
     protected void SetSpeed()
@@ -24,6 +23,11 @@ public class EnemyController : MonoBehaviour
             speed = enemyType.speed - slowPerk.value;
         else
             speed = enemyType.speed;
+    }
+
+    protected void SetHealth()
+    {
+        health = enemyType.health;
     }
 
     // protected void OnCollisionEnter2D(Collision2D collision)
@@ -39,6 +43,7 @@ public class EnemyController : MonoBehaviour
 
     public void enemyTakeDamage(float damage)
     {
+        Debug.Log(health);
         float extraDamage = 0f;
 
         // Check for damage perk
@@ -47,7 +52,7 @@ public class EnemyController : MonoBehaviour
             extraDamage += dmgPerk.value;
 
         health -= (damage + extraDamage);
-
+        Debug.Log(health);
         if (health <= 0)
         {
             enemyDeath();

@@ -81,7 +81,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 9a849294ceb0128478593e0114bfa949, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -145,7 +145,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.9, y: 0.5}
+    pivot: {x: 0.8, y: 0.5}
     oldSize: {x: 2, y: 2}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -154,9 +154,9 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.9586171, y: 0.5776072}
-      - {x: -1.3820249, y: 0.025209688}
-      - {x: -0.93824303, y: -0.5783943}
-      - {x: 0.19419008, y: -0.58385956}
-      - {x: 0.18732712, y: 0.5792306}
+    - - {x: -0.7639902, y: 0.5776072}
+      - {x: -1.1811198, y: 0.022070542}
+      - {x: -0.73419875, y: -0.5909509}
+      - {x: 0.39509517, y: -0.58385956}
+      - {x: 0.38509312, y: 0.5792306}
   m_UseDelaunayMesh: 0
