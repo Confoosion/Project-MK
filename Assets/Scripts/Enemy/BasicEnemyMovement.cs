@@ -13,6 +13,7 @@ public class BasicEnemyMovement : EnemyController
 
         // Sets speed in EnemyController since we're inheriting the class
         SetSpeed();
+        SetHealth();
     }
 
     void FixedUpdate()
