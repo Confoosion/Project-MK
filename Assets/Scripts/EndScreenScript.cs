@@ -25,12 +25,6 @@ public class EndScreenScript : MonoBehaviour
         moreEnemyStatsText.enabled = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void moreEnemyStatsButton()
     {
         if (moreEnemyStatsText.enabled || moreEnemyStatsText2.enabled)

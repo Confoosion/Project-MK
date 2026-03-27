@@ -71,6 +71,7 @@ public class PlayerControl : MonoBehaviour
 
     void Update()
     {
+        // Debug God mode
         if(Input.GetKeyDown(KeyCode.I))
         {
             godMode = !godMode;
@@ -88,8 +89,20 @@ public class PlayerControl : MonoBehaviour
             }
         }
 
+        if(Input.GetKeyDown(KeyCode.Escape) && GameManager.Singleton.IsPlayerAlive())
+        {
+            if(!GameManager.Singleton.IsPaused())
+            {
+                GameManager.Singleton.PauseGame(true);
+            }
+            else
+            {
+                GameManager.Singleton.PauseGame(false);
+            }
+        }
+
         // Movement
-        if (!movementLocked)
+        if (!movementLocked && !GameManager.Singleton.IsPaused())
         {
             horizontal = Input.GetAxisRaw("Horizontal");
 

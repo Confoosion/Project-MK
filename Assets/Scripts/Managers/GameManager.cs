@@ -11,11 +11,13 @@ public class GameManager : MonoBehaviour
 
     [Header("Player")]
     private bool isAlive = true;
+    private bool isPaused = false;
     [SerializeField] public GameObject playerObject;
     public GameObject spawnedPlayer {get; private set;}
 
     [SerializeField] private GameObject deathScreen;
     [SerializeField] private GameObject endScreen;
+    [SerializeField] private GameObject pauseScreen;
     [SerializeField] private int START_MUFFINS_NEEDED = 5;
 
     [Space]
@@ -54,6 +56,7 @@ public class GameManager : MonoBehaviour
     {
         int tempCurrency = 0;
         ShopSaveSystem.Load(CharacterManager.Singleton.GetFullCharacterList(), out tempCurrency);
+        pauseScreen.SetActive(false);
     }
 
     public void RestartGame()
@@ -141,6 +144,19 @@ public class GameManager : MonoBehaviour
     public int GetCurrentMuffinsNeeded()
     {
         return(muffinsNeededToMoveOn);
+    }
+
+    public void PauseGame(bool pause)
+    {
+        Time.timeScale = (pause) ? 0f : 1f;
+        isPaused = pause;
+        pauseScreen.SetActive(pause);
+        SoundManager.Singleton.PauseAudio(pause);
+    }
+
+    public bool IsPaused()
+    {
+        return(isPaused);
     }
 
     //end screen stats stuff

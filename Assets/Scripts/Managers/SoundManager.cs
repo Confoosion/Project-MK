@@ -53,4 +53,21 @@ public class SoundManager : MonoBehaviour
         if(audio != null)
             source.PlayOneShot(audio, volume);
     }
+
+    public void PauseAudio(bool pause)
+    {
+        AudioListener.pause = pause;
+        // if(pause)
+        // {
+        //     masterAudioSource.Pause();
+        //     playerAudioSource.Pause();
+        //     attackAudioSource.Pause();
+        // }
+        // else
+        // {
+        //     masterAudioSource.UnPause();
+        //     playerAudioSource.UnPause();
+        //     attackAudioSource.UnPause();
+        // }
+    }
 }
