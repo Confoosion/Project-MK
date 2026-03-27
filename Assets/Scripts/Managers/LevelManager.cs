@@ -64,4 +64,10 @@ public class LevelManager : MonoBehaviour
         float percentageComplete = (float)muffinCount / (float)GameManager.Singleton.GetCurrentMuffinsNeeded();
         muffinProgressBar.value = percentageComplete;
     }
+
+    public float GetPredictionProgress()
+    {
+        float predPercentage = (float)(muffinCount + 1) / (float)GameManager.Singleton.GetCurrentMuffinsNeeded();
+        return((predPercentage > 1f) ? 1f : predPercentage);
+    }
 }
