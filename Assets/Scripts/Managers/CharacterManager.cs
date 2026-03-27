@@ -60,13 +60,13 @@ public class CharacterManager : MonoBehaviour
         }
         else
         {
-            if(!characterList.Contains(currentCharacter))
-                characterList.Add(currentCharacter);
-
             int newChar_Index = Random.Range(0, characterList.Count);
             CharacterSO newCharacter = characterList[newChar_Index];
             characterList.RemoveAt(newChar_Index);
 
+            if(!characterList.Contains(currentCharacter))
+                characterList.Add(currentCharacter);
+                
             currentCharacter = newCharacter;
         }
 

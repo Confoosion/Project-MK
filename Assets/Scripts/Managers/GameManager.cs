@@ -74,8 +74,9 @@ public class GameManager : MonoBehaviour
         if(PlayerControl.Singleton)
         {
             PlayerControl.Singleton.movementLocked = false;
-            isAlive = true;
         }
+
+        isAlive = true;
     }
 
     public void NextLevel()
