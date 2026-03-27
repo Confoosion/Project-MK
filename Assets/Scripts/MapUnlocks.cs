@@ -40,7 +40,7 @@ public class MapUnlocks : MonoBehaviour
         }
 
         int numMapsVisited = GameManager.Singleton.GetNumberOfMapsVisited();
-        currencyGained += numMapsVisited;
+        currencyGained += (numMapsVisited == 1) ? 0 : numMapsVisited;
         ShopSaveSystem.AddCurrency(currencyGained);
     }
 

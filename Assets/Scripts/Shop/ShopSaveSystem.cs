@@ -263,6 +263,7 @@ public static class ShopSaveSystem
     public static void AddCurrency(int amount)
     {
         runtimeCurrency += amount;
+        Save();
     }
     
     // ========== UTILITY ==========
