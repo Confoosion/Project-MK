@@ -6238,8 +6238,8 @@ MonoBehaviour:
   deathScreen: {fileID: 339029708}
   endScreen: {fileID: 2090389854}
   pauseScreen: {fileID: 1774060411}
-  START_MUFFINS_NEEDED: 2
-  muffinsNeededToMoveOn: 2
+  START_MUFFINS_NEEDED: 5
+  muffinsNeededToMoveOn: 5
 --- !u!4 &1861990213
 Transform:
   m_ObjectHideFlags: 0

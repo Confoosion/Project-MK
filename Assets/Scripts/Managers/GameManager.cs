@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour
 
     public void NextLevel()
     {
-        if (visitedMapIndices.Count == mapCount)
+        if (visitedMapIndices.Count == mapCount) // when beating the game
         {
             PlayerControl.Singleton.movementLocked = true;
             enableEndScreen();
@@ -102,6 +102,7 @@ public class GameManager : MonoBehaviour
 
         visitedMapIndices.Add(newMapIndex);
 
+        PrepareSceneChange();
         SceneManager.LoadScene(newMapIndex);
 
         muffinsNeededToMoveOn += muffinsNeededToMoveOn;
@@ -129,6 +130,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void PrepareSceneChange()
+    {
+        spawnedPlayer.transform.SetParent(null);
+        DontDestroyOnLoad(spawnedPlayer);
+    }
+
     private Transform GetRandomSpawnPoint()
     {
         GameObject[] spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
@@ -139,6 +146,15 @@ public class GameManager : MonoBehaviour
     private void resetMapPool()
     {
         visitedMapIndices.Clear();
+    }
+    public bool IsPlayerAlive()
+    {
+        return (isAlive);
+    }
+
+    public int GetNumberOfMapsVisited()
+    {
+        return visitedMapIndices.Count;
     }
 
     public int GetCurrentMuffinsNeeded()
@@ -255,15 +271,5 @@ public class GameManager : MonoBehaviour
     private int GetRandomNumber(int min, int max) //max exclusive
     {
         return UnityEngine.Random.Range(min, max);
-    }
-
-    public bool IsPlayerAlive()
-    {
-        return(isAlive);
-    }
-
-    public int GetNumberOfMapsVisited()
-    {
-        return visitedMapIndices.Count;
     }
 }
