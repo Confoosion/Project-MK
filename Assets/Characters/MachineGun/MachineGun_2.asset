@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ba66ab467906e4458c09de9e726dc21, type: 3}
   m_Name: MachineGun_2
   m_EditorClassIdentifier: Assembly-CSharp::MachineGunCharacter
-  characterName: Guy
+  characterName: Geophrey
   characterModel: {fileID: 21300000, guid: 262bedaac7e0e6b4584acb4f1867d32b, type: 3}
   attackObject: {fileID: 1406789531465883097, guid: e384a924c1da0f74b91eab5bba0b0965, type: 3}
   level: 2

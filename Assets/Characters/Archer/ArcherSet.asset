@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f29125791da8e6a4c9b543489edcc50d, type: 3}
   m_Name: ArcherSet
   m_EditorClassIdentifier: Assembly-CSharp::CharacterSetSO
-  itemName: Civilian
+  itemName: Arthur
   itemIcon: {fileID: 0}
   price: 2
   upgrades:
